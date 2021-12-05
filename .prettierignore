@@ -1,0 +1,6 @@
+.idea
+.next
+.vercel
+.vscode
+build
+node_modules
