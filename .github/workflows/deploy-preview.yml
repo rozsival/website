@@ -6,7 +6,7 @@ on:
       - develop
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -29,16 +29,14 @@ jobs:
           restore-keys: ${{ runner.os }}-yarn-
       - name: Install dependencies
         run: yarn install
-      - name: Build
-        run: yarn build
-      - name: Cache build
+      - name: Cache setup
         uses: actions/cache@v2
         id: cache-build
         with:
           path: ./*
           key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
   lint:
-    needs: build
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -50,9 +48,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
-      - name: Restore build
+      - name: Restore setup
         uses: actions/cache@v2
-        id: restore-build
+        id: restore-setup
         with:
           path: ./*
           key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
