@@ -3,9 +3,7 @@ import { ReactElement } from 'react';
 
 import { MAX_WIDTH } from '../constants';
 
-export type ContentProps = {
-  children: ReactElement;
-};
+import { ContentProps } from './types';
 
 export const Content = ({ children }: ContentProps): ReactElement => (
   <Container maxWidth={MAX_WIDTH}>

@@ -1,14 +1,15 @@
-import React, { Children, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { CssBaseline } from '@mui/material';
 
-import { Content, ContentProps } from './content';
+import { Content } from './content';
 import { Footer } from './footer';
 import { Header } from './header';
+import { LayoutProps } from './types';
 
-export const Layout = ({ children }: ContentProps): ReactElement => (
+export const Layout = ({ children }: LayoutProps): ReactElement => (
   <CssBaseline>
     <Header />
-    <Content>{Children.only(children)}</Content>
+    <Content>{children}</Content>
     <Footer />
   </CssBaseline>
 );

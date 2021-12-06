@@ -1,5 +1,4 @@
 import createEmotionServer from '@emotion/server/create-instance';
-import type { AppPropsType } from 'next/dist/shared/lib/utils';
 import { Children, ReactElement } from 'react';
 import NextDocument, {
   DocumentContext,
@@ -13,6 +12,7 @@ import NextDocument, {
 import { baseline } from '../styles/baseline';
 import { createEmotionCache, createEmotionStyleTags } from '../styles/emotion';
 import { font } from '../styles/font';
+import { AppPropsType, AppType } from '../types/app';
 
 class Document extends NextDocument {
   static async getInitialProps(
@@ -23,7 +23,7 @@ class Document extends NextDocument {
     const { renderPage } = context;
     context.renderPage = () =>
       renderPage({
-        enhanceApp: (App: import('./_app').AppType) => {
+        enhanceApp: (App: AppType) => {
           const EnhancedApp = (props: AppPropsType) => (
             <App emotionCache={cache} {...props} />
           );
@@ -34,7 +34,7 @@ class Document extends NextDocument {
     const emotionStyleTags = createEmotionStyleTags(
       extractCriticalToChunks(initialProps.html),
     );
-    const styles = [baseline, initialProps.styles, ...emotionStyleTags];
+    const styles = [baseline, ...emotionStyleTags, initialProps.styles];
     return { ...initialProps, styles: Children.toArray(styles) };
   }
 

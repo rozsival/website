@@ -131,7 +131,7 @@ module.exports = {
       },
     },
     {
-      files: 'pages/**/*.tsx',
+      files: 'src/pages/**/*.tsx',
       rules: {
         'no-restricted-exports': 'off',
       },

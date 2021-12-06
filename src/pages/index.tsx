@@ -1,5 +1,1 @@
-import type { NextPage } from 'next';
-
-const Home: NextPage = () => <div>Hello World!</div>;
-
-export default Home;
+export { Home as default } from '../components/pages/home';

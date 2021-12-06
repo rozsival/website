@@ -1,22 +1,9 @@
-import { EmotionCache } from '@emotion/cache';
-import { CacheProvider } from '@emotion/react';
-import {
-  AppContextType,
-  AppInitialProps,
-  AppPropsType,
-  NextComponentType,
-} from 'next/dist/shared/lib/utils';
 import Head from 'next/head';
+import { CacheProvider } from '@emotion/react';
 
 import { Layout } from '../components/layout';
 import { createEmotionCache } from '../styles/emotion';
-
-export type AppProps = AppPropsType & { emotionCache?: EmotionCache };
-export type AppType = NextComponentType<
-  AppContextType,
-  AppInitialProps,
-  AppProps
->;
+import { AppType } from '../types/app';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -26,7 +13,6 @@ const App: AppType = ({ Component, emotionCache, pageProps }) => (
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta charSet="utf-8" />
-      <title>Vít ROZSÍVAL</title>
     </Head>
     <Layout>
       <Component {...pageProps} />
