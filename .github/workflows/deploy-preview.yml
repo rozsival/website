@@ -54,8 +54,8 @@ jobs:
         with:
           path: ./*
           key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
-      - name: Lint
-        run: yarn lint
+      - name: QA
+        run: yarn qa
   deploy-preview:
     needs: lint
     runs-on: ubuntu-latest
