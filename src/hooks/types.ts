@@ -1,6 +1,8 @@
-export type UseFetchOptions = {
-  url: string;
+export type UseFetchOptions<Response> = {
   method: RequestInit['method'];
+  onError?: (message: string) => void;
+  onSuccess?: (response: Response) => void;
+  url: string;
 };
 
 export type UseFetchReturn<Data, Response> = [

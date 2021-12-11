@@ -94,6 +94,8 @@ module.exports = {
           params: true,
           props: true,
           Props: true,
+          ref: true,
+          Ref: true,
         },
       },
     ],
