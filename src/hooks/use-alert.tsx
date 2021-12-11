@@ -1,8 +1,11 @@
 import { ReactElement, useState } from 'react';
 
-import { Alert } from '../components/alert';
-import { ALERT_ERROR, ALERT_SUCCESS } from '../components/alert/constants';
-import { AlertProps } from '../components/alert/types';
+import {
+  Alert,
+  ALERT_ERROR,
+  ALERT_SUCCESS,
+  AlertProps,
+} from '../components/alert';
 
 export const useAlert = () => {
   const [alert, setAlert] = useState<ReactElement | undefined>();

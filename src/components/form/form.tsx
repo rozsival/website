@@ -5,12 +5,14 @@ import { ReactElement } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 
-import { useFetch } from '../../hooks';
-import { useAlert } from '../../hooks/use-alert';
+import { useAlert, useFetch } from '../../hooks';
 import { apiRoutes } from '../../routes';
-import { STATUS_SENT } from '../../services/form/constants';
-import { FormValues, SendFormResponse } from '../../services/form/types';
-import { validationSchema } from '../../services/form/validation';
+import {
+  STATUS_SENT,
+  FormValues,
+  SendFormResponse,
+  validationSchema,
+} from '../../services/form';
 
 import { Input } from './input';
 

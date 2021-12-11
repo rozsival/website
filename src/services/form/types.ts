@@ -9,8 +9,3 @@ export type SendFormResponse = {
   errors?: FormErrors;
   status: typeof STATUS_ERROR | typeof STATUS_SENT;
 };
-export type PostOptions = {
-  onStart: () => void;
-  onCompleted: () => void;
-  values: FormValues;
-};

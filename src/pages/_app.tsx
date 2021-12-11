@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { CacheProvider } from '@emotion/react';
 
 import { Layout } from '../components/layout';
-import { createEmotionCache } from '../styles/emotion';
+import { createEmotionCache } from '../styles';
 import { AppType } from '../types/app';
 
 const clientSideEmotionCache = createEmotionCache();

@@ -1,1 +1,1 @@
-export { apiRoutes } from './api';
+export * from './api';

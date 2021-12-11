@@ -19,7 +19,7 @@ export const send = async (
   try {
     await validationSchema.validate(request.body, { abortEarly: false });
     // eslint-disable-next-line no-console
-    console.log('sending form...');
+    console.log('sending form...', request.body);
     return { status: STATUS_SENT };
   } catch (error) {
     return {

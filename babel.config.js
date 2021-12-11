@@ -1,27 +1,22 @@
+const muiImport = ([library, module]) => [
+  'import',
+  {
+    libraryName: `@mui/${library}`,
+    libraryDirectory: '',
+    camel2DashComponentName: false,
+  },
+  module,
+];
+
+const muiPlugins = [
+  ['material', 'core'],
+  ['icons-material', 'icons'],
+].map(muiImport);
+
 module.exports = (api) => {
   api.cache(true);
   return {
     presets: ['next/babel'],
-    plugins: [
-      '@emotion',
-      [
-        'babel-plugin-import',
-        {
-          libraryName: '@mui/material',
-          libraryDirectory: '',
-          camel2DashComponentName: false,
-        },
-        'core',
-      ],
-      [
-        'babel-plugin-import',
-        {
-          libraryName: '@mui/icons-material',
-          libraryDirectory: '',
-          camel2DashComponentName: false,
-        },
-        'icons',
-      ],
-    ],
+    plugins: ['@emotion', ...muiPlugins],
   };
 };

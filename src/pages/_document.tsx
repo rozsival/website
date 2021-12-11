@@ -9,9 +9,12 @@ import NextDocument, {
   NextScript,
 } from 'next/document';
 
-import { baseline } from '../styles/baseline';
-import { createEmotionCache, createEmotionStyleTags } from '../styles/emotion';
-import { font } from '../styles/font';
+import {
+  baseline,
+  createEmotionCache,
+  createEmotionStyleTags,
+  font,
+} from '../styles';
 import { AppPropsType, AppType } from '../types/app';
 
 class Document extends NextDocument {
