@@ -94,6 +94,7 @@ module.exports = {
     'unicorn/no-array-reduce': 'off',
     'unicorn/no-array-callback-reference': 'off',
     'unicorn/prefer-module': 'off',
+    'unicorn/prefer-node-protocol': 'off',
     'unicorn/prevent-abbreviations': [
       'error',
       {
@@ -128,13 +129,30 @@ module.exports = {
       },
     },
     {
+      files: '*.mdx',
+      extends: [
+        'plugin:mdx/recommended',
+        'plugin:prettier/recommended',
+        'prettier',
+      ],
+      plugins: ['mdx', 'prettier'],
+      rules: {
+        'react/jsx-filename-extension': ['error', { extensions: ['.mdx'] }],
+        'react/jsx-no-undef': 'off',
+      },
+      settings: {
+        'mdx/code-blocks': true,
+        'mdx/language-mapper': {},
+      },
+    },
+    {
       files: 'next-env.d.ts',
       rules: {
         'unicorn/prevent-abbreviations': 'off',
       },
     },
     {
-      files: 'src/pages/**/*.tsx',
+      files: 'src/pages/**/*.ts',
       rules: {
         'no-restricted-exports': 'off',
       },

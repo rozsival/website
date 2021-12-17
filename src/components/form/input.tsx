@@ -6,6 +6,7 @@ import {
   FormHelperText,
 } from '@mui/material';
 
+import { MULTILINE_INPUT_ROWS, SINGLE_LINE_INPUT_ROWS } from './constants';
 import { InputProps } from './types';
 
 export const Input = <FieldValues, FieldName extends FieldPath<FieldValues>>({
@@ -20,7 +21,7 @@ export const Input = <FieldValues, FieldName extends FieldPath<FieldValues>>({
   const errorId = `${name}-error`;
   const hasError = Boolean(error);
   return (
-    <FormControl error={hasError}>
+    <FormControl error={hasError} fullWidth>
       <InputLabel error={hasError} htmlFor={name}>
         {label}
       </InputLabel>
@@ -38,6 +39,7 @@ export const Input = <FieldValues, FieldName extends FieldPath<FieldValues>>({
             name={field.name}
             onBlur={field.onBlur}
             onChange={field.onChange}
+            rows={multiLine ? MULTILINE_INPUT_ROWS : SINGLE_LINE_INPUT_ROWS}
             type={type}
             value={field.value}
           />
