@@ -1,8 +1,7 @@
 import { AlertColor } from '@mui/material';
 
-export type AlertProps = {
-  id: string;
+export type FlashMessageProps = {
   message: string;
-  onClose?: (id: string) => void;
+  onClose?: () => void;
   type?: AlertColor;
 };

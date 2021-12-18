@@ -4,17 +4,17 @@ import { ReactElement } from 'react';
 import { ContentProps } from './types';
 
 export const Content = ({ children }: ContentProps): ReactElement => (
-  <Container>
-    <Box
-      sx={{
-        my: 4,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      {children}
-    </Box>
-  </Container>
+  <main>
+    <Container>
+      <Box
+        alignItems="center"
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        my={4}
+      >
+        {children}
+      </Box>
+    </Container>
+  </main>
 );

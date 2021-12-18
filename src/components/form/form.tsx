@@ -5,8 +5,9 @@ import { ReactElement } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { useAlert, useFetch } from '../../hooks';
 import { apiRoutes } from '../../routes';
+import { useFlashMessagesContext } from '../../context';
+import { useFetch } from '../../hooks';
 import {
   STATUS_SENT,
   FormValues,
@@ -15,9 +16,10 @@ import {
 } from '../../services/form';
 
 import { Input } from './input';
+import { StyledForm } from './styles';
 
 export const Form = (): ReactElement => {
-  const { renderWithAlert, showError, showSuccess } = useAlert();
+  const { showError, showSuccess } = useFlashMessagesContext();
   const {
     control,
     handleSubmit,
@@ -40,8 +42,8 @@ export const Form = (): ReactElement => {
     url: apiRoutes.sendForm,
   });
   const onSubmit: SubmitHandler<FormValues> = (data) => post(data);
-  return renderWithAlert(
-    <form onSubmit={handleSubmit(onSubmit)}>
+  return (
+    <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <Box>
         <Input
           control={control}
@@ -76,7 +78,7 @@ export const Form = (): ReactElement => {
           name="message"
         />
       </Box>
-      <Box>
+      <Box mt={2}>
         <LoadingButton
           endIcon={<SendIcon />}
           loading={loading}
@@ -87,6 +89,6 @@ export const Form = (): ReactElement => {
           Send
         </LoadingButton>
       </Box>
-    </form>,
+    </StyledForm>
   );
 };
