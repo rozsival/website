@@ -18,13 +18,13 @@ export const send = async (
 ): Promise<SendFormResponse> => {
   try {
     await validationSchema.validate(request.body, { abortEarly: false });
-    // eslint-disable-next-line no-console
-    console.log('sending form...', request.body);
-    return { status: STATUS_SENT };
   } catch (error) {
     return {
       status: STATUS_ERROR,
       errors: formatErrors(error),
     };
   }
+  // eslint-disable-next-line no-console
+  console.log('sending form...', request.body);
+  return { status: STATUS_SENT };
 };

@@ -85,6 +85,7 @@ module.exports = {
     'no-confusing-arrow': 'off',
     'no-console': productionError,
     'no-debugger': productionError,
+    'no-magic-numbers': ['error', { ignore: [0, 1], ignoreArrayIndexes: true }],
     'no-param-reassign': 'off',
     'no-shadow': 'off',
     'no-use-before-define': 'off',

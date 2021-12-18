@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import { Send as SendIcon } from '@mui/icons-material';
 import { ReactElement } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { useAlert, useFetch } from '../../hooks';
 import { apiRoutes } from '../../routes';
