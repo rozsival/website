@@ -52,7 +52,7 @@ export const Form = (): ReactElement => {
           name="name"
         />
       </Box>
-      <Box>
+      <Box mt={2}>
         <Input
           control={control}
           error={errors.email?.message ?? response?.errors?.email}
@@ -61,7 +61,7 @@ export const Form = (): ReactElement => {
           type="email"
         />
       </Box>
-      <Box>
+      <Box mt={2}>
         <Input
           control={control}
           error={errors.subject?.message ?? response?.errors?.subject}
@@ -69,7 +69,7 @@ export const Form = (): ReactElement => {
           name="subject"
         />
       </Box>
-      <Box>
+      <Box mt={2}>
         <Input
           control={control}
           error={errors.message?.message ?? response?.errors?.message}
