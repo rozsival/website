@@ -18,7 +18,7 @@ export const BlogPost: NextPage<BlogPostProps> = (props) => {
   const { mdxSource } = props;
   return (
     <Page seo={seo}>
-      <Box>
+      <Box width="100%">
         <h1>{frontMatter.title}</h1>
         <MDXRemote
           compiledSource={mdxSource.compiledSource}

@@ -18,6 +18,8 @@ import { pagesRoutes } from '../../../routes';
 import { parseFrontMatter } from '../../../services/blog';
 
 import { BlogProps } from './types';
+import { boxStyle, cardStyle } from './styles';
+import { CARD_MEDIA_HEIGHT, CARD_MEDIA_WIDTH } from './constants';
 
 export const seo = {
   title: 'Blog',
@@ -25,21 +27,21 @@ export const seo = {
 
 export const Blog: NextPage<BlogProps> = ({ posts }) => (
   <Page seo={seo}>
-    <Box display="flex" justifyContent="space-around" width="100%">
+    <Box sx={boxStyle}>
       {posts.map((post) => {
         const { date, title, thumbnailUrl } = parseFrontMatter(post);
         const { slug } = post;
         const href = pagesRoutes.blog.post(slug);
         return (
-          <Card key={slug} sx={{ maxWidth: 320 }}>
+          <Card key={slug} sx={cardStyle}>
             <Link href={href} passHref>
               <CardActionArea>
                 <CardMedia>
                   <Image
                     alt={title}
-                    height={280}
+                    height={CARD_MEDIA_HEIGHT}
                     src={thumbnailUrl}
-                    width={320}
+                    width={CARD_MEDIA_WIDTH}
                   />
                 </CardMedia>
                 <CardContent>

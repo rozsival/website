@@ -11,7 +11,7 @@ export const ColorModeToggle = (): ReactElement => {
   const { colorMode, toggleColorMode } = useColorModeContext();
   return (
     <IconButton onClick={toggleColorMode} color="inherit">
-      {colorMode === 'dark' ? <DarkIcon /> : <LightIcon />}
+      {colorMode === 'dark' ? <LightIcon /> : <DarkIcon />}
     </IconButton>
   );
 };

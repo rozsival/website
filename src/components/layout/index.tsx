@@ -5,11 +5,14 @@ import { Content } from './content';
 import { Footer } from './footer';
 import { Header } from './header';
 import { LayoutProps } from './types';
+import { Transition } from './transition';
 
 export const Layout = ({ children }: LayoutProps): ReactElement => (
   <CssBaseline>
     <Header />
-    <Content>{children}</Content>
+    <Transition>
+      <Content>{children}</Content>
+    </Transition>
     <Footer />
   </CssBaseline>
 );

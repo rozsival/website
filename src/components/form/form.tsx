@@ -1,7 +1,7 @@
 import LoadingButton from '@mui/lab/LoadingButton';
 import { Box } from '@mui/material';
-import { Send as SendIcon } from '@mui/icons-material';
 import { ReactElement } from 'react';
+import { Send as SendIcon } from '@mui/icons-material';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -15,6 +15,7 @@ import {
   validationSchema,
 } from '../../services/form';
 
+import { SPACING } from './constants';
 import { Input } from './input';
 import { StyledForm } from './styles';
 
@@ -44,41 +45,34 @@ export const Form = (): ReactElement => {
   const onSubmit: SubmitHandler<FormValues> = (data) => post(data);
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
-      <Box>
-        <Input
-          control={control}
-          error={errors.name?.message ?? response?.errors?.name}
-          label="Your name"
-          name="name"
-        />
-      </Box>
-      <Box mt={2}>
-        <Input
-          control={control}
-          error={errors.email?.message ?? response?.errors?.email}
-          label="Your e-mail"
-          name="email"
-          type="email"
-        />
-      </Box>
-      <Box mt={2}>
-        <Input
-          control={control}
-          error={errors.subject?.message ?? response?.errors?.subject}
-          label="Subject"
-          name="subject"
-        />
-      </Box>
-      <Box mt={2}>
-        <Input
-          control={control}
-          error={errors.message?.message ?? response?.errors?.message}
-          label="Your message"
-          multiLine
-          name="message"
-        />
-      </Box>
-      <Box mt={2}>
+      <Input
+        control={control}
+        error={errors.name?.message ?? response?.errors?.name}
+        label="Your name"
+        name="name"
+        noMargin
+      />
+      <Input
+        control={control}
+        error={errors.email?.message ?? response?.errors?.email}
+        label="Your e-mail"
+        name="email"
+        type="email"
+      />
+      <Input
+        control={control}
+        error={errors.subject?.message ?? response?.errors?.subject}
+        label="Subject"
+        name="subject"
+      />
+      <Input
+        control={control}
+        error={errors.message?.message ?? response?.errors?.message}
+        label="Your message"
+        multiLine
+        name="message"
+      />
+      <Box mt={SPACING}>
         <LoadingButton
           endIcon={<SendIcon />}
           loading={loading}

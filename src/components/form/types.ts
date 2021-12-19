@@ -11,5 +11,6 @@ export type InputProps<
   mode?: HTMLAttributes<HTMLInputElement>['inputMode'];
   multiLine?: boolean;
   name: FieldName;
+  noMargin?: boolean;
   type?: string;
 };
