@@ -13,6 +13,12 @@ export interface BlogPostGrayMatter extends GrayMatterFile<Buffer> {
 
 export type BlogPostSlug = string;
 
+export type BlogPostSource = {
+  frontMatter: BlogPostFrontMatter;
+  mdxSource: string;
+  scope: Record<string, unknown>;
+};
+
 export type BlogPostTile = {
   frontMatter: BlogPostFrontMatter;
   slug: BlogPostSlug;

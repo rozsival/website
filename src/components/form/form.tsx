@@ -13,6 +13,7 @@ import {
   FormValues,
   SendFormResponse,
   validationSchema,
+  MESSAGE_LENGTH,
 } from '../../services/form';
 
 import { SPACING } from './constants';
@@ -69,6 +70,7 @@ export const Form = (): ReactElement => {
         control={control}
         error={errors.message?.message ?? response?.errors?.message}
         label="Your message"
+        maxLength={MESSAGE_LENGTH}
         multiLine
         name="message"
       />

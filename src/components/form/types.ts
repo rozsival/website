@@ -8,6 +8,7 @@ export type InputProps<
   error?: string;
   control: Control<FieldValues>;
   label: string;
+  maxLength?: number;
   mode?: HTMLAttributes<HTMLInputElement>['inputMode'];
   multiLine?: boolean;
   name: FieldName;

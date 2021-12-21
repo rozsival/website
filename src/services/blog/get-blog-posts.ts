@@ -1,20 +1,19 @@
 import { parseDate } from '../date';
 
-import { getBlogFiles } from './get-blog-files';
+import { getBlogDirectories } from './get-blog-directories';
 import { getPostSource } from './get-post-source';
-import { getPostSlug } from './get-post-slug';
 import { BlogPostFrontMatter, BlogPostTile } from './types';
 
 const getTime = ({ date }: BlogPostFrontMatter) => parseDate(date).getTime();
 
-const mapTile = async (file: string): Promise<BlogPostTile> => {
-  const { frontMatter } = await getPostSource(file);
-  return { frontMatter, slug: getPostSlug(file) };
+const mapTile = async (slug: string): Promise<BlogPostTile> => {
+  const { frontMatter } = await getPostSource(slug);
+  return { frontMatter, slug };
 };
 
 export const getBlogPosts = async () => {
-  const files = await getBlogFiles();
-  const posts = await Promise.all(files.map(mapTile));
+  const directories = await getBlogDirectories();
+  const posts = await Promise.all(directories.map(mapTile));
   return posts.sort(
     (left, right) => getTime(right.frontMatter) - getTime(left.frontMatter),
   );

@@ -10,11 +10,14 @@ import {
   useState,
 } from 'react';
 
-import { getStoredValue, storeValue } from '../../services/local-storage';
+import {
+  COLOR_MODE_STORAGE,
+  getStoredValue,
+  storeValue,
+} from '../../services/local-storage';
 import { theme } from '../../styles/theme';
 import { DEFAULT_VALUE } from '../constants';
 
-import { COLOR_MODE_STORAGE } from './constants';
 import { ColorModeContextType } from './types';
 
 export const ColorModeContext = createContext<ColorModeContextType | undefined>(
@@ -32,10 +35,10 @@ export const ThemeProvider = ({ children }: { children: ReactElement }) => {
   const onMount = () => setMounted(true);
   useEffect(onMount, []);
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const getInitialColorMode = useCallback((): PaletteMode => {
+  const getInitialColorMode = useCallback(() => {
     const preferred = prefersDarkMode ? 'dark' : 'light';
     if (mounted) {
-      const stored = getStoredValue<PaletteMode>(COLOR_MODE_STORAGE);
+      const stored = getStoredValue(COLOR_MODE_STORAGE);
       return stored ?? preferred;
     }
     return preferred;
@@ -48,6 +51,8 @@ export const ThemeProvider = ({ children }: { children: ReactElement }) => {
     [getInitialColorMode],
   );
   useEffect(hydrateColorMode, [hydrateColorMode]);
+  const isDarkMode = useCallback(() => colorMode === 'dark', [colorMode]);
+  const isLightMode = useCallback(() => colorMode === 'light', [colorMode]);
   const toggleColorMode = useCallback(() => {
     setColorMode((current) => {
       const mode = current === 'dark' ? 'light' : 'dark';
@@ -56,8 +61,13 @@ export const ThemeProvider = ({ children }: { children: ReactElement }) => {
     });
   }, [setColorMode]);
   const value = useMemo(
-    () => ({ colorMode, toggleColorMode }),
-    [colorMode, toggleColorMode],
+    () => ({
+      colorMode,
+      isDarkMode,
+      isLightMode,
+      toggleColorMode,
+    }),
+    [colorMode, isDarkMode, isLightMode, toggleColorMode],
   );
   if (mounted) {
     return (

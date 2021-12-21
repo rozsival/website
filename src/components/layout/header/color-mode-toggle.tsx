@@ -1,4 +1,4 @@
-import { IconButton } from '@mui/material';
+import { IconButton, Tooltip } from '@mui/material';
 import {
   Brightness4 as DarkIcon,
   Brightness7 as LightIcon,
@@ -8,10 +8,14 @@ import { ReactElement } from 'react';
 import { useColorModeContext } from '../../../context';
 
 export const ColorModeToggle = (): ReactElement => {
-  const { colorMode, toggleColorMode } = useColorModeContext();
+  const { isDarkMode, toggleColorMode } = useColorModeContext();
   return (
-    <IconButton onClick={toggleColorMode} color="inherit">
-      {colorMode === 'dark' ? <LightIcon /> : <DarkIcon />}
-    </IconButton>
+    <Tooltip
+      title={isDarkMode() ? 'Switch to light mode' : 'Switch to dark mode'}
+    >
+      <IconButton onClick={toggleColorMode} color="inherit">
+        {isDarkMode() ? <LightIcon /> : <DarkIcon />}
+      </IconButton>
+    </Tooltip>
   );
 };

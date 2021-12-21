@@ -1,13 +1,8 @@
-import { getBlogFiles } from './get-blog-files';
-import { getPostSlug } from './get-post-slug';
-
-const mapFileParameters = (file: string) => ({
-  params: { slug: getPostSlug(file) },
-});
+import { getBlogDirectories } from './get-blog-directories';
 
 export const getBlogPaths = async () => {
-  const files = await getBlogFiles();
-  const paths = files.map(mapFileParameters);
+  const directories = await getBlogDirectories();
+  const paths = directories.map((slug) => ({ params: { slug } }));
   return {
     paths,
     fallback: false,

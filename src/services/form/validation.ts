@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const MESSAGE_LENGTH = 150;
+import { MESSAGE_LENGTH } from './constants';
 
 export const validationSchema = yup
   .object({

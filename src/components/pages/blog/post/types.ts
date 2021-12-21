@@ -1,11 +1,19 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { DetailedHTMLProps, HTMLProps } from 'react';
 
-import { BlogPostFrontMatter } from '../../../../services/blog';
+import { BlogPostSlug, BlogPostSource } from '../../../../services/blog';
 
-export type BlogPostStaticProps = {
+export type BlogPostStaticProps = Pick<
+  BlogPostSource,
+  'frontMatter' | 'scope'
+> & {
   mdxSource: MDXRemoteSerializeResult;
-  frontMatter: BlogPostFrontMatter;
-  slug: string;
+  slug: BlogPostSlug;
 };
 
 export type BlogPostProps = BlogPostStaticProps;
+
+export type CodeProps = DetailedHTMLProps<
+  HTMLProps<HTMLDivElement>,
+  HTMLDivElement
+> & { language?: string };

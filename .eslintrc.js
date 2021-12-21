@@ -12,6 +12,7 @@ module.exports = {
     'plugin:@next/next/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:import/typescript',
+    'plugin:mdx/recommended',
     'plugin:prettier/recommended',
     'plugin:unicorn/recommended',
     'prettier',
@@ -32,6 +33,7 @@ module.exports = {
     '@emotion',
     '@next/next',
     'import',
+    'mdx',
     'prettier',
     'react-hooks',
     'unicorn',
@@ -90,7 +92,7 @@ module.exports = {
     'no-shadow': 'off',
     'no-use-before-define': 'off',
     'object-curly-newline': ['error', { consistent: true }],
-    'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
+    'react/jsx-filename-extension': ['error', { extensions: ['.mdx', '.tsx'] }],
     'react/prop-types': 'off',
     'unicorn/no-array-reduce': 'off',
     'unicorn/no-array-callback-reference': 'off',
@@ -131,19 +133,11 @@ module.exports = {
     },
     {
       files: '*.mdx',
-      extends: [
-        'plugin:mdx/recommended',
-        'plugin:prettier/recommended',
-        'prettier',
-      ],
-      plugins: ['mdx', 'prettier'],
+      extends: ['plugin:mdx/overrides'],
       rules: {
-        'react/jsx-filename-extension': ['error', { extensions: ['.mdx'] }],
+        'no-undef': 'off',
         'react/jsx-no-undef': 'off',
-      },
-      settings: {
-        'mdx/code-blocks': true,
-        'mdx/language-mapper': {},
+        'react/no-unescaped-entities': 'off',
       },
     },
     {

@@ -19,6 +19,7 @@ export const Input = <FieldValues, FieldName extends FieldPath<FieldValues>>({
   control,
   label,
   mode,
+  maxLength,
   multiLine,
   name,
   noMargin,
@@ -26,6 +27,7 @@ export const Input = <FieldValues, FieldName extends FieldPath<FieldValues>>({
 }: InputProps<FieldValues, FieldName>) => {
   const errorId = `${name}-error`;
   const hasError = Boolean(error);
+  const inputProps = { maxLength };
   return (
     <Box mt={noMargin ? 0 : SPACING}>
       <FormControl error={hasError} fullWidth>
@@ -42,6 +44,7 @@ export const Input = <FieldValues, FieldName extends FieldPath<FieldValues>>({
               id={name}
               inputMode={mode}
               inputRef={field.ref}
+              inputProps={inputProps}
               multiline={multiLine}
               name={field.name}
               onBlur={field.onBlur}
