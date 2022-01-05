@@ -35,7 +35,7 @@ jobs:
         with:
           path: ./*
           key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
-  lint:
+  qa:
     needs: setup
     runs-on: ubuntu-latest
     steps:
@@ -57,7 +57,7 @@ jobs:
       - name: QA
         run: yarn qa
   deploy-preview:
-    needs: lint
+    needs: qa
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
