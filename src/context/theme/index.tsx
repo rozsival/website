@@ -53,6 +53,10 @@ export const ThemeProvider = ({ children }: { children: ReactElement }) => {
   useEffect(hydrateColorMode, [hydrateColorMode]);
   const isDarkMode = useCallback(() => colorMode === 'dark', [colorMode]);
   const isLightMode = useCallback(() => colorMode === 'light', [colorMode]);
+  const onMode: ColorModeContextType['onMode'] = useCallback(
+    (dark, light) => (isDarkMode() ? dark : light),
+    [isDarkMode],
+  );
   const toggleColorMode = useCallback(() => {
     setColorMode((current) => {
       const mode = current === 'dark' ? 'light' : 'dark';
@@ -65,9 +69,10 @@ export const ThemeProvider = ({ children }: { children: ReactElement }) => {
       colorMode,
       isDarkMode,
       isLightMode,
+      onMode,
       toggleColorMode,
     }),
-    [colorMode, isDarkMode, isLightMode, toggleColorMode],
+    [colorMode, isDarkMode, isLightMode, toggleColorMode, onMode],
   );
   if (mounted) {
     return (
