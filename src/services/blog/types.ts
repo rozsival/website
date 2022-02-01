@@ -3,7 +3,7 @@ import { GrayMatterFile } from 'gray-matter';
 export type BlogPostFrontMatter = {
   date: string;
   description: string;
-  thumbnailUrl: string;
+  image: string;
   title: string;
 };
 

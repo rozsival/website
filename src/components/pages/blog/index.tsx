@@ -14,7 +14,7 @@ import Link from 'next/link';
 
 import { formatDate } from '../../../services/date';
 import { Page } from '../page';
-import { pagesRoutes } from '../../../routes';
+import { pageRoutes } from '../../../routes';
 import { parseFrontMatter } from '../../../services/blog';
 
 import { BlogProps } from './types';
@@ -29,9 +29,9 @@ export const Blog: NextPage<BlogProps> = ({ posts }) => (
   <Page seo={seo}>
     <Box sx={boxStyle}>
       {posts.map((post) => {
-        const { date, title, thumbnailUrl } = parseFrontMatter(post);
+        const { date, title, image } = parseFrontMatter(post);
         const { slug } = post;
-        const href = pagesRoutes.blog.post(slug);
+        const href = pageRoutes.blog.post(slug);
         return (
           <Card key={slug} sx={cardStyle}>
             <Link href={href} passHref>
@@ -40,7 +40,7 @@ export const Blog: NextPage<BlogProps> = ({ posts }) => (
                   <Image
                     alt={title}
                     height={CARD_MEDIA_HEIGHT}
-                    src={thumbnailUrl}
+                    src={image}
                     width={CARD_MEDIA_WIDTH}
                   />
                 </CardMedia>

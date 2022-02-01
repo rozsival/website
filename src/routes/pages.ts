@@ -4,7 +4,7 @@ export const BLOG = 'blog';
 const createPageRoute = (...path: string[]): string =>
   `${HOME}${path.join(HOME)}`;
 
-export const pagesRoutes = {
+export const pageRoutes = {
   home: HOME,
   blog: {
     index: createPageRoute(BLOG),

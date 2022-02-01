@@ -8,19 +8,15 @@ import { useColorModeContext } from '../../../../context';
 
 import { CodeProps } from './types';
 
-export const Code = ({ children, language, ...props }: CodeProps) => {
+export const Code = ({ children, language = 'typescript' }: CodeProps) => {
   const { onMode } = useColorModeContext();
-  if (language) {
-    return (
-      <SyntaxHighlighter
-        language={language}
-        showLineNumbers
-        style={onMode(atelierDuneDark, atelierDuneLight)}
-      >
-        {children}
-      </SyntaxHighlighter>
-    );
-  }
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  return <code {...props}>{children}</code>;
+  return (
+    <SyntaxHighlighter
+      language={language}
+      showLineNumbers
+      style={onMode(atelierDuneDark, atelierDuneLight)}
+    >
+      {children}
+    </SyntaxHighlighter>
+  );
 };

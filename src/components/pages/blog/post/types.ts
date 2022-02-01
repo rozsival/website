@@ -1,5 +1,5 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
-import { DetailedHTMLProps, HTMLProps } from 'react';
+import { ReactNode } from 'react';
 
 import { BlogPostSlug, BlogPostSource } from '../../../../services/blog';
 
@@ -13,7 +13,4 @@ export type BlogPostStaticProps = Pick<
 
 export type BlogPostProps = BlogPostStaticProps;
 
-export type CodeProps = DetailedHTMLProps<
-  HTMLProps<HTMLDivElement>,
-  HTMLDivElement
-> & { language?: string };
+export type CodeProps = { children: ReactNode; language?: string };
