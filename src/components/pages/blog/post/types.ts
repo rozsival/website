@@ -1,7 +1,11 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { ReactNode } from 'react';
 
-import { BlogPostSlug, BlogPostSource } from '../../../../services/blog';
+import {
+  BlogPostFrontMatter,
+  BlogPostSlug,
+  BlogPostSource,
+} from '../../../../services/blog';
 
 export type BlogPostStaticProps = Pick<
   BlogPostSource,
@@ -12,5 +16,7 @@ export type BlogPostStaticProps = Pick<
 };
 
 export type BlogPostProps = BlogPostStaticProps;
+
+export type CardProps = { frontMatter: BlogPostFrontMatter; slug: string };
 
 export type CodeProps = { children: ReactNode; language?: string };

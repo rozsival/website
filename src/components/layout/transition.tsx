@@ -11,12 +11,9 @@ import { useRouter } from 'next/router';
 import { LayoutProps } from './types';
 
 const onAnimatePresence = () => window.scrollTo(0, 0);
-
-export const style = { height: '100%', width: '100%' };
-
-export const transition = { duration: 0.3 };
-
-export const variants: Variants = {
+const style = { height: '100%', width: '100%' };
+const transition = { duration: 0.3 };
+const variants: Variants = {
   animate: { opacity: 1 },
   exit: { opacity: 0 },
   initial: { opacity: 0 },

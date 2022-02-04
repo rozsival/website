@@ -22,6 +22,7 @@ export const BlogPost: NextPage<BlogPostProps> = (props) => {
   const seo = {
     description: frontMatter.description,
     title: frontMatter.title,
+    type: 'article',
     url: pageRoutes.blog.post(slug),
   };
   return (

@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {
   atelierDuneDark,
@@ -8,7 +9,10 @@ import { useColorModeContext } from '../../../../context';
 
 import { CodeProps } from './types';
 
-export const Code = ({ children, language = 'typescript' }: CodeProps) => {
+export const Code = ({
+  children,
+  language = 'typescript',
+}: CodeProps): ReactElement => {
   const { onMode } = useColorModeContext();
   return (
     <SyntaxHighlighter

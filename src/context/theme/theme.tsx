@@ -27,7 +27,7 @@ export const ColorModeContext = createContext<ColorModeContextType | undefined>(
 export const useColorModeContext = () => {
   const context = useContext(ColorModeContext);
   if (context) return context;
-  throw new Error('ColorContext value must be set.');
+  throw new Error('ColorModeContext value must be set.');
 };
 
 export const ThemeProvider = ({ children }: { children: ReactElement }) => {

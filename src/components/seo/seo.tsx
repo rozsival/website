@@ -13,7 +13,13 @@ import { BASE_URL, ROBOTS } from '../../environment';
 
 import { SeoProps } from './types';
 
-export const Seo: VFC<SeoProps> = ({ description, image, title, url }) => {
+export const Seo: VFC<SeoProps> = ({
+  description,
+  image,
+  title,
+  type = 'website',
+  url,
+}) => {
   const canonical = `${BASE_URL}${url || ''}`;
   const seoTitle = `${title ? `${title} | ` : ''}${SEO_TITLE}`;
   const seoDescription = description || SEO_DESCRIPTION;
@@ -31,6 +37,7 @@ export const Seo: VFC<SeoProps> = ({ description, image, title, url }) => {
       <meta name="og:profile:last_name" content={SEO_SURNAME} />
       <meta name="og:profile:username" content={SEO_PROFILE} />
       <meta name="og:profile:gender" content="male" />
+      <meta name="og:type" content={type} />
       {image?.og && <meta name="og:image" content={image.og} />}
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={seoTitle} />

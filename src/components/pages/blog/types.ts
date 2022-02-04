@@ -1,7 +1,7 @@
-import { BlogPostFrontMatter } from '../../../services/blog';
+import { CardProps } from './post';
 
 export type BlogStaticProps = {
-  posts: Array<{ frontMatter: BlogPostFrontMatter; slug: string }>;
+  posts: CardProps[];
 };
 
 export type BlogProps = BlogStaticProps;
