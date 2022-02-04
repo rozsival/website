@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { CacheProvider } from '@emotion/react';
 
-import { AppType } from '../types/app';
+import { AppType } from '../types';
 import { createEmotionCache } from '../styles';
 import { FlashMessagesProvider, ThemeProvider } from '../context';
 import { Layout } from '../components/layout';

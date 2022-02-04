@@ -1,10 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { serialize } from 'next-mdx-remote/serialize';
 
-import { BlogPostStaticProps } from '../../components/pages/blog/post/types';
+import { BlogPostStaticProps } from '../../components/pages/blog/post';
 import { getBlogPaths, getBlogPost } from '../../services/blog';
-
-export { BlogPost as default } from '../../components/pages/blog/post';
 
 export const getStaticPaths: GetStaticPaths = async () => getBlogPaths();
 export const getStaticProps: GetStaticProps<
@@ -17,3 +15,5 @@ export const getStaticProps: GetStaticProps<
   }
   return { notFound: true };
 };
+
+export { BlogPost as default } from '../../components/pages/blog/post';

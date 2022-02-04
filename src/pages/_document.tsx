@@ -15,7 +15,7 @@ import {
   createEmotionStyleTags,
   font,
 } from '../styles';
-import { AppPropsType, AppType } from '../types/app';
+import { AppPropsType, AppType } from '../types';
 
 class Document extends NextDocument {
   static async getInitialProps(

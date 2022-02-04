@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 
-import { Seo } from '../seo';
+import { Seo } from '../../seo';
 
 import { PageProps } from './types';
 

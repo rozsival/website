@@ -21,7 +21,7 @@ import { BlogProps } from './types';
 import { boxStyle, cardStyle } from './styles';
 import { CARD_MEDIA_HEIGHT, CARD_MEDIA_WIDTH } from './constants';
 
-export const seo = {
+const seo = {
   title: 'Blog',
 };
 

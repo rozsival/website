@@ -10,7 +10,7 @@ import { useColorModeContext } from '../../../context';
 export const ColorModeToggle = (): ReactElement => {
   const { onMode, toggleColorMode } = useColorModeContext();
   return (
-    <Tooltip title={onMode('Switch to light mode.', 'Switch to dark mode.')}>
+    <Tooltip title={onMode('Switch to light mode', 'Switch to dark mode')}>
       <IconButton onClick={toggleColorMode} color="inherit">
         {onMode(<LightIcon />, <DarkIcon />)}
       </IconButton>

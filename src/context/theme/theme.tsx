@@ -15,7 +15,7 @@ import {
   getStoredValue,
   storeValue,
 } from '../../services/local-storage';
-import { theme } from '../../styles/theme';
+import { theme } from '../../styles';
 import { DEFAULT_VALUE } from '../constants';
 
 import { ColorModeContextType } from './types';

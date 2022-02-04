@@ -2,7 +2,7 @@ import { Box, Divider, Stack } from '@mui/material';
 import { Home as HomeIcon } from '@mui/icons-material';
 import { ReactElement } from 'react';
 
-import { Link } from '../../link';
+import { Link } from '../../link/link';
 import { pageRoutes } from '../../../routes';
 
 import { ColorModeToggle } from './color-mode-toggle';

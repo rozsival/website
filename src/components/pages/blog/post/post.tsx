@@ -3,10 +3,10 @@ import { Box, Button } from '@mui/material';
 import { NextPage } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 
+import { Page } from '../../page';
 import { pageRoutes } from '../../../../routes';
 import { parseFrontMatter } from '../../../../services/blog';
-import { Page } from '../../page';
-import { seo as blogSeo } from '..';
+import { SEO_AUTHOR } from '../../../../constants';
 
 import { Code } from './code';
 import { BlogPostProps } from './types';
@@ -21,7 +21,7 @@ export const BlogPost: NextPage<BlogPostProps> = (props) => {
   const { mdxSource, scope, slug } = props;
   const seo = {
     description: frontMatter.description,
-    title: `${frontMatter.title} – ${blogSeo.title}`,
+    title: frontMatter.title,
     url: pageRoutes.blog.post(slug),
   };
   return (
@@ -43,7 +43,7 @@ export const BlogPost: NextPage<BlogPostProps> = (props) => {
             '@type': 'Article',
             'author': {
               '@type': 'Person',
-              'name: 'Vít Rozsíval'
+              'name: '${SEO_AUTHOR}'
             },
             'headline': '${frontMatter.title}'
             'abstract': '${frontMatter.description}',
