@@ -6,6 +6,6 @@ export type UseFetchOptions<Response> = {
 };
 
 export type UseFetchReturn<Data, Response> = [
-  { error: string; loading: boolean; response?: Response },
+  { error?: string; loading: boolean; response?: Response },
   (data: Data) => Promise<void>,
 ];

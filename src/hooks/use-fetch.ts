@@ -8,8 +8,8 @@ export const useFetch = <Data, Response>({
   onSuccess,
   url,
 }: UseFetchOptions<Response>): UseFetchReturn<Data, Response> => {
-  const [error, setError] = useState('');
-  const [response, setResponse] = useState<Response | undefined>();
+  const [error, setError] = useState<string>();
+  const [response, setResponse] = useState<Response>();
   const [loading, setLoading] = useState(false);
   const handle = async (data: Data) => {
     setLoading(true);
