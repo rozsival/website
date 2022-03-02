@@ -9,11 +9,11 @@ import { apiRoutes } from '../../routes';
 import { useFlashMessagesContext } from '../../context';
 import { useFetch } from '../../hooks';
 import {
-  STATUS_SENT,
   FormValues,
-  SendFormResponse,
-  validationSchema,
   MESSAGE_LENGTH,
+  schema,
+  SendFormResponse,
+  STATUS_SENT,
 } from '../../services/form';
 
 import { SPACING } from './constants';
@@ -29,7 +29,7 @@ export const Form = (): ReactElement => {
     reset,
   } = useForm<FormValues>({
     defaultValues: { name: '', email: '', subject: '', message: '' },
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(schema),
   });
   const onSuccess = (response: SendFormResponse) => {
     if (response.status === STATUS_SENT) {

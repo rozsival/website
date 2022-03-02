@@ -2,7 +2,7 @@ import * as yup from 'yup';
 
 import { MESSAGE_LENGTH } from './constants';
 
-export const validationSchema = yup
+export const schema = yup
   .object({
     name: yup.string().required(),
     email: yup.string().email().required(),

@@ -1,4 +1,5 @@
 export * from './constants';
 export * from './send';
 export * from './types';
-export * from './validation';
+export * from './schema';
+export * from './validate';

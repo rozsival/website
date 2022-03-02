@@ -13,7 +13,7 @@ const App: AppType = ({ Component, emotionCache, pageProps }) => (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <meta charSet="utf-8" />
+      <meta charSet="utf8" />
     </Head>
     <ThemeProvider>
       <FlashMessagesProvider>

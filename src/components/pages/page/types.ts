@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 
-import { SeoProps } from '../../seo/types';
+import { SeoProps } from '../../seo';
 
 export type PageProps = {
   children: ReactElement;

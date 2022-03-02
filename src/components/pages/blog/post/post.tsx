@@ -17,11 +17,15 @@ const mdxComponents = {
 };
 
 export const BlogPost: NextPage<BlogPostProps> = (props) => {
-  const frontMatter = parseFrontMatter(props);
-  const { mdxSource, scope, slug } = props;
+  const { description, image, title } = parseFrontMatter(props);
+  const {
+    mdxSource: { compiledSource },
+    scope,
+    slug,
+  } = props;
   const seo = {
-    description: frontMatter.description,
-    title: frontMatter.title,
+    description,
+    title,
     type: 'article',
     url: pageRoutes.blog.post(slug),
   };
@@ -29,9 +33,9 @@ export const BlogPost: NextPage<BlogPostProps> = (props) => {
     <>
       <Page seo={seo}>
         <Box width="100%">
-          <h1>{frontMatter.title}</h1>
+          <h1>{title}</h1>
           <MDXRemote
-            compiledSource={mdxSource.compiledSource}
+            compiledSource={compiledSource}
             components={mdxComponents}
             scope={scope}
           />
@@ -46,9 +50,9 @@ export const BlogPost: NextPage<BlogPostProps> = (props) => {
               '@type': 'Person',
               'name: '${SEO_AUTHOR}'
             },
-            'headline': '${frontMatter.title}'
-            'abstract': '${frontMatter.description}',
-            'image': '${frontMatter.image}'
+            'headline': '${title}'
+            'abstract': '${description}',
+            'image': '${image}'
           }
         `}
       </Script>

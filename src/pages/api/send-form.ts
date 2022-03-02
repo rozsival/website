@@ -7,8 +7,8 @@ const handler = async (
   request: NextApiRequest,
   response: NextApiResponse<SendFormResponse>,
 ): Promise<void> => {
-  if (!request.body) return response.status(HTTP_BAD_REQUEST).end();
-  return response.status(HTTP_OK).json(await send(request));
+  if (request.body) return response.status(HTTP_OK).json(await send(request));
+  response.status(HTTP_BAD_REQUEST).end();
 };
 
 export default handler;
