@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import {
   Button,
   Card as MUICard,
@@ -7,13 +8,12 @@ import {
   CardMedia,
   Typography,
 } from '@mui/material';
-import Image from 'next/image';
-import Link from 'next/link';
 import { ReactElement } from 'react';
 
+import { formatDate } from '../../../../services/date';
+import { Image } from '../../../image';
 import { pageRoutes } from '../../../../routes';
 import { parseFrontMatter } from '../../../../services/blog';
-import { formatDate } from '../../../../services/date';
 
 import { cardStyle } from './styles';
 import { CARD_MEDIA_HEIGHT, CARD_MEDIA_WIDTH } from './constants';

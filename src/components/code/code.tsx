@@ -5,7 +5,7 @@ import {
   atelierDuneLight,
 } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
-import { useColorModeContext } from '../../../../context';
+import { useColorModeContext } from '../../context';
 
 import { CodeProps } from './types';
 

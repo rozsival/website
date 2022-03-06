@@ -20,7 +20,7 @@ export const Seo: VFC<SeoProps> = ({
   type = 'website',
   url,
 }) => {
-  const canonical = `${BASE_URL}${url || ''}`;
+  const canonical = `${BASE_URL}${url ?? ''}`;
   const seoTitle = `${title ? `${title} | ` : ''}${SEO_TITLE}`;
   const seoDescription = description || SEO_DESCRIPTION;
   return (

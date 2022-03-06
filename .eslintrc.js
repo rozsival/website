@@ -132,18 +132,18 @@ module.exports = {
       },
     },
     {
-      files: '*.mdx',
+      files: 'next-env.d.ts',
+      rules: {
+        'unicorn/prevent-abbreviations': 'off',
+      },
+    },
+    {
+      files: 'src/blog/**/*.mdx',
       extends: ['plugin:mdx/overrides'],
       rules: {
         'no-undef': 'off',
         'react/jsx-no-undef': 'off',
         'react/no-unescaped-entities': 'off',
-      },
-    },
-    {
-      files: 'next-env.d.ts',
-      rules: {
-        'unicorn/prevent-abbreviations': 'off',
       },
     },
     {

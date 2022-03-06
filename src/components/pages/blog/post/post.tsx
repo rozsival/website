@@ -3,17 +3,25 @@ import { Box, Button } from '@mui/material';
 import { NextPage } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 
+import { BASE_URL } from '../../../../environment';
+import { Code } from '../../../code';
+import { H1, H2, H3, Paragraph } from '../../../typography';
+import { Image } from '../../../image';
 import { Page } from '../../page';
 import { pageRoutes } from '../../../../routes';
 import { parseFrontMatter } from '../../../../services/blog';
 import { SEO_AUTHOR } from '../../../../constants';
 
-import { Code } from './code';
 import { BlogPostProps } from './types';
 
 const mdxComponents = {
   Button,
   Code,
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  Image,
+  p: Paragraph,
 };
 
 export const BlogPost: NextPage<BlogPostProps> = (props) => {
@@ -33,7 +41,7 @@ export const BlogPost: NextPage<BlogPostProps> = (props) => {
     <>
       <Page seo={seo}>
         <Box width="100%">
-          <h1>{title}</h1>
+          <H2>{title}</H2>
           <MDXRemote
             compiledSource={compiledSource}
             components={mdxComponents}
@@ -52,7 +60,7 @@ export const BlogPost: NextPage<BlogPostProps> = (props) => {
             },
             'headline': '${title}'
             'abstract': '${description}',
-            'image': '${image}'
+            'image': '${BASE_URL}${image.src}'
           }
         `}
       </Script>

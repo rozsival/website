@@ -1,3 +1,5 @@
+export { default as avatar } from './avatar.png';
+
 export const codeExample = `
 const myFunction = (): void => {
   const myVar = '';

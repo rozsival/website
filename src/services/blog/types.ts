@@ -1,14 +1,18 @@
 import { GrayMatterFile } from 'gray-matter';
 
-export type BlogPostFrontMatter = {
+export type RawBlogPostFrontMatter = {
   date: string;
   description: string;
   image: string;
   title: string;
 };
 
+export type BlogPostFrontMatter = Omit<RawBlogPostFrontMatter, 'image'> & {
+  image: StaticImageData;
+};
+
 export interface BlogPostGrayMatter extends GrayMatterFile<Buffer> {
-  data: BlogPostFrontMatter;
+  data: RawBlogPostFrontMatter;
 }
 
 export type BlogPostSlug = string;
