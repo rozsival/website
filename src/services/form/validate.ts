@@ -1,9 +1,8 @@
 import { NextApiRequest } from 'next';
 import { ValidationError } from 'yup';
 
-import { STATUS_ERROR } from './constants';
 import { schema } from './schema';
-import { FormErrors, SendFormResponse } from './types';
+import { FormErrors } from './types';
 
 const formatErrors = (error: unknown): FormErrors | undefined => {
   if (error instanceof ValidationError) {
@@ -15,13 +14,10 @@ const formatErrors = (error: unknown): FormErrors | undefined => {
 
 export const validate = async (
   request: NextApiRequest,
-): Promise<SendFormResponse | undefined> => {
+): Promise<FormErrors | undefined> => {
   try {
     await schema.validate(request.body, { abortEarly: false });
   } catch (error) {
-    return {
-      status: STATUS_ERROR,
-      errors: formatErrors(error),
-    };
+    return formatErrors(error);
   }
 };

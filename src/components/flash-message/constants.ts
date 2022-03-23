@@ -5,6 +5,6 @@ export const ANCHOR_ORIGIN: SnackbarOrigin = {
   vertical: 'top',
 };
 export const TRANSITION = 300;
-export const TTL = 6000;
+export const TTL = 8000;
 export const FLASH_ERROR = 'error';
 export const FLASH_SUCCESS = 'success';

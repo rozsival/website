@@ -3,18 +3,17 @@ import { ReactElement } from 'react';
 
 import { ImageProps } from './types';
 
-export const Image = ({
-  alt,
-  height,
-  src,
-  width,
-}: ImageProps): ReactElement => (
-  <NextImage
-    alt={alt}
-    blurDataURL={src.blurDataURL}
-    height={height ?? width}
-    placeholder="blur"
-    src={src}
-    width={width}
-  />
-);
+export const Image = (props: ImageProps): ReactElement => {
+  const { alt, height: customHeight, src, width: customWidth } = props;
+  const { blurDataURL, height: imageHeight, width: imageWidth } = src;
+  return (
+    <NextImage
+      alt={alt}
+      blurDataURL={blurDataURL}
+      height={customHeight ?? imageHeight}
+      placeholder="blur"
+      src={src}
+      width={customWidth ?? imageWidth}
+    />
+  );
+};

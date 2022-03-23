@@ -34,7 +34,13 @@ export const Form = (): ReactElement => {
   const onSuccess = (response: SendFormResponse) => {
     if (response.status === STATUS_SENT) {
       reset();
-      showSuccess('Message sent, thank you.');
+      showSuccess(
+        <>
+          Thanks a lot for contacting me ❤️
+          <br />
+          I&apos;ll get back to you ASAP ⚡️
+        </>,
+      );
     }
   };
   const [{ loading, response }, post] = useFetch<FormValues, SendFormResponse>({

@@ -1,7 +1,8 @@
 import { AlertColor } from '@mui/material';
+import { ReactNode } from 'react';
 
 export type FlashMessageProps = {
-  message: string;
+  message: ReactNode;
   onClose?: () => void;
   type?: AlertColor;
 };
