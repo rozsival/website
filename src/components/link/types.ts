@@ -1,3 +1,10 @@
 import { ReactElement } from 'react';
 
-export type LinkProps = { href: string; icon?: ReactElement; label: string };
+export type LinkProps = {
+  asButton?: boolean;
+  blank?: boolean;
+  href: string;
+  icon?: ReactElement;
+  isEmail?: boolean;
+  label: string;
+};

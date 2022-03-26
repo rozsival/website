@@ -49,32 +49,34 @@ export const Form = (): ReactElement => {
     onSuccess,
     url: apiRoutes.sendForm,
   });
+  const fieldError = (field: keyof FormValues) =>
+    errors[field]?.message ?? response?.errors?.[field];
   const onSubmit: SubmitHandler<FormValues> = (data) => post(data);
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <Input
         control={control}
-        error={errors.name?.message ?? response?.errors?.name}
+        error={fieldError('name')}
         label="Your name"
         name="name"
         noMargin
       />
       <Input
         control={control}
-        error={errors.email?.message ?? response?.errors?.email}
+        error={fieldError('email')}
         label="Your e-mail"
         name="email"
         type="email"
       />
       <Input
         control={control}
-        error={errors.subject?.message ?? response?.errors?.subject}
+        error={fieldError('subject')}
         label="Subject"
         name="subject"
       />
       <Input
         control={control}
-        error={errors.message?.message ?? response?.errors?.message}
+        error={fieldError('message')}
         label="Your message"
         maxLength={MESSAGE_LENGTH}
         multiLine

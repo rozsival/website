@@ -6,15 +6,7 @@ import { ContentProps } from './types';
 export const Content = ({ children }: ContentProps): ReactElement => (
   <main>
     <Container>
-      <Box
-        alignItems="center"
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        my={4}
-      >
-        {children}
-      </Box>
+      <Box py={4}>{children}</Box>
     </Container>
   </main>
 );

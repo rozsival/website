@@ -1,24 +1,27 @@
-import { Box } from '@mui/material';
+import { Grid } from '@mui/material';
 import { NextPage } from 'next';
 
 import { Page } from '../page';
 
 import { BlogProps } from './types';
-import { boxStyle } from './styles';
 import { Card, CardProps } from './post';
 
 const seo = {
   title: 'Blog',
   description:
-    "Vít Rozsíval's blog about software development using React, TypeScript and friends.",
+    "Vít's blog about software development using React, TypeScript and friends.",
 };
 
 const renderPost = ({ frontMatter, slug }: CardProps) => (
-  <Card key={slug} frontMatter={frontMatter} slug={slug} />
+  <Grid key={slug} item md={3} sm={6} xs={12}>
+    <Card frontMatter={frontMatter} slug={slug} />
+  </Grid>
 );
 
 export const Blog: NextPage<BlogProps> = ({ posts }) => (
   <Page seo={seo}>
-    <Box sx={boxStyle}>{posts.map(renderPost)}</Box>
+    <Grid container spacing={3}>
+      {posts.map(renderPost)}
+    </Grid>
   </Page>
 );

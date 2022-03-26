@@ -3,7 +3,7 @@ import { EmotionCriticalToChunks } from '@emotion/server/create-instance';
 import { ReactElement } from 'react';
 
 export const createEmotionCache = (): EmotionCache =>
-  createCache({ key: 'css' });
+  createCache({ key: 'css', prepend: true });
 
 export const createEmotionStyleTags = ({
   styles,

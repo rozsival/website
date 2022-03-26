@@ -1,5 +1,5 @@
 import Script from 'next/script';
-import { Box, Button } from '@mui/material';
+import { Button } from '@mui/material';
 import { NextPage } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 
@@ -40,16 +40,16 @@ export const BlogPost: NextPage<BlogPostProps> = (props) => {
   return (
     <>
       <Page seo={seo}>
-        <Box width="100%">
-          <H2>{title}</H2>
+        <article>
+          <H2 component="h1">{title}</H2>
           <MDXRemote
             compiledSource={compiledSource}
             components={mdxComponents}
             scope={scope}
           />
-        </Box>
+        </article>
       </Page>
-      <Script type="application/ld+json" id="blog-post-json-ld">
+      <Script type="application/ld+json" id="blog-post-schema">
         {`
           {
             '@context': 'https://schema.org',

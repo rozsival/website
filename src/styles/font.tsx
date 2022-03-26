@@ -1,7 +1,10 @@
+import { FONT, FONT_API, FONT_WEIGHTS } from './constants';
+
+const family = FONT.replace(' ', '+');
+const weights = FONT_WEIGHTS.join(',');
+const href = `${FONT_API}?family=${family}:${weights}&display=swap`;
+
 export const font = (
   // eslint-disable-next-line @next/next/no-page-custom-font
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-  />
+  <link rel="stylesheet" href={href} />
 );
