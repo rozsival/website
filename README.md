@@ -12,3 +12,46 @@
 </p>
 <p align="center">🚀 <a href="https://vitrozsival.cz">vitrozsival.cz</a> | 👨‍💻 <a href="https://github.com/rozsival">rozsival</a> | 🐦 <a href="https://twitter.com/vitrozsival">@rozsival</a> | 📷 <a href="https://instagram.com/vitrozsival">@rozsival</a></p>
 <hr>
+
+## 💾 Installation
+
+```bash
+nvm install
+yarn install
+```
+
+## ⚙️ Configuration
+
+Create `.env.local` from `.env.example`
+
+- `NEXT_PUBLIC_BASE_URL` – website base URL for public assets prefixing
+- `NEXT_PUBLIC_ROBOTS` – value for `robots` meta tag
+- `ROBOTS_POLICY` – value for `robotsTxtOptions.policies` entry in `next-sitemap.js`
+
+## 👨‍💻 Development
+
+```bash
+yarn dev
+```
+
+## 🚨 QA
+
+```bash
+yarn qa
+# or
+yarn fix
+```
+
+## 📦 Build
+
+```bash
+yarn build
+yarn start
+```
+
+## 🚀 Deployment
+
+The website is automatically deployed to [Vercel](https://vercel.com/vitrozsival/website) on push
+
+- `main` – production
+- `develop` – preview
