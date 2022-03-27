@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup node version
         run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
         id: nvm
@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup node version
         run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
         id: nvm
@@ -65,7 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup node version
         run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
         id: nvm
@@ -86,7 +86,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup node version
         run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
         id: nvm
@@ -107,7 +107,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup node version
         run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
         id: nvm
