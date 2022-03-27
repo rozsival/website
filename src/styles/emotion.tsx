@@ -10,9 +10,9 @@ export const createEmotionStyleTags = ({
 }: EmotionCriticalToChunks): ReactElement[] =>
   styles.map(({ css, key, ids }) => (
     <style
-      data-emotion={`${key} ${ids.join(' ')}`}
-      key={key}
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: css }}
+      key={key}
+      data-emotion={`${key} ${ids.join(' ')}`}
     />
   ));

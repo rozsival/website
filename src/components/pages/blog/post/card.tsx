@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import {
   Button,
   Card as MUICard,
@@ -8,12 +7,13 @@ import {
   CardMedia,
   Typography,
 } from '@mui/material';
+import Link from 'next/link';
 import { ReactElement } from 'react';
 
-import { formatDate } from '../../../../services/date';
-import { Image } from '../../../image';
 import { pageRoutes } from '../../../../routes';
 import { parseFrontMatter } from '../../../../services/blog';
+import { formatDate } from '../../../../services/date';
+import { Image } from '../../../image';
 
 import { cardMediaStyle } from './styles';
 import { CardProps } from './types';
@@ -30,7 +30,7 @@ export const Card = (props: CardProps): ReactElement => {
             <Image alt={title} src={image} />
           </CardMedia>
           <CardContent>
-            <Typography color="primary" variant="subtitle1" gutterBottom>
+            <Typography color="primary" gutterBottom variant="subtitle1">
               {title}
             </Typography>
             <Typography variant="caption">{formatDate(date)}</Typography>

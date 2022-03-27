@@ -1,3 +1,3 @@
-export const HEADER_GRADIENT_ALPHA_LIGHT = 0.3;
-export const HEADER_GRADIENT_ALPHA_DARK = 0.1;
 export const HEADER_SPACING = 2;
+export const DRAWER_SPACING = HEADER_SPACING * HEADER_SPACING;
+export const DRAWER_WIDTH = 240;

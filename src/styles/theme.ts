@@ -7,7 +7,7 @@ import {
 } from '@mui/material/styles';
 import { deepmerge } from '@mui/utils';
 
-import { FONT_FAMILY } from './constants';
+import { FONT_FAMILY, PRIMARY_COLOR } from './constants';
 
 const fontFamily = [
   ...FONT_FAMILY.map((family) => `"${family}"`),
@@ -19,9 +19,18 @@ const makeTheme = (options: ThemeOptions) =>
     createTheme(
       deepmerge(
         {
+          components: {
+            MuiCssBaseline: {
+              styleOverrides: {
+                ':root': {
+                  '--primary-color': PRIMARY_COLOR,
+                },
+              },
+            },
+          },
           palette: {
             primary: {
-              main: '#6d83f2',
+              main: PRIMARY_COLOR,
             },
             secondary: {
               main: '#6a98f0',

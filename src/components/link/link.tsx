@@ -1,7 +1,8 @@
-import NextLink from 'next/link';
 import { Button, Link as MUILink, Typography } from '@mui/material';
+import NextLink from 'next/link';
 import { VFC } from 'react';
 
+import { buttonStyle } from './styles';
 import { LinkProps } from './types';
 
 export const Link: VFC<LinkProps> = ({
@@ -23,7 +24,12 @@ export const Link: VFC<LinkProps> = ({
   return (
     <NextLink href={href} passHref>
       {asButton ? (
-        <Button component="a" variant="outlined" target={target}>
+        <Button
+          component="a"
+          sx={buttonStyle}
+          target={target}
+          variant="outlined"
+        >
           {content}
         </Button>
       ) : (

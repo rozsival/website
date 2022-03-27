@@ -26,26 +26,26 @@ export const Seo: VFC<SeoProps> = ({
   return (
     <Head>
       <title>{seoTitle}</title>
-      <meta name="robots" content={ROBOTS} />
-      <meta name="author" content={SEO_AUTHOR} />
-      <meta name="description" content={seoDescription} />
-      <meta name="og:title" content={seoTitle} />
-      <meta name="og:description" content={seoDescription} />
-      <meta name="og:site_name" content={SEO_TITLE} />
-      <meta name="og:url" content={canonical} />
-      <meta name="og:profile:first_name" content={SEO_NAME} />
-      <meta name="og:profile:last_name" content={SEO_SURNAME} />
-      <meta name="og:profile:username" content={SEO_PROFILE} />
-      <meta name="og:profile:gender" content="male" />
-      <meta name="og:type" content={type} />
-      {image?.og && <meta name="og:image" content={image.og} />}
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:title" content={seoTitle} />
-      <meta name="twitter:description" content={seoDescription} />
-      <meta name="twitter:creator" content={`@${SEO_PROFILE}`} />
-      <meta name="twitter:url" content={canonical} />
-      {image?.twitter && <meta name="twitter:image" content={image.twitter} />}
-      <link rel="canonical" href={canonical} />
+      <meta content={ROBOTS} name="robots" />
+      <meta content={SEO_AUTHOR} name="author" />
+      <meta content={seoDescription} name="description" />
+      <meta content={seoTitle} name="og:title" />
+      <meta content={seoDescription} name="og:description" />
+      <meta content={SEO_TITLE} name="og:site_name" />
+      <meta content={canonical} name="og:url" />
+      <meta content={SEO_NAME} name="og:profile:first_name" />
+      <meta content={SEO_SURNAME} name="og:profile:last_name" />
+      <meta content={SEO_PROFILE} name="og:profile:username" />
+      <meta content="male" name="og:profile:gender" />
+      <meta content={type} name="og:type" />
+      {image?.og && <meta content={image.og} name="og:image" />}
+      <meta content="summary" name="twitter:card" />
+      <meta content={seoTitle} name="twitter:title" />
+      <meta content={seoDescription} name="twitter:description" />
+      <meta content={`@${SEO_PROFILE}`} name="twitter:creator" />
+      <meta content={canonical} name="twitter:url" />
+      {image?.twitter && <meta content={image.twitter} name="twitter:image" />}
+      <link href={canonical} rel="canonical" />
     </Head>
   );
 };

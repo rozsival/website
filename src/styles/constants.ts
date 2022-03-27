@@ -11,3 +11,5 @@ export const FONT_WEIGHTS = [
   FONT_WEIGHT_MEDIUM,
   FONT_WEIGHT_BOLD,
 ];
+
+export const PRIMARY_COLOR = '#6d83f2';

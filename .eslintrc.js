@@ -14,18 +14,20 @@ module.exports = {
     'plugin:import/typescript',
     'plugin:mdx/recommended',
     'plugin:prettier/recommended',
+    'plugin:react/jsx-runtime',
     'plugin:unicorn/recommended',
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2022,
-    sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
       modules: true,
     },
+    ecmaVersion: 2022,
+    jsxPragma: undefined,
     project: 'tsconfig.json',
+    sourceType: 'module',
     tsconfigRootDir: '.',
   },
   plugins: [
@@ -40,8 +42,8 @@ module.exports = {
     'unused-imports',
   ],
   rules: {
-    '@typescript-eslint/no-use-before-define': 'error',
     '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-use-before-define': 'error',
     'arrow-parens': ['error', 'always'],
     'comma-dangle': 'off',
     'consistent-return': 'off',
@@ -55,8 +57,8 @@ module.exports = {
       'ignorePackages',
       {
         js: 'never',
-        mjs: 'never',
         jsx: 'never',
+        mjs: 'never',
         ts: 'never',
         tsx: 'never',
       },
@@ -65,6 +67,10 @@ module.exports = {
     'import/order': [
       'error',
       {
+        alphabetize: {
+          caseInsensitive: true,
+          order: 'asc',
+        },
         groups: [
           'builtin',
           'external',
@@ -77,13 +83,6 @@ module.exports = {
       },
     ],
     'import/prefer-default-export': 'off',
-    'react/function-component-definition': [
-      'error',
-      {
-        namedComponents: 'arrow-function',
-        unnamedComponents: 'arrow-function',
-      },
-    ],
     'no-confusing-arrow': 'off',
     'no-console': productionError,
     'no-debugger': productionError,
@@ -92,10 +91,26 @@ module.exports = {
     'no-shadow': 'off',
     'no-use-before-define': 'off',
     'object-curly-newline': ['error', { consistent: true }],
+    'react/function-component-definition': [
+      'error',
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
+      },
+    ],
     'react/jsx-filename-extension': ['error', { extensions: ['.mdx', '.tsx'] }],
+    'react/jsx-sort-props': [
+      'error',
+      {
+        multiline: 'last',
+        reservedFirst: true,
+      },
+    ],
+    'react/jsx-uses-react': 'off',
     'react/prop-types': 'off',
-    'unicorn/no-array-reduce': 'off',
+    'react/react-in-jsx-scope': 'off',
     'unicorn/no-array-callback-reference': 'off',
+    'unicorn/no-array-reduce': 'off',
     'unicorn/prefer-module': 'off',
     'unicorn/prefer-node-protocol': 'off',
     'unicorn/prevent-abbreviations': [

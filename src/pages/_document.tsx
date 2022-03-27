@@ -1,5 +1,4 @@
 import createEmotionServer from '@emotion/server/create-instance';
-import { Children, ReactElement } from 'react';
 import NextDocument, {
   DocumentContext,
   DocumentInitialProps,
@@ -8,6 +7,7 @@ import NextDocument, {
   Main,
   NextScript,
 } from 'next/document';
+import { Children, ReactElement } from 'react';
 
 import {
   baseline,

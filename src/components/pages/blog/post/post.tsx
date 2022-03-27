@@ -1,16 +1,16 @@
-import Script from 'next/script';
 import { Button } from '@mui/material';
 import { NextPage } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
+import Script from 'next/script';
 
+import { SEO_AUTHOR } from '../../../../constants';
 import { BASE_URL } from '../../../../environment';
-import { Code } from '../../../code';
-import { H1, H2, H3, Paragraph } from '../../../typography';
-import { Image } from '../../../image';
-import { Page } from '../../page';
 import { pageRoutes } from '../../../../routes';
 import { parseFrontMatter } from '../../../../services/blog';
-import { SEO_AUTHOR } from '../../../../constants';
+import { Code } from '../../../code';
+import { Image } from '../../../image';
+import { H1, H2, H3, Paragraph } from '../../../typography';
+import { Page } from '../../page';
 
 import { BlogPostProps } from './types';
 
@@ -49,7 +49,7 @@ export const BlogPost: NextPage<BlogPostProps> = (props) => {
           />
         </article>
       </Page>
-      <Script type="application/ld+json" id="blog-post-schema">
+      <Script id="blog-post-schema" type="application/ld+json">
         {`
           {
             '@context': 'https://schema.org',

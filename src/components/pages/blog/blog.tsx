@@ -3,8 +3,8 @@ import { NextPage } from 'next';
 
 import { Page } from '../page';
 
-import { BlogProps } from './types';
 import { Card, CardProps } from './post';
+import { BlogProps } from './types';
 
 const seo = {
   title: 'Blog',

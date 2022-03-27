@@ -8,7 +8,7 @@ const date = new Date();
 export const Footer = (): ReactElement => (
   <footer>
     <Container>
-      <Box textAlign="center" py={4}>
+      <Box py={4} textAlign="center">
         <Typography>
           &copy; {date.getFullYear()} {SEO_AUTHOR} | All rights reserved.
         </Typography>

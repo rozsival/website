@@ -1,4 +1,3 @@
-import { Controller, FieldPath } from 'react-hook-form';
 import {
   FormControl,
   Input as MUIInput,
@@ -6,6 +5,7 @@ import {
   FormHelperText,
   Box,
 } from '@mui/material';
+import { Controller, FieldPath } from 'react-hook-form';
 
 import {
   MULTILINE_INPUT_ROWS,
@@ -43,8 +43,8 @@ export const Input = <FieldValues, FieldName extends FieldPath<FieldValues>>({
               aria-invalid={hasError}
               id={name}
               inputMode={mode}
-              inputRef={field.ref}
               inputProps={inputProps}
+              inputRef={field.ref}
               multiline={multiLine}
               name={field.name}
               onBlur={field.onBlur}

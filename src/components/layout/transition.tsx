@@ -1,4 +1,3 @@
-import React, { ReactElement } from 'react';
 import {
   AnimatePresence,
   domAnimation,
@@ -7,6 +6,7 @@ import {
   Variants,
 } from 'framer-motion';
 import { useRouter } from 'next/router';
+import { ReactElement } from 'react';
 
 import { LayoutProps } from './types';
 
@@ -24,8 +24,8 @@ export const Transition = ({ children }: LayoutProps): ReactElement => {
   return (
     <LazyMotion features={domAnimation}>
       <AnimatePresence
-        initial={false}
         exitBeforeEnter
+        initial={false}
         onExitComplete={onAnimatePresence}
       >
         <m.div
