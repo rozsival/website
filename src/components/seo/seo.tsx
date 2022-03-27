@@ -9,7 +9,7 @@ import {
   SEO_SURNAME,
   SEO_DESCRIPTION,
 } from '../../constants';
-import { BASE_URL, ROBOTS } from '../../environment';
+import { NEXT_PUBLIC_BASE_URL, NEXT_PUBLIC_ROBOTS } from '../../environment';
 
 import { SeoProps } from './types';
 
@@ -20,13 +20,13 @@ export const Seo: VFC<SeoProps> = ({
   type = 'website',
   url,
 }) => {
-  const canonical = `${BASE_URL}${url ?? ''}`;
+  const canonical = `${NEXT_PUBLIC_BASE_URL}${url ?? ''}`;
   const seoTitle = `${title ? `${title} | ` : ''}${SEO_TITLE}`;
   const seoDescription = description || SEO_DESCRIPTION;
   return (
     <Head>
       <title>{seoTitle}</title>
-      <meta content={ROBOTS} name="robots" />
+      <meta content={NEXT_PUBLIC_ROBOTS} name="robots" />
       <meta content={SEO_AUTHOR} name="author" />
       <meta content={seoDescription} name="description" />
       <meta content={seoTitle} name="og:title" />

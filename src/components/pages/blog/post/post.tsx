@@ -4,7 +4,7 @@ import { MDXRemote } from 'next-mdx-remote';
 import Script from 'next/script';
 
 import { SEO_AUTHOR } from '../../../../constants';
-import { BASE_URL } from '../../../../environment';
+import { NEXT_PUBLIC_BASE_URL } from '../../../../environment';
 import { pageRoutes } from '../../../../routes';
 import { parseFrontMatter } from '../../../../services/blog';
 import { Code } from '../../../code';
@@ -60,7 +60,7 @@ export const BlogPost: NextPage<BlogPostProps> = (props) => {
             },
             'headline': '${title}'
             'abstract': '${description}',
-            'image': '${BASE_URL}${image.src}'
+            'image': '${NEXT_PUBLIC_BASE_URL}${image.src}'
           }
         `}
       </Script>
