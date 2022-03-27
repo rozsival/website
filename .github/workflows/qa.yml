@@ -26,7 +26,7 @@ jobs:
         id: yarncache
         run: echo ::set-output name=dir::$(yarn cache dir)
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ steps.yarncache.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Cache setup
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: cache-setup
         with:
           path: ./*
@@ -53,7 +53,7 @@ jobs:
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
       - name: Restore setup
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: restore-setup
         with:
           path: ./*
@@ -74,7 +74,7 @@ jobs:
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
       - name: Restore setup
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: restore-setup
         with:
           path: ./*
@@ -95,7 +95,7 @@ jobs:
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
       - name: Restore setup
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: restore-setup
         with:
           path: ./*
@@ -116,7 +116,7 @@ jobs:
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
       - name: Restore setup
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: restore-setup
         with:
           path: ./*
