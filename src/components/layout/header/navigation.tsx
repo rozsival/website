@@ -4,9 +4,15 @@ import {
   Home as HomeIcon,
   Menu as MenuIcon,
 } from '@mui/icons-material';
-import { Box, Divider, Drawer, IconButton, Stack } from '@mui/material';
+import {
+  Box,
+  Divider,
+  IconButton,
+  Stack,
+  SwipeableDrawer,
+} from '@mui/material';
 import { useRouter } from 'next/router';
-import { ReactElement, useState } from 'react';
+import { KeyboardEvent, ReactElement, useState } from 'react';
 
 import { pageRoutes } from '../../../routes';
 import { Link, LinkProps } from '../../link';
@@ -49,6 +55,13 @@ export const Navigation = (): ReactElement => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const closeDrawer = () => setDrawerOpen(false);
   const openDrawer = () => setDrawerOpen(true);
+  const toggleDrawer = (event: KeyboardEvent) => {
+    const { key, type } = event ?? {};
+    if (type === 'keydown' && ['Shift', 'Tab'].includes(key)) {
+      return;
+    }
+    return drawerOpen ? closeDrawer() : openDrawer();
+  };
   const router = useRouter();
   router.events.on('routeChangeComplete', closeDrawer);
   return (
@@ -59,7 +72,12 @@ export const Navigation = (): ReactElement => {
         justifyContent="space-between"
         mt={HEADER_SPACING}
       >
-        <Drawer open={drawerOpen} sx={drawerStyle}>
+        <SwipeableDrawer
+          onClose={toggleDrawer}
+          onOpen={toggleDrawer}
+          open={drawerOpen}
+          sx={drawerStyle}
+        >
           <DrawerHeader>
             <IconButton
               aria-label="Close menu"
@@ -71,7 +89,7 @@ export const Navigation = (): ReactElement => {
             </IconButton>
           </DrawerHeader>
           {renderStack()}
-        </Drawer>
+        </SwipeableDrawer>
         {renderStack(false)}
         <IconButton
           aria-label="Open menu"
