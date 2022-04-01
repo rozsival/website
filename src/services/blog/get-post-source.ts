@@ -1,6 +1,7 @@
 import { readFile } from 'fs/promises';
 
 import matter from 'gray-matter';
+import { StaticImageData } from 'next/image';
 
 import { BLOG } from '../../routes';
 

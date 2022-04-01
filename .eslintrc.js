@@ -8,7 +8,6 @@ module.exports = {
   },
   extends: [
     'airbnb',
-    'next',
     'plugin:@next/next/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:import/typescript',
