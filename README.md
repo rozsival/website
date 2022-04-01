@@ -10,5 +10,48 @@
 <a href="https://yarnpkg.com" title="Managed by Yarn"><img alt="Managed by Yarn" src="https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white"></a>
 <a href="https://www.jetbrains.com/phpstorm" title="Coded in PhpStorm"><img alt="Coded in PhpStorm" src="https://img.shields.io/badge/phpstorm-143?style=for-the-badge&logo=phpstorm&logoColor=black&color=black&labelColor=darkorchid"></a>
 </p>
-<p align="center">🚀 <a href="https://vitrozsival.cz">vitrozsival.cz</a> | 👨‍💻 <a href="https://github.com/rozsival">rozsival</a> | 🐦 <a href="https://twitter.com/vitrozsival">@rozsival</a> | 📷 <a href="https://instagram.com/vitrozsival">@rozsival</a></p>
+<p align="center">🚀 <a href="https://vitrozsival.cz">vitrozsival.cz</a> | 👨‍💻 <a href="https://github.com/rozsival">rozsival</a> | 🐦 <a href="https://twitter.com/vitrozsival">@vitrozsival</a> | 📷 <a href="https://instagram.com/vitrozsival">@vitrozsival</a></p>
 <hr>
+
+## 💾 Installation
+
+```bash
+nvm install
+yarn install
+```
+
+## ⚙️ Configuration
+
+Create `.env.local` from `.env.example`
+
+- `NEXT_PUBLIC_BASE_URL` – website base URL for public assets prefixing
+- `NEXT_PUBLIC_ROBOTS` – value for `robots` meta tag
+- `ROBOTS_POLICY` – value for `robotsTxtOptions.policies` entry in `next-sitemap.js`
+
+## 👨‍💻 Development
+
+```bash
+yarn dev
+```
+
+## 🚨 QA
+
+```bash
+yarn qa
+# or
+yarn fix
+```
+
+## 📦 Build
+
+```bash
+yarn build
+yarn start
+```
+
+## 🚀 Deployment
+
+The website is automatically deployed to [Vercel](https://vercel.com/vitrozsival/website) on push
+
+- `main` – production
+- `develop` – preview

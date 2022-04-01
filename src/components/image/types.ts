@@ -1,4 +1,4 @@
-import { ImageProps as NextImageProps } from 'next/image';
+import { ImageProps as NextImageProps, StaticImageData } from 'next/image';
 
 export type ImageProps = Pick<
   NextImageProps,

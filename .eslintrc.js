@@ -8,11 +8,9 @@ module.exports = {
   },
   extends: [
     'airbnb',
-    'next',
     'plugin:@next/next/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:import/typescript',
-    'plugin:mdx/recommended',
     'plugin:prettier/recommended',
     'plugin:react/jsx-runtime',
     'plugin:unicorn/recommended',
@@ -35,7 +33,6 @@ module.exports = {
     '@emotion',
     '@next/next',
     'import',
-    'mdx',
     'prettier',
     'react-hooks',
     'unicorn',
@@ -154,7 +151,8 @@ module.exports = {
     },
     {
       files: 'src/blog/**/*.mdx',
-      extends: ['plugin:mdx/overrides'],
+      extends: ['plugin:mdx/recommended'],
+      plugins: ['mdx'],
       rules: {
         'no-undef': 'off',
         'react/jsx-no-undef': 'off',

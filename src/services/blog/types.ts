@@ -1,4 +1,5 @@
 import { GrayMatterFile } from 'gray-matter';
+import { StaticImageData } from 'next/image';
 
 export type RawBlogPostFrontMatter = {
   date: string;
