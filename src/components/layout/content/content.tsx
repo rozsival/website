@@ -6,7 +6,7 @@ import { ContentProps } from './types';
 export const Content = ({ children }: ContentProps): ReactElement => (
   <main>
     <Container>
-      <Box pt={1}>{children}</Box>
+      <Box pt={4}>{children}</Box>
     </Container>
   </main>
 );

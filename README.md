@@ -7,8 +7,6 @@
 <a href="https://nextjs.org" title="Built with Next.js"><img alt="Built with Next.js" src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white"></a>
 <a href="https://mui.com" title="Designed with MUI"><img alt="Designed with MUI" src="https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white"></a>
 <a href="https://vercel.com" title="Deployed to Vercel"><img alt="Deployed to Vercel" src="https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white"></a>
-<a href="https://yarnpkg.com" title="Managed by Yarn"><img alt="Managed by Yarn" src="https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white"></a>
-<a href="https://www.jetbrains.com/phpstorm" title="Coded in PhpStorm"><img alt="Coded in PhpStorm" src="https://img.shields.io/badge/phpstorm-143?style=for-the-badge&logo=phpstorm&logoColor=black&color=black&labelColor=darkorchid"></a>
 </p>
 <p align="center">🚀 <a href="https://vitrozsival.cz">vitrozsival.cz</a> | 👨‍💻 <a href="https://github.com/rozsival">rozsival</a> | 🐦 <a href="https://twitter.com/vitrozsival">@vitrozsival</a> | 📷 <a href="https://instagram.com/vitrozsival">@vitrozsival</a></p>
 <hr>
