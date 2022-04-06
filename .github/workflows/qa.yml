@@ -133,7 +133,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: QA passed ✅
-        if: ${{ github.action_status == 'success' }}
+        if: ${{ always() && !contains(join(needs.*.result, ','), 'failure') }}
         run: |
           curl --request POST \
           --url https://api.github.com/repos/${{ github.repository }}/statuses/${{ github.sha }} \
@@ -146,7 +146,7 @@ jobs:
             "target_url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           }'
       - name: QA failed ❌
-        if: ${{ github.action_status == 'failure' }}
+        if: ${{ always() && contains(join(needs.*.result, ','), 'failure') }}
         run: |
           curl --request POST \
           --url https://api.github.com/repos/${{ github.repository }}/statuses/${{ github.sha }} \
