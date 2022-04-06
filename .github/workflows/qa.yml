@@ -123,3 +123,39 @@ jobs:
           key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
       - name: Run eslint
         run: yarn eslint
+  report:
+    needs:
+      - commitlint
+      - tsc
+      - prettier
+      - eslint
+    name: Status report
+    runs-on: ubuntu-latest
+    steps:
+      - name: QA passed ✅
+        if: ${{ success() }}
+        run: |
+          curl --request POST \
+          --url https://api.github.com/repos/${{ github.repository }}/statuses/${{ github.sha }} \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --header 'content-type: application/json' \
+          --data '{
+            "context": "qa",
+            "state": "success",
+            "description": "QA passed",
+            "target_url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          }'
+          steps:
+      - name: QA failed ❌
+        if: ${{ failure() }}
+        run: |
+          curl --request POST \
+          --url https://api.github.com/repos/${{ github.repository }}/statuses/${{ github.sha }} \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --header 'content-type: application/json' \
+          --data '{
+            "context": "qa",
+            "state": "failure",
+            "description": "QA failed",
+            "target_url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          }'
