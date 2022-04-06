@@ -27,7 +27,7 @@
     "@mui/icons-material": "5.5.1",
     "@mui/lab": "5.0.0-alpha.75",
     "@mui/material": "5.5.3",
-    "framer-motion": "6.2.8",
+    "framer-motion": "6.2.9",
     "gray-matter": "4.0.3",
     "next": "12.1.4",
     "next-mdx-remote": "4.0.2",
