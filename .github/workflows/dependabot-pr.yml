@@ -1,8 +1,6 @@
 name: Dependabot PR
+
 on:
-  pull_request:
-    branches:
-      - develop
   workflow_run:
     types:
       - completed
