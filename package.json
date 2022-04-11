@@ -24,7 +24,7 @@
     "@emotion/server": "11.4.0",
     "@emotion/styled": "11.8.1",
     "@hookform/resolvers": "2.8.8",
-    "@mui/icons-material": "5.6.0",
+    "@mui/icons-material": "5.6.1",
     "@mui/lab": "5.0.0-alpha.76",
     "@mui/material": "5.6.0",
     "framer-motion": "6.2.9",
