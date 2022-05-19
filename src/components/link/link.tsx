@@ -1,16 +1,43 @@
 import { Button, Link as MUILink, Typography } from '@mui/material';
 import NextLink from 'next/link';
-import { VFC } from 'react';
+import { ReactElement, VFC } from 'react';
 
+import { VARIANT_BUTTON, VARIANT_DEFAULT } from './constants';
 import { buttonStyle } from './styles';
-import { LinkProps } from './types';
+import { LinkProps, LinkVariant } from './types';
+
+const render = (
+  content: ReactElement,
+  target: string,
+  variant: LinkVariant,
+) => {
+  switch (variant) {
+    case VARIANT_BUTTON:
+      return (
+        <Button
+          component="a"
+          sx={buttonStyle}
+          target={target}
+          variant="outlined"
+        >
+          {content}
+        </Button>
+      );
+    default:
+      return (
+        <MUILink alignItems="center" display="inline-flex" target={target}>
+          {content}
+        </MUILink>
+      );
+  }
+};
 
 export const Link: VFC<LinkProps> = ({
-  asButton,
   blank,
   href,
   icon,
   label,
+  variant = VARIANT_DEFAULT,
 }) => {
   const target = blank ? '_blank' : '_self';
   const content = (
@@ -23,20 +50,7 @@ export const Link: VFC<LinkProps> = ({
   );
   return (
     <NextLink href={href} passHref>
-      {asButton ? (
-        <Button
-          component="a"
-          sx={buttonStyle}
-          target={target}
-          variant="outlined"
-        >
-          {content}
-        </Button>
-      ) : (
-        <MUILink alignItems="center" display="inline-flex" target={target}>
-          {content}
-        </MUILink>
-      )}
+      {render(content, target, variant)}
     </NextLink>
   );
 };

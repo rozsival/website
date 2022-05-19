@@ -1,10 +1,18 @@
 import { ReactElement } from 'react';
 
+import { VARIANT_BUTTON, VARIANT_DEFAULT } from './constants';
+
+export type LinkVariant = typeof VARIANT_DEFAULT | typeof VARIANT_BUTTON;
+
 export type LinkProps = {
-  asButton?: boolean;
   blank?: boolean;
   href: string;
   icon?: ReactElement;
-  isEmail?: boolean;
   label: string;
+  variant?: LinkVariant;
+};
+
+export type EmailProps = Pick<LinkProps, 'variant'> & {
+  label?: string;
+  to: string;
 };

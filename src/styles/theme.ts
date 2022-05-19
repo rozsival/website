@@ -1,8 +1,6 @@
-import { PaletteMode } from '@mui/material';
 import {
   createTheme,
   responsiveFontSizes,
-  Theme,
   ThemeOptions,
 } from '@mui/material/styles';
 import { deepmerge } from '@mui/utils';
@@ -48,7 +46,7 @@ const makeTheme = (options: ThemeOptions) =>
     ),
   );
 
-const dark = makeTheme({
+export const theme = makeTheme({
   palette: {
     mode: 'dark',
     text: {
@@ -56,18 +54,3 @@ const dark = makeTheme({
     },
   },
 });
-
-const light = makeTheme({
-  palette: {
-    mode: 'light',
-    background: {
-      default: '#f8f8f8',
-      paper: '#ffffff',
-    },
-    text: {
-      primary: '#303030',
-    },
-  },
-});
-
-export const theme: Record<PaletteMode, Theme> = { dark, light };

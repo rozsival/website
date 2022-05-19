@@ -1,12 +1,7 @@
 import { styled } from '@mui/material/styles';
 import { ReactElement } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {
-  atelierCaveDark,
-  atelierCaveLight,
-} from 'react-syntax-highlighter/dist/cjs/styles/hljs';
-
-import { useColorModeContext } from '../../context';
+import { atelierCaveDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 import { CodeProps } from './types';
 
@@ -21,15 +16,12 @@ const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
 export const Code = ({
   children,
   language = 'typescript',
-}: CodeProps): ReactElement => {
-  const { onMode } = useColorModeContext();
-  return (
-    <StyledSyntaxHighlighter
-      language={language}
-      showLineNumbers
-      style={onMode(atelierCaveDark, atelierCaveLight)}
-    >
-      {children}
-    </StyledSyntaxHighlighter>
-  );
-};
+}: CodeProps): ReactElement => (
+  <StyledSyntaxHighlighter
+    language={language}
+    showLineNumbers
+    style={atelierCaveDark}
+  >
+    {children}
+  </StyledSyntaxHighlighter>
+);

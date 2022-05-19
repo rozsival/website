@@ -12,12 +12,11 @@ import {
   SwipeableDrawer,
 } from '@mui/material';
 import { useRouter } from 'next/router';
-import { KeyboardEvent, ReactElement, useState } from 'react';
+import { KeyboardEvent, ReactElement, useEffect, useState } from 'react';
 
 import { pageRoutes } from '../../../routes';
-import { Link, LinkProps } from '../../link';
+import { Link, LinkProps, VARIANT_BUTTON } from '../../link';
 
-import { ColorModeToggle } from './color-mode-toggle';
 import { HEADER_SPACING } from './constants';
 import {
   drawerCloseButtonStyle,
@@ -37,7 +36,13 @@ const renderDivider = (mobile: boolean) => (
 );
 
 const renderLink = ({ href, icon, label }: LinkProps) => (
-  <Link key={href} asButton href={href} icon={icon} label={label} />
+  <Link
+    key={href}
+    href={href}
+    icon={icon}
+    label={label}
+    variant={VARIANT_BUTTON}
+  />
 );
 
 const renderStack = (mobile = true) => (
@@ -63,7 +68,12 @@ export const Navigation = (): ReactElement => {
     return drawerOpen ? closeDrawer() : openDrawer();
   };
   const router = useRouter();
-  router.events.on('routeChangeComplete', closeDrawer);
+  useEffect(() => {
+    router.events.on('routeChangeComplete', closeDrawer);
+    return () => {
+      router.events.off('routeChangeComplete', closeDrawer);
+    };
+  }, [router]);
   return (
     <nav>
       <Box
@@ -99,7 +109,6 @@ export const Navigation = (): ReactElement => {
         >
           <MenuIcon />
         </IconButton>
-        <ColorModeToggle />
       </Box>
     </nav>
   );
