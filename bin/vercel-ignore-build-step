@@ -1,23 +1,23 @@
 #!/bin/bash
 
-echo "Environment: $VERCEL_ENV"
-echo "Branch: $VERCEL_GIT_COMMIT_REF"
-echo "Message: $VERCEL_GIT_COMMIT_MESSAGE"
+echo "🚦 Environment – $VERCEL_ENV"
+echo "🔀 Branch – $VERCEL_GIT_COMMIT_REF"
+echo "💬 Message – $VERCEL_GIT_COMMIT_MESSAGE"
 
 if [[ "$VERCEL_GIT_COMMIT_MESSAGE" == *"[skip ci]"* ]]; then
-  echo "⏩ – Skipping build"
+  echo "⏩ Skipping build"
   exit 0
 fi
 
 if [[ "$VERCEL_GIT_COMMIT_REF" == "main" ]]; then
-  echo "🟢 – Running production build"
+  echo "🟢 Running production build"
   exit 1
 fi
 
 if [[ "$VERCEL_GIT_COMMIT_REF" == "develop" ]]; then
-  echo "🟠 – Running preview build"
+  echo "🟠 Running preview build"
   exit 1
 fi
 
-echo "🔴 – Build cancelled"
+echo "🔴 Build cancelled"
 exit 0
