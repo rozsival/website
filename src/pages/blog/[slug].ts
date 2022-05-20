@@ -10,8 +10,8 @@ export const getStaticProps: GetStaticProps<
   Pick<BlogPostStaticProps, 'slug'>
 > = async ({ params }) => {
   if (params?.slug) {
-    const post = await getBlogPost(params.slug);
-    return { props: { ...post, mdxSource: await serialize(post.mdxSource) } };
+    const { mdxSource, ...post } = await getBlogPost(params.slug);
+    return { props: { ...post, mdxSource: await serialize(mdxSource) } };
   }
   return { notFound: true };
 };

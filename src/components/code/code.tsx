@@ -8,8 +8,8 @@ import { CodeProps } from './types';
 const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
   &,
   > code {
-    border-radius: ${(props) => props.theme.shape.borderRadius}px;
-    font-family: ${(props) => props.theme.typography.fontFamily};
+    border-radius: ${({ theme }) => theme.shape.borderRadius}px;
+    font-family: ${({ theme }) => theme.typography.fontFamily};
   }
 `;
 

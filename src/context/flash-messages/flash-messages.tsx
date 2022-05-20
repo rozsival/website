@@ -38,7 +38,10 @@ export const FlashMessagesProvider = ({
     [setFlashMessage],
   );
   const show: FlashMessagesContextType['show'] = useCallback(
-    (props) => setFlashMessage(props),
+    (props) => {
+      onClose();
+      setFlashMessage(props);
+    },
     [setFlashMessage],
   );
   const showError: FlashMessagesContextType['showError'] = useCallback(

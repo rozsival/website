@@ -6,7 +6,7 @@ import { ReactElement } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { useFlashMessagesContext } from '../../context';
-import { useFetch } from '../../hooks';
+import { useFetch, useMobile } from '../../hooks';
 import { apiRoutes } from '../../routes';
 import {
   FormValues,
@@ -21,6 +21,7 @@ import { Input } from './input';
 import { StyledForm } from './styles';
 
 export const Form = (): ReactElement => {
+  const { onMobile } = useMobile();
   const { showError, showSuccess } = useFlashMessagesContext();
   const {
     control,
@@ -36,8 +37,8 @@ export const Form = (): ReactElement => {
       reset();
       showSuccess(
         <>
-          Thanks a lot for contacting me ❤️
-          <br />
+          Thanks for contacting me ❤️
+          {onMobile(<br />, ' ')}
           I&apos;ll get back to you ASAP ⚡️
         </>,
       );
@@ -88,7 +89,7 @@ export const Form = (): ReactElement => {
           loading={loading}
           loadingPosition="end"
           type="submit"
-          variant="contained"
+          variant="outlined"
         >
           Send
         </LoadingButton>

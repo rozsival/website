@@ -10,7 +10,6 @@ import { Navigation } from './navigation';
 
 const GRADIENT_ALPHA = 0.05;
 const makeBackground = ({ palette }: Theme) => {
-  if (palette.mode === 'light') return palette.background.paper;
   const color = alpha(palette.common.white, GRADIENT_ALPHA);
   return `linear-gradient(${color}, ${color})`;
 };

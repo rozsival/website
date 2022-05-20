@@ -12,6 +12,7 @@ import { Image } from '../../../image';
 import { H1, H2, H3, Paragraph } from '../../../typography';
 import { Page } from '../../page';
 
+import { BackButton } from './back-button';
 import { BlogPostProps } from './types';
 
 const mdxComponents = {
@@ -40,14 +41,17 @@ export const BlogPost: NextPage<BlogPostProps> = (props) => {
   return (
     <>
       <Page seo={seo}>
-        <article>
-          <H2 component="h1">{title}</H2>
-          <MDXRemote
-            compiledSource={compiledSource}
-            components={mdxComponents}
-            scope={scope}
-          />
-        </article>
+        <>
+          <BackButton />
+          <article>
+            <H2 component="h1">{title}</H2>
+            <MDXRemote
+              compiledSource={compiledSource}
+              components={mdxComponents}
+              scope={scope}
+            />
+          </article>
+        </>
       </Page>
       <Script id="blog-post-schema" type="application/ld+json">
         {`

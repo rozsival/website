@@ -1,3 +1,1 @@
-import { ReactNode } from 'react';
-
-export type CodeProps = { children: ReactNode; language?: string };
+export type CodeProps = { children: string; language?: string };

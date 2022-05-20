@@ -2,6 +2,7 @@ import { Alert, Snackbar } from '@mui/material';
 import { SyntheticEvent, useEffect, useState, VFC } from 'react';
 
 import { ANCHOR_ORIGIN, TRANSITION, TTL } from './constants';
+import { alertStyle, snackbarStyle } from './styles';
 import { FlashMessageProps } from './types';
 
 export const FlashMessage: VFC<FlashMessageProps> = ({
@@ -29,9 +30,15 @@ export const FlashMessage: VFC<FlashMessageProps> = ({
       autoHideDuration={TTL}
       onClose={handleClose}
       open={visible}
+      sx={snackbarStyle}
       transitionDuration={TRANSITION}
     >
-      <Alert onClose={handleClose} severity={type}>
+      <Alert
+        onClose={handleClose}
+        severity={type}
+        sx={alertStyle}
+        variant="filled"
+      >
         {message}
       </Alert>
     </Snackbar>

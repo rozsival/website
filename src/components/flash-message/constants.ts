@@ -1,8 +1,8 @@
 import { SnackbarOrigin } from '@mui/material';
 
 export const ANCHOR_ORIGIN: SnackbarOrigin = {
-  horizontal: 'center',
-  vertical: 'top',
+  horizontal: 'left',
+  vertical: 'bottom',
 };
 export const TRANSITION = 300;
 export const TTL = 8000;

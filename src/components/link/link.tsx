@@ -1,4 +1,4 @@
-import { Button, Link as MUILink, Typography } from '@mui/material';
+import { Box, Button, Link as MUILink } from '@mui/material';
 import NextLink from 'next/link';
 import { ReactElement, VFC } from 'react';
 
@@ -14,12 +14,7 @@ const render = (
   switch (variant) {
     case VARIANT_BUTTON:
       return (
-        <Button
-          component="a"
-          sx={buttonStyle}
-          target={target}
-          variant="outlined"
-        >
+        <Button component="a" sx={buttonStyle} target={target} variant="text">
           {content}
         </Button>
       );
@@ -43,9 +38,9 @@ export const Link: VFC<LinkProps> = ({
   const content = (
     <>
       {icon}
-      <Typography component="span" ml={icon ? 1 : 0}>
+      <Box component="span" ml={icon ? 1 : 0}>
         {label}
-      </Typography>
+      </Box>
     </>
   );
   return (

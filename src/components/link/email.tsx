@@ -8,7 +8,7 @@ import { EmailProps } from './types';
 const Container = styled('span', {
   shouldForwardProp: (propertyName) => propertyName !== 'interaction',
 })<{ interaction: boolean }>`
-  span.MuiTypography-root {
+  span.MuiBox-root {
     unicode-bidi: bidi-override;
     direction: ${({ interaction }) => (interaction ? 'ltr' : 'rtl')};
   }

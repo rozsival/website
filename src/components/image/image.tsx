@@ -5,7 +5,7 @@ import { ReactElement } from 'react';
 import { ImageProps } from './types';
 
 const StyledImage = styled(NextImage)`
-  border-radius: ${(props) => props.theme.shape.borderRadius}px;
+  border-radius: ${({ theme }) => theme.shape.borderRadius}px;
 `;
 
 export const Image = (props: ImageProps): ReactElement => {
