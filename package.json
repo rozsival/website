@@ -12,7 +12,7 @@
     "postbuild": "next-sitemap",
     "prebuild": "run-s qa",
     "prepare": "is-ci || husky install",
-    "prettier": "prettier --check './**/*.{css,js,json,md,yml}'",
+    "prettier": "prettier --check './**/*.{css,json,md,yml}'",
     "prettier:fix": "yarn prettier --write",
     "qa": "run-s ts prettier eslint",
     "start": "NODE_ENV=production next start",
