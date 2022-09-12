@@ -1,4 +1,4 @@
-import { styled, Theme } from '@mui/material/styles';
+import { styled, Theme } from '@mui/material';
 import { SxProps } from '@mui/system';
 
 import { DRAWER_SPACING, DRAWER_WIDTH, HEADER_SPACING } from './constants';
