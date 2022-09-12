@@ -20,7 +20,7 @@ export const useFetch = <Data, Response>({
     });
     setLoading(false);
     if (response.ok) {
-      const data = await response.json();
+      const data = (await response.json()) as Response;
       if (onSuccess) onSuccess(data);
       return setResponse(data);
     }

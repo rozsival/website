@@ -52,9 +52,12 @@ export const Form = (): ReactElement => {
   });
   const fieldError = (field: keyof FormValues) =>
     errors[field]?.message ?? response?.errors?.[field];
-  const onSubmit: SubmitHandler<FormValues> = (data) => post(data);
+  const submit: SubmitHandler<FormValues> = (data) => post(data);
+  const onSubmit = () => {
+    handleSubmit(submit);
+  };
   return (
-    <StyledForm onSubmit={handleSubmit(onSubmit)}>
+    <StyledForm onSubmit={onSubmit}>
       <Input
         control={control}
         error={fieldError('name')}

@@ -22,7 +22,7 @@ class Document extends NextDocument {
     context: DocumentContext,
   ): Promise<DocumentInitialProps> {
     const cache = createEmotionCache();
-    const { extractCriticalToChunks } = createEmotionServer(cache);
+    const server = createEmotionServer(cache);
     const { renderPage } = context;
     context.renderPage = () =>
       renderPage({
@@ -35,7 +35,7 @@ class Document extends NextDocument {
       });
     const initialProps = await NextDocument.getInitialProps(context);
     const emotionStyleTags = createEmotionStyleTags(
-      extractCriticalToChunks(initialProps.html),
+      server.extractCriticalToChunks(initialProps.html),
     );
     const styles = [baseline, ...emotionStyleTags, initialProps.styles];
     return { ...initialProps, styles: Children.toArray(styles) };

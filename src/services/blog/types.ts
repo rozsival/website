@@ -28,3 +28,5 @@ export type BlogPostTile = {
   frontMatter: BlogPostFrontMatter;
   slug: BlogPostSlug;
 };
+
+export type BlogPostScope = Record<string, unknown>;

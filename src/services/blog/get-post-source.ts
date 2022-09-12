@@ -6,13 +6,18 @@ import { StaticImageData } from 'next/image';
 import { BLOG } from '../../routes';
 
 import { BLOG_DIR } from './constants';
-import { BlogPostGrayMatter, BlogPostSlug, BlogPostSource } from './types';
+import {
+  BlogPostGrayMatter,
+  BlogPostScope,
+  BlogPostSlug,
+  BlogPostSource,
+} from './types';
 
-const getScope = async (
-  slug: BlogPostSlug,
-): Promise<Record<string, unknown>> => {
+const getScope = async (slug: BlogPostSlug): Promise<BlogPostScope> => {
   try {
-    const scope = await import(`../../${BLOG}/${slug}/scope`);
+    const scope = (await import(
+      `../../${BLOG}/${slug}/scope`
+    )) as BlogPostScope;
     return { ...scope };
   } catch {
     return {};

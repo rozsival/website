@@ -12,6 +12,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:import/typescript',
     'plugin:prettier/recommended',
+    'plugin:react-hooks/recommended',
     'plugin:react/jsx-runtime',
     'plugin:unicorn/recommended',
     'prettier',
@@ -114,7 +115,6 @@ module.exports = {
       'error',
       {
         allowList: {
-          getInitialProps: true,
           params: true,
           props: true,
           Props: true,
@@ -142,6 +142,12 @@ module.exports = {
       rules: {
         '@typescript-eslint/no-var-requires': 'off',
       },
+    },
+    {
+      files: ['*.ts', '*.tsx'],
+      extends: [
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+      ],
     },
     {
       files: 'next-env.d.ts',
