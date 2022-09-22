@@ -50,7 +50,7 @@
     "@types/mdx": "2.0.2",
     "@types/node": "18.7.18",
     "@types/nprogress": "0.2.0",
-    "@types/react": "18.0.20",
+    "@types/react": "18.0.21",
     "@types/react-syntax-highlighter": "15.5.5",
     "@types/sharp": "0.31.0",
     "@typescript-eslint/eslint-plugin": "5.38.0",
