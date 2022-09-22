@@ -1,17 +1,17 @@
 import { HTMLAttributes } from 'react';
-import { Control, FieldPath } from 'react-hook-form';
+import { Control, FieldPath, FieldValues } from 'react-hook-form';
 
 export type InputProps<
-  FieldValues,
-  FieldName extends FieldPath<FieldValues>,
+  InputValues extends FieldValues,
+  InputName extends FieldPath<InputValues>,
 > = {
   error?: string;
-  control: Control<FieldValues>;
+  control: Control<InputValues>;
   label: string;
   maxLength?: number;
   mode?: HTMLAttributes<HTMLInputElement>['inputMode'];
   multiLine?: boolean;
-  name: FieldName;
+  name: InputName;
   noMargin?: boolean;
   type?: string;
 };

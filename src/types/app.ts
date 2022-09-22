@@ -1,14 +1,11 @@
 import { EmotionCache } from '@emotion/cache';
-import {
-  AppContextType,
-  AppInitialProps,
-  NextComponentType,
-} from 'next/dist/shared/lib/utils';
+import { NextComponentType } from 'next';
+import { AppContext, AppInitialProps } from 'next/app';
 
-export type AppPropsType = import('next/dist/shared/lib/utils').AppPropsType;
-export type AppProps = AppPropsType & { emotionCache?: EmotionCache };
-export type AppType = NextComponentType<
-  AppContextType,
-  AppInitialProps,
-  AppProps
->;
+export type AppPropsType = import('next/app').AppProps;
+
+export type AppProps = AppPropsType & {
+  emotionCache?: EmotionCache;
+};
+
+export type AppType = NextComponentType<AppContext, AppInitialProps, AppProps>;

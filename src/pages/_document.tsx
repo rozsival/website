@@ -26,12 +26,11 @@ class Document extends NextDocument {
     const { renderPage } = context;
     context.renderPage = () =>
       renderPage({
-        enhanceApp: (App: AppType) => {
-          const EnhancedApp = (props: AppPropsType) => (
-            <App emotionCache={cache} {...props} />
-          );
-          return EnhancedApp;
-        },
+        enhanceApp: (NextApp) =>
+          function EnhancedApp(props: AppPropsType) {
+            const App = NextApp as AppType;
+            return <App {...props} emotionCache={cache} />;
+          },
       });
     const initialProps = await NextDocument.getInitialProps(context);
     const emotionStyleTags = createEmotionStyleTags(

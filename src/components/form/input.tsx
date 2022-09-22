@@ -5,7 +5,7 @@ import {
   FormHelperText,
   Box,
 } from '@mui/material';
-import { Controller, FieldPath } from 'react-hook-form';
+import { Controller, FieldPath, FieldValues } from 'react-hook-form';
 
 import {
   MULTILINE_INPUT_ROWS,
@@ -14,7 +14,10 @@ import {
 } from './constants';
 import { InputProps } from './types';
 
-export const Input = <FieldValues, FieldName extends FieldPath<FieldValues>>({
+export const Input = <
+  InputValues extends FieldValues,
+  InputName extends FieldPath<InputValues>,
+>({
   error,
   control,
   label,
@@ -24,7 +27,7 @@ export const Input = <FieldValues, FieldName extends FieldPath<FieldValues>>({
   name,
   noMargin,
   type = 'text',
-}: InputProps<FieldValues, FieldName>) => {
+}: InputProps<InputValues, InputName>) => {
   const errorId = `${name}-error`;
   const hasError = Boolean(error);
   const inputProps = { maxLength };
