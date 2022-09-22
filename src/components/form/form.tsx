@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Send as SendIcon } from '@mui/icons-material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { Box } from '@mui/material';
-import { ReactElement } from 'react';
+import { FormEventHandler, ReactElement } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { useFlashMessagesContext } from '../../context';
@@ -15,6 +15,7 @@ import {
   SendFormResponse,
   STATUS_SENT,
 } from '../../services/form';
+import { catchError } from '../../utils';
 
 import { SPACING } from './constants';
 import { Input } from './input';
@@ -53,8 +54,8 @@ export const Form = (): ReactElement => {
   const fieldError = (field: keyof FormValues) =>
     errors[field]?.message ?? response?.errors?.[field];
   const submit: SubmitHandler<FormValues> = (data) => post(data);
-  const onSubmit = () => {
-    handleSubmit(submit);
+  const onSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+    catchError(handleSubmit(submit)(event));
   };
   return (
     <StyledForm onSubmit={onSubmit}>
