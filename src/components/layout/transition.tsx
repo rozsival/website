@@ -24,8 +24,8 @@ export const Transition = ({ children }: LayoutProps): ReactElement => {
   return (
     <LazyMotion features={domAnimation}>
       <AnimatePresence
-        exitBeforeEnter
         initial={false}
+        mode="wait"
         onExitComplete={onAnimatePresence}
       >
         <m.div

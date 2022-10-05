@@ -12,18 +12,20 @@ const render = (
   variant: LinkVariant,
 ) => {
   switch (variant) {
-    case VARIANT_BUTTON:
+    case VARIANT_BUTTON: {
       return (
         <Button component="a" sx={buttonStyle} target={target} variant="text">
           {content}
         </Button>
       );
-    default:
+    }
+    default: {
       return (
         <MUILink alignItems="center" display="inline-flex" target={target}>
           {content}
         </MUILink>
       );
+    }
   }
 };
 

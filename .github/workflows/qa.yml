@@ -12,46 +12,50 @@ jobs:
   setup:
     name: Setup
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version:
+          - 16
+    outputs:
+      node-version: ${{ steps.set-node-version.outputs.node-version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup node version
-        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
-        id: nvm
-      - name: Setup node.js
+      - name: Setup node.js v${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
-      - name: Setup yarn cache
-        id: yarncache
-        run: echo ::set-output name=dir::$(yarn cache dir)
+          cache: pnpm
+          node-version: ${{ matrix.node-version }}
+      - name: Setup pnpm cache
+        id: pnpmcache
+        run: echo ::set-output name=dir::$(pnpm store path)
       - name: Cache dependencies
         uses: actions/cache@v3
         with:
-          path: ${{ steps.yarncache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: ${{ runner.os }}-yarn-
+          path: ${{ steps.pnpmcache.outputs.dir }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-pnpm-
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
       - name: Cache setup
         uses: actions/cache@v3
         id: cache-setup
         with:
           path: ./*
           key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
+      - name: Set node-version
+        id: set-node-version
+        run: echo ::set-output name=node-versions::$(toJSON(matrix.node-version))
   commitlint:
     needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup node version
-        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
-        id: nvm
       - name: Setup node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+          node-version: ${{ fromJson(needs.setup.outputs.node-version) }}
       - name: Restore setup
         uses: actions/cache@v3
         id: restore-setup
@@ -59,41 +63,35 @@ jobs:
           path: ./*
           key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
       - name: Run commitlint
-        run: yarn commitlint --from=${{ github.sha }}
+        run: pnpm commitlint --from=${{ github.sha }}
   tsc:
     needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup node version
-        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
-        id: nvm
       - name: Setup node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+          node-version: ${{ fromJson(needs.setup.outputs.node-version) }}
       - name: Restore setup
         uses: actions/cache@v3
         id: restore-setup
         with:
           path: ./*
           key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
-      - name: Check types
-        run: yarn ts
+      - name: Run tsc
+        run: pnpm ts
   prettier:
     needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup node version
-        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
-        id: nvm
       - name: Setup node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+          node-version: ${{ fromJson(needs.setup.outputs.node-version) }}
       - name: Restore setup
         uses: actions/cache@v3
         id: restore-setup
@@ -101,20 +99,17 @@ jobs:
           path: ./*
           key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
       - name: Run prettier
-        run: yarn prettier
+        run: pnpm prettier
   eslint:
     needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup node version
-        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
-        id: nvm
       - name: Setup node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+          node-version: ${{ fromJson(needs.setup.outputs.node-version) }}
       - name: Restore setup
         uses: actions/cache@v3
         id: restore-setup
@@ -122,4 +117,4 @@ jobs:
           path: ./*
           key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
       - name: Run eslint
-        run: yarn eslint
+        run: pnpm eslint
