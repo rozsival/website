@@ -51,7 +51,7 @@ jobs:
           key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
       - name: Set node-version
         id: set-node-version
-        run: echo ::set-output name=node-versions::$(toJSON(matrix.node-version))
+        run: echo ::set-output name=node-versions::$(toJSON(${{ matrix.node-version }}))
   commitlint:
     needs: setup
     runs-on: ubuntu-latest
