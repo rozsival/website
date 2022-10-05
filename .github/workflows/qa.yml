@@ -15,7 +15,9 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 16
+          - 16.17.1
+        pnpm-version:
+          - 7.13.1
     outputs:
       node-version: ${{ steps.set-node-version.outputs.node-version }}
     steps:
@@ -26,6 +28,10 @@ jobs:
         with:
           cache: pnpm
           node-version: ${{ matrix.node-version }}
+      - name: Setup pnpm v${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
       - name: Setup pnpm cache
         id: pnpmcache
         run: echo ::set-output name=dir::$(pnpm store path)
