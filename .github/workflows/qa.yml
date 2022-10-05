@@ -20,7 +20,7 @@ jobs:
           - 7.13.1
     outputs:
       node-version: ${{ steps.set-node-version.outputs.node-version }}
-      pnpm-version: ${{ steps.set-node-version.outputs.pnpm-version }}
+      pnpm-version: ${{ steps.set-pnpm-version.outputs.pnpm-version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
