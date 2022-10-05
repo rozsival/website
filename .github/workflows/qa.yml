@@ -61,7 +61,7 @@ jobs:
       - name: Setup node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ fromJson(needs.setup.outputs.node-version) }}
+          node-version: ${{ needs.setup.outputs.node-version }}
       - name: Restore setup
         uses: actions/cache@v3
         id: restore-setup
@@ -79,7 +79,7 @@ jobs:
       - name: Setup node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ fromJson(needs.setup.outputs.node-version) }}
+          node-version: ${{ needs.setup.outputs.node-version }}
       - name: Restore setup
         uses: actions/cache@v3
         id: restore-setup
@@ -97,7 +97,7 @@ jobs:
       - name: Setup node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ fromJson(needs.setup.outputs.node-version) }}
+          node-version: ${{ needs.setup.outputs.node-version }}
       - name: Restore setup
         uses: actions/cache@v3
         id: restore-setup
@@ -115,7 +115,7 @@ jobs:
       - name: Setup node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ fromJson(needs.setup.outputs.node-version) }}
+          node-version: ${{ needs.setup.outputs.node-version }}
       - name: Restore setup
         uses: actions/cache@v3
         id: restore-setup
