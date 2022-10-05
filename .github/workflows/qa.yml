@@ -20,6 +20,7 @@ jobs:
           - 7.13.1
     outputs:
       node-version: ${{ steps.set-node-version.outputs.node-version }}
+      pnpm-version: ${{ steps.set-node-version.outputs.pnpm-version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -52,15 +53,23 @@ jobs:
       - name: Set node-version
         id: set-node-version
         run: echo ::set-output name=node-version::${{ matrix.node-version }}
+      - name: Set pnpm version
+        id: set-pnpm-version
+        run: echo ::set-output name=pnpm-version::${{ matrix.pnpm-version }}
   commitlint:
     needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ needs.setup.outputs.pnpm-version }}
       - name: Setup node.js
         uses: actions/setup-node@v3
         with:
+          cache: pnpm
           node-version: ${{ needs.setup.outputs.node-version }}
       - name: Restore setup
         uses: actions/cache@v3
@@ -76,9 +85,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ needs.setup.outputs.pnpm-version }}
       - name: Setup node.js
         uses: actions/setup-node@v3
         with:
+          cache: pnpm
           node-version: ${{ needs.setup.outputs.node-version }}
       - name: Restore setup
         uses: actions/cache@v3
@@ -94,9 +108,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ needs.setup.outputs.pnpm-version }}
       - name: Setup node.js
         uses: actions/setup-node@v3
         with:
+          cache: pnpm
           node-version: ${{ needs.setup.outputs.node-version }}
       - name: Restore setup
         uses: actions/cache@v3
@@ -112,9 +131,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ needs.setup.outputs.pnpm-version }}
       - name: Setup node.js
         uses: actions/setup-node@v3
         with:
+          cache: pnpm
           node-version: ${{ needs.setup.outputs.node-version }}
       - name: Restore setup
         uses: actions/cache@v3
