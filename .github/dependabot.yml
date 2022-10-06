@@ -7,6 +7,9 @@ updates:
     target-branch: develop
   - package-ecosystem: npm
     directory: /
+    ignore:
+      - dependency-type: all
+        update-types: ['version-update:semver-major']
     schedule:
       interval: daily
     target-branch: develop
