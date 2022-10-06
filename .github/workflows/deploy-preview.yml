@@ -72,7 +72,9 @@ jobs:
         run: pnpm qa
   deploy:
     environment: Preview
-    needs: qa
+    needs:
+      - setup
+      - qa
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
