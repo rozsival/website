@@ -1,0 +1,102 @@
+name: Deploy Production
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version:
+          - 16.17.1
+        pnpm-version:
+          - 7.13.1
+    outputs:
+      node-version: ${{ steps.set-node-version.outputs.node-version }}
+      pnpm-version: ${{ steps.set-pnpm-version.outputs.pnpm-version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup pnpm v${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
+      - name: Setup node.js v${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          cache: pnpm
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: pnpm install
+      - name: Cache setup
+        uses: actions/cache@v3
+        id: cache-setup
+        with:
+          path: ./*
+          key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
+      - name: Set node-version
+        id: set-node-version
+        run: echo ::set-output name=node-version::${{ matrix.node-version }}
+      - name: Set pnpm-version
+        id: set-pnpm-version
+        run: echo ::set-output name=pnpm-version::${{ matrix.pnpm-version }}
+  qa:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ needs.setup.outputs.pnpm-version }}
+      - name: Setup node.js
+        uses: actions/setup-node@v3
+        with:
+          cache: pnpm
+          node-version: ${{ needs.setup.outputs.node-version }}
+      - name: Restore setup
+        uses: actions/cache@v3
+        id: restore-setup
+        with:
+          path: ./*
+          key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
+      - name: Run QA
+        run: pnpm qa
+  deploy:
+    environment: Production
+    needs:
+      - setup
+      - qa
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ needs.setup.outputs.pnpm-version }}
+      - name: Setup node.js
+        uses: actions/setup-node@v3
+        with:
+          cache: pnpm
+          node-version: ${{ needs.setup.outputs.node-version }}
+      - name: Restore setup
+        uses: actions/cache@v3
+        id: restore-setup
+        with:
+          path: ./*
+          key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
+      - name: Pull Vercel Environment Information
+        run: pnpm vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Project Artifacts
+        run: pnpm vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy Project Artifacts to Vercel
+        run: pnpm vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
