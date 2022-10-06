@@ -23,7 +23,7 @@ jobs:
       pnpm-version: ${{ steps.set-pnpm-version.outputs.pnpm-version }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.1.0
       - name: Setup pnpm v${{ matrix.pnpm-version }}
         uses: pnpm/action-setup@v2
         with:
@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.1.0
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
@@ -78,7 +78,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.1.0
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
