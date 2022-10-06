@@ -25,7 +25,7 @@ Create `.env.local` from `.env.example`
 
 - `NEXT_PUBLIC_BASE_URL` – website base URL for public assets prefixing
 - `NEXT_PUBLIC_ROBOTS` – value for `robots` meta tag
-- `ROBOTS_POLICY` – value for `robotsTxtOptions.policies` entry in `next-sitemap.js`
+- `ROBOTS_POLICY` – value for `robotsTxtOptions.policies` entry in `next-sitemap.config.js`
 
 ## 👨‍💻 Development
 
