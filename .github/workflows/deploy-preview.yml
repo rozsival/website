@@ -1,12 +1,13 @@
-name: QA
+name: Deploy Preview
 
 on:
   push:
     branches:
-      - '*'
-  pull_request:
-    branches:
       - develop
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
   setup:
@@ -46,7 +47,7 @@ jobs:
       - name: Set pnpm-version
         id: set-pnpm-version
         run: echo ::set-output name=pnpm-version::${{ matrix.pnpm-version }}
-  commitlint:
+  qa:
     needs: setup
     runs-on: ubuntu-latest
     steps:
@@ -67,10 +68,11 @@ jobs:
         with:
           path: ./*
           key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
-      - name: Run commitlint
-        run: pnpm commitlint --from=${{ github.sha }}
-  tsc:
-    needs: setup
+      - name: Run QA
+        run: pnpm qa
+  deploy:
+    environment: Preview
+    needs: qa
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -90,51 +92,9 @@ jobs:
         with:
           path: ./*
           key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
-      - name: Run tsc
-        run: pnpm ts
-  prettier:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: ${{ needs.setup.outputs.pnpm-version }}
-      - name: Setup node.js
-        uses: actions/setup-node@v3
-        with:
-          cache: pnpm
-          node-version: ${{ needs.setup.outputs.node-version }}
-      - name: Restore setup
-        uses: actions/cache@v3
-        id: restore-setup
-        with:
-          path: ./*
-          key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
-      - name: Run prettier
-        run: pnpm prettier
-  eslint:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: ${{ needs.setup.outputs.pnpm-version }}
-      - name: Setup node.js
-        uses: actions/setup-node@v3
-        with:
-          cache: pnpm
-          node-version: ${{ needs.setup.outputs.node-version }}
-      - name: Restore setup
-        uses: actions/cache@v3
-        id: restore-setup
-        with:
-          path: ./*
-          key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
-      - name: Run eslint
-        run: pnpm eslint
+      - name: Pull Vercel Environment Information
+        run: pnpm vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Project Artifacts
+        run: pnpm vercel build --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy Project Artifacts to Vercel
+        run: pnpm vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}

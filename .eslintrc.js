@@ -61,7 +61,6 @@ module.exports = {
         tsx: 'never',
       },
     ],
-    'import/no-extraneous-dependencies': 'off',
     'import/order': [
       'error',
       {
