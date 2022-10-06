@@ -2,7 +2,9 @@
   "name": "@rozsival/website",
   "private": true,
   "scripts": {
-    "build": "NODE_ENV=production next build",
+    "build": "run-s build:next build:sitemap",
+    "build:next": "NODE_ENV=production next build",
+    "build:sitemap": "next-sitemap",
     "cz": "cz",
     "dev": "next dev",
     "eslint": "eslint --cache --ext js,mdx,ts,tsx .",
@@ -10,7 +12,6 @@
     "fix": "run-s ts prettier:fix eslint:fix",
     "lint-staged": "lint-staged",
     "postbuild": "next-sitemap",
-    "prebuild": "run-s qa",
     "prepare": "is-ci || husky install",
     "prettier": "prettier --check './**/*.{css,json,md,yml}'",
     "prettier:fix": "pnpm prettier --write",
