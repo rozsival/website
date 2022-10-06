@@ -16,8 +16,7 @@
 ## 💾 Installation
 
 ```bash
-nvm install
-yarn install
+pnpm install
 ```
 
 ## ⚙️ Configuration
@@ -31,27 +30,27 @@ Create `.env.local` from `.env.example`
 ## 👨‍💻 Development
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 ## 🚨 QA
 
 ```bash
-yarn qa
+pnpm qa
 # or
-yarn fix
+pnpm fix
 ```
 
 ## 📦 Build
 
 ```bash
-yarn build
-yarn start
+pnpm build
+pnpm start
 ```
 
 ## 🚀 Deployment
 
 The website is automatically deployed to [Vercel](https://vercel.com/vitrozsival/website) on push
 
-- `main` – production
+- `main` – production (needs approval)
 - `develop` – preview
