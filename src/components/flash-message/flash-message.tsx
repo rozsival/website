@@ -1,9 +1,10 @@
 import { Alert, Snackbar } from '@mui/material';
-import { SyntheticEvent, useEffect, useState, VFC } from 'react';
+import type { SyntheticEvent, VFC } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ANCHOR_ORIGIN, TRANSITION, TTL } from './constants';
 import { alertStyle, snackbarStyle } from './styles';
-import { FlashMessageProps } from './types';
+import type { FlashMessageProps } from './types';
 
 export const FlashMessage: VFC<FlashMessageProps> = ({
   message,

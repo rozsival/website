@@ -1,6 +1,6 @@
-import { GetStaticProps } from 'next';
+import type { GetStaticProps } from 'next';
 
-import { BlogStaticProps } from '../../components/pages/blog';
+import type { BlogStaticProps } from '../../components/pages/blog';
 import { getBlogPosts } from '../../services/blog';
 
 export const getStaticProps: GetStaticProps<BlogStaticProps> = async () => ({

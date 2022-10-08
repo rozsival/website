@@ -40,6 +40,7 @@ module.exports = {
     'unused-imports',
   ],
   rules: {
+    '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/no-use-before-define': 'error',
     'arrow-parens': ['error', 'always'],

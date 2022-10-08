@@ -2,7 +2,7 @@ import { parseDate } from '../date';
 
 import { getBlogDirectories } from './get-blog-directories';
 import { getPostSource } from './get-post-source';
-import { BlogPostSlug, BlogPostTile, BlogPostFrontMatter } from './types';
+import type { BlogPostSlug, BlogPostTile, BlogPostFrontMatter } from './types';
 
 const getTime = ({ date }: BlogPostFrontMatter) => parseDate(date).getTime();
 

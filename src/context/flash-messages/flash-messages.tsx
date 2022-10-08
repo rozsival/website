@@ -1,21 +1,21 @@
+import type { ReactElement } from 'react';
 import {
   createContext,
-  ReactElement,
   useCallback,
   useContext,
   useMemo,
   useState,
 } from 'react';
 
+import type { FlashMessageProps } from '../../components/flash-message';
 import {
   FLASH_ERROR,
   FLASH_SUCCESS,
   FlashMessage,
-  FlashMessageProps,
 } from '../../components/flash-message';
 import { DEFAULT_VALUE } from '../constants';
 
-import { FlashMessagesContextType } from './types';
+import type { FlashMessagesContextType } from './types';
 
 export const FlashMessagesContext = createContext<
   FlashMessagesContextType | undefined

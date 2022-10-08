@@ -12,10 +12,12 @@ import {
   SwipeableDrawer,
 } from '@mui/material';
 import { useRouter } from 'next/router';
-import { KeyboardEvent, ReactElement, useEffect, useState } from 'react';
+import type { KeyboardEvent, ReactElement } from 'react';
+import { useEffect, useState } from 'react';
 
 import { pageRoutes } from '../../../routes';
-import { Link, LinkProps, VARIANT_BUTTON } from '../../link';
+import type { LinkProps } from '../../link';
+import { Link, VARIANT_BUTTON } from '../../link';
 
 import { HEADER_SPACING } from './constants';
 import {

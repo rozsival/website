@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import { FlashMessagesProvider } from './flash-messages';
 import { ThemeProvider } from './theme';

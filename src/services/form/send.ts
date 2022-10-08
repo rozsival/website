@@ -1,7 +1,7 @@
-import { NextApiRequest } from 'next';
+import type { NextApiRequest } from 'next';
 
 import { STATUS_ERROR, STATUS_SENT } from './constants';
-import { SendFormResponse } from './types';
+import type { SendFormResponse } from './types';
 import { validate } from './validate';
 
 export const send = async (

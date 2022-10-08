@@ -1,13 +1,8 @@
 import createEmotionServer from '@emotion/server/create-instance';
-import NextDocument, {
-  DocumentContext,
-  DocumentInitialProps,
-  Head,
-  Html,
-  Main,
-  NextScript,
-} from 'next/document';
-import { Children, ReactElement } from 'react';
+import type { DocumentContext, DocumentInitialProps } from 'next/document';
+import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
+import type { ReactElement } from 'react';
+import { Children } from 'react';
 
 import {
   baseline,
@@ -15,7 +10,7 @@ import {
   createEmotionStyleTags,
   font,
 } from '../styles';
-import { AppPropsType, AppType } from '../types';
+import type { AppPropsType, AppType } from '../types';
 
 class Document extends NextDocument {
   static async getInitialProps(

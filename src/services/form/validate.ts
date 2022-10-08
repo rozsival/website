@@ -1,8 +1,8 @@
-import { NextApiRequest } from 'next';
+import type { NextApiRequest } from 'next';
 import { ValidationError } from 'yup';
 
 import { schema } from './schema';
-import { FormErrors } from './types';
+import type { FormErrors } from './types';
 
 const formatErrors = (error: unknown): FormErrors | undefined => {
   if (error instanceof ValidationError) {

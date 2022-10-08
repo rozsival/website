@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 
 import { Link } from './link';
-import { EmailProps } from './types';
+import type { EmailProps } from './types';
 
 const Container = styled('span', {
   shouldForwardProp: (propertyName) => propertyName !== 'interaction',

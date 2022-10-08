@@ -1,4 +1,4 @@
-import { LocalStorage } from './types';
+import type { LocalStorage } from './types';
 
 export const getStoredValue = <K extends keyof LocalStorage>(key: K) =>
   window.localStorage.getItem(key) as LocalStorage[K] | null;

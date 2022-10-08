@@ -6,7 +6,7 @@ import { Layout } from '../components/layout';
 import { LazyTopProgressBar } from '../components/top-progress-bar';
 import { AppContextProvider } from '../context';
 import { createEmotionCache } from '../styles';
-import { AppType } from '../types';
+import type { AppType } from '../types';
 
 const clientSideEmotionCache = createEmotionCache();
 

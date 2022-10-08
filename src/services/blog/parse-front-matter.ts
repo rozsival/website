@@ -1,6 +1,6 @@
 import { parseDate } from '../date';
 
-import { BlogPostFrontMatter } from './types';
+import type { BlogPostFrontMatter } from './types';
 
 export type FrontMatter = Omit<BlogPostFrontMatter, 'date'> & {
   date: Date;

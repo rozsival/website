@@ -2,19 +2,15 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Send as SendIcon } from '@mui/icons-material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { Box } from '@mui/material';
-import { FormEventHandler, ReactElement } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import type { FormEventHandler, ReactElement } from 'react';
+import type { SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import { useFlashMessagesContext } from '../../context';
 import { useFetch, useMobile } from '../../hooks';
 import { apiRoutes } from '../../routes';
-import {
-  FormValues,
-  MESSAGE_LENGTH,
-  schema,
-  SendFormResponse,
-  STATUS_SENT,
-} from '../../services/form';
+import type { FormValues, SendFormResponse } from '../../services/form';
+import { MESSAGE_LENGTH, schema, STATUS_SENT } from '../../services/form';
 import { catchError } from '../../utils';
 
 import { SPACING } from './constants';

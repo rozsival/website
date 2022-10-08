@@ -1,7 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { HTTP_BAD_REQUEST, HTTP_OK } from '../../constants';
-import { send, SendFormResponse } from '../../services/form';
+import type { SendFormResponse } from '../../services/form';
+import { send } from '../../services/form';
 
 const handler = async (
   request: NextApiRequest,

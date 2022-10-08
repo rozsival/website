@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { UseFetchOptions, UseFetchReturn } from './types';
+import type { UseFetchOptions, UseFetchReturn } from './types';
 
 export const useFetch = <Data, Response>({
   method,

@@ -1,8 +1,5 @@
-import {
-  createTheme,
-  responsiveFontSizes,
-  ThemeOptions,
-} from '@mui/material/styles';
+import type { ThemeOptions } from '@mui/material/styles';
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import { deepmerge } from '@mui/utils';
 
 import { FONT_FAMILY, PRIMARY_COLOR } from './constants';

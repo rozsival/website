@@ -1,8 +1,8 @@
 import { styled } from '@mui/material/styles';
 import NextImage from 'next/image';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
-import { ImageProps } from './types';
+import type { ImageProps } from './types';
 
 const StyledImage = styled(NextImage)`
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;

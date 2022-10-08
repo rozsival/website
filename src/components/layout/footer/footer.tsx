@@ -1,5 +1,5 @@
 import { Box, Container, Typography } from '@mui/material';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import { SEO_AUTHOR } from '../../../constants';
 

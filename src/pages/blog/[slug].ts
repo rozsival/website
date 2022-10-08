@@ -1,7 +1,7 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 import { serialize } from 'next-mdx-remote/serialize';
 
-import { BlogPostStaticProps } from '../../components/pages/blog/post';
+import type { BlogPostStaticProps } from '../../components/pages/blog/post';
 import { getBlogPaths, getBlogPost } from '../../services/blog';
 
 export const getStaticPaths: GetStaticPaths = async () => getBlogPaths();

@@ -1,5 +1,5 @@
 import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import { theme } from '../../styles';
 

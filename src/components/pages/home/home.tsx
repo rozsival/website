@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 
 import { Form } from '../../form';
 import { Email, VARIANT_BUTTON } from '../../link';

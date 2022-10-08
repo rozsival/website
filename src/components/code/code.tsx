@@ -1,9 +1,9 @@
 import { styled } from '@mui/material/styles';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atelierCaveDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
-import { CodeProps } from './types';
+import type { CodeProps } from './types';
 
 const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
   &,

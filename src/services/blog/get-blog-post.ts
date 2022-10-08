@@ -1,5 +1,5 @@
 import { getPostSource } from './get-post-source';
-import { BlogPostSlug } from './types';
+import type { BlogPostSlug } from './types';
 
 export const getBlogPost = async (slug: BlogPostSlug) => {
   const { frontMatter, mdxSource, scope } = await getPostSource(slug);

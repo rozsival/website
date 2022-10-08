@@ -1,5 +1,5 @@
-import { AlertColor } from '@mui/material';
-import { ReactNode } from 'react';
+import type { AlertColor } from '@mui/material';
+import type { ReactNode } from 'react';
 
 export type FlashMessageProps = {
   message: ReactNode;

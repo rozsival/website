@@ -1,14 +1,9 @@
-import {
-  AnimatePresence,
-  domAnimation,
-  LazyMotion,
-  m,
-  Variants,
-} from 'framer-motion';
+import type { Variants } from 'framer-motion';
+import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
-import { LayoutProps } from './types';
+import type { LayoutProps } from './types';
 
 const onAnimatePresence = () => window.scrollTo(0, 0);
 const style = { height: '100%', width: '100%' };

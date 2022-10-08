@@ -1,6 +1,6 @@
-import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
-import {
+import type {
   BlogPostSlug,
   BlogPostSource,
   BlogPostFrontMatter,

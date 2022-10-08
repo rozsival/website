@@ -1,5 +1,5 @@
-import { Theme } from '@mui/material/styles';
-import { SxProps } from '@mui/system';
+import type { Theme } from '@mui/material/styles';
+import type { SxProps } from '@mui/system';
 
 export const backButtonStyle: SxProps<Theme> = {
   mb: 3,

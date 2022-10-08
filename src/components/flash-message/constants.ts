@@ -1,4 +1,4 @@
-import { SnackbarOrigin } from '@mui/material';
+import type { SnackbarOrigin } from '@mui/material';
 
 export const ANCHOR_ORIGIN: SnackbarOrigin = {
   horizontal: 'left',

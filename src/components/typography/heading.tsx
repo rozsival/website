@@ -1,8 +1,12 @@
 import { Typography } from '@mui/material';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import { HEADING_H1, HEADING_H2, HEADING_H3, HEADING_H4 } from './constants';
-import { HeadingProps, HeadingVariant, HeadingVariantProps } from './types';
+import type {
+  HeadingProps,
+  HeadingVariant,
+  HeadingVariantProps,
+} from './types';
 
 const Heading = ({
   children,

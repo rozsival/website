@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import Script from 'next/script';
 
@@ -13,7 +13,7 @@ import { H1, H2, H3, Paragraph } from '../../../typography';
 import { Page } from '../../page';
 
 import { BackButton } from './back-button';
-import { BlogPostProps } from './types';
+import type { BlogPostProps } from './types';
 
 const mdxComponents = {
   Button,

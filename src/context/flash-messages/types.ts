@@ -1,4 +1,4 @@
-import { FlashMessageProps } from '../../components/flash-message';
+import type { FlashMessageProps } from '../../components/flash-message';
 
 export type ShowFlashMessage = (props: FlashMessageProps) => void;
 export type ShowTypedFlashMessage = (

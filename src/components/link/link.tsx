@@ -1,10 +1,10 @@
 import { Box, Button, Link as MUILink } from '@mui/material';
 import NextLink from 'next/link';
-import { ReactElement, VFC } from 'react';
+import type { ReactElement, VFC } from 'react';
 
 import { VARIANT_BUTTON, VARIANT_DEFAULT } from './constants';
 import { buttonStyle } from './styles';
-import { LinkProps, LinkVariant } from './types';
+import type { LinkProps, LinkVariant } from './types';
 
 const render = (
   content: ReactElement,

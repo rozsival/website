@@ -1,12 +1,12 @@
 import { readFile } from 'fs/promises';
 
 import matter from 'gray-matter';
-import { StaticImageData } from 'next/image';
+import type { StaticImageData } from 'next/image';
 
 import { BLOG } from '../../routes';
 
 import { BLOG_DIR } from './constants';
-import {
+import type {
   BlogPostGrayMatter,
   BlogPostScope,
   BlogPostSlug,

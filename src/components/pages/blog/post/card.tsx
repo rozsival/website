@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import Link from 'next/link';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import { pageRoutes } from '../../../../routes';
 import { parseFrontMatter } from '../../../../services/blog';
@@ -16,7 +16,7 @@ import { formatDate } from '../../../../services/date';
 import { Image } from '../../../image';
 
 import { cardMediaStyle } from './styles';
-import { CardProps } from './types';
+import type { CardProps } from './types';
 
 export const Card = (props: CardProps): ReactElement => {
   const { date, title, image } = parseFrontMatter(props);

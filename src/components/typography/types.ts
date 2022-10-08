@@ -1,8 +1,13 @@
-import { Theme } from '@mui/material/styles';
-import { SxProps, SystemProps } from '@mui/system';
-import { ElementType, ReactNode } from 'react';
+import type { Theme } from '@mui/material/styles';
+import type { SxProps, SystemProps } from '@mui/system';
+import type { ElementType, ReactNode } from 'react';
 
-import { HEADING_H1, HEADING_H2, HEADING_H3, HEADING_H4 } from './constants';
+import type {
+  HEADING_H1,
+  HEADING_H2,
+  HEADING_H3,
+  HEADING_H4,
+} from './constants';
 
 type TypographyProps = {
   color?: SystemProps<Theme>['color'];

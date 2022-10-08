@@ -1,6 +1,7 @@
 import { Container } from '@mui/material';
-import { alpha, styled, Theme } from '@mui/material/styles';
-import { ReactElement } from 'react';
+import type { Theme } from '@mui/material/styles';
+import { alpha, styled } from '@mui/material/styles';
+import type { ReactElement } from 'react';
 
 import { SEO_AUTHOR, SEO_JOB_TITLE } from '../../../constants';
 import { H2, H4 } from '../../typography';

@@ -1,10 +1,11 @@
 import { Grid } from '@mui/material';
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 
 import { Page } from '../page';
 
-import { Card, CardProps } from './post';
-import { BlogProps } from './types';
+import type { CardProps } from './post';
+import { Card } from './post';
+import type { BlogProps } from './types';
 
 const seo = {
   title: 'Blog',

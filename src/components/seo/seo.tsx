@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { VFC } from 'react';
+import type { VFC } from 'react';
 
 import {
   SEO_TITLE,
@@ -11,7 +11,7 @@ import {
 } from '../../constants';
 import { NEXT_PUBLIC_BASE_URL, NEXT_PUBLIC_ROBOTS } from '../../environment';
 
-import { SeoProps } from './types';
+import type { SeoProps } from './types';
 
 export const Seo: VFC<SeoProps> = ({
   description,

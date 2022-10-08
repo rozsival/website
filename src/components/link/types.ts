@@ -1,6 +1,6 @@
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
-import { VARIANT_BUTTON, VARIANT_DEFAULT } from './constants';
+import type { VARIANT_BUTTON, VARIANT_DEFAULT } from './constants';
 
 export type LinkVariant = typeof VARIANT_DEFAULT | typeof VARIANT_BUTTON;
 

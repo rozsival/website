@@ -5,14 +5,15 @@ import {
   FormHelperText,
   Box,
 } from '@mui/material';
-import { Controller, FieldPath, FieldValues } from 'react-hook-form';
+import type { FieldPath, FieldValues } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 
 import {
   MULTILINE_INPUT_ROWS,
   SINGLE_LINE_INPUT_ROWS,
   SPACING,
 } from './constants';
-import { InputProps } from './types';
+import type { InputProps } from './types';
 
 export const Input = <
   InputValues extends FieldValues,

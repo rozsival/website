@@ -1,6 +1,7 @@
-import createCache, { EmotionCache } from '@emotion/cache';
-import { EmotionCriticalToChunks } from '@emotion/server/create-instance';
-import { ReactElement } from 'react';
+import type { EmotionCache } from '@emotion/cache';
+import createCache from '@emotion/cache';
+import type { EmotionCriticalToChunks } from '@emotion/server/create-instance';
+import type { ReactElement } from 'react';
 
 export const createEmotionCache = (): EmotionCache =>
   createCache({ key: 'css', prepend: true });

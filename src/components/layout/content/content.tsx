@@ -1,7 +1,7 @@
 import { Box, Container } from '@mui/material';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
-import { ContentProps } from './types';
+import type { ContentProps } from './types';
 
 export const Content = ({ children }: ContentProps): ReactElement => (
   <main>
