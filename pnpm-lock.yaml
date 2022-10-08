@@ -55,7 +55,7 @@ specifiers:
   process: 0.11.10
   react: 18.2.0
   react-dom: 18.2.0
-  react-hook-form: 7.36.1
+  react-hook-form: 7.37.0
   react-syntax-highlighter: 15.5.0
   sharp: 0.31.1
   typescript: 4.8.4
@@ -67,7 +67,7 @@ dependencies:
   '@emotion/react': 11.10.4_bjroym7kxlcs2vvwnej4p3gzwu
   '@emotion/server': 11.10.0
   '@emotion/styled': 11.10.4_ogudqqhlstsi7uge4lir7ff3ty
-  '@hookform/resolvers': 2.9.8_react-hook-form@7.36.1
+  '@hookform/resolvers': 2.9.8_react-hook-form@7.37.0
   '@mui/icons-material': 5.10.6_lrxyqjzvf7pkknwtk2aj65ruy4
   '@mui/lab': 5.0.0-alpha.102_ej5cswvk7ic6gea53ovjkapqie
   '@mui/material': 5.10.8_ikcgkdnp4bn3rgptamntbhbo7e
@@ -80,7 +80,7 @@ dependencies:
   nprogress: 0.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  react-hook-form: 7.36.1_react@18.2.0
+  react-hook-form: 7.37.0_react@18.2.0
   react-syntax-highlighter: 15.5.0_react@18.2.0
   sharp: 0.31.1
   yup: 0.32.11
@@ -696,12 +696,12 @@ packages:
       - supports-color
     dev: true
 
-  /@hookform/resolvers/2.9.8_react-hook-form@7.36.1:
+  /@hookform/resolvers/2.9.8_react-hook-form@7.37.0:
     resolution: {integrity: sha512-iVVjH0USq+1TqDdGkWe2M1x7Wn5OFPgVRo7CbWFsXTqqXqCaZtZcnzJu+UhljCWbthFWxWGXKLGYUDPZ04oVvQ==}
     peerDependencies:
       react-hook-form: ^7.0.0
     dependencies:
-      react-hook-form: 7.36.1_react@18.2.0
+      react-hook-form: 7.37.0_react@18.2.0
     dev: false
 
   /@humanwhocodes/config-array/0.10.7:
@@ -5851,8 +5851,8 @@ packages:
       react: 18.2.0
       scheduler: 0.23.0
 
-  /react-hook-form/7.36.1_react@18.2.0:
-    resolution: {integrity: sha512-EbYYkCG2p8ywe7ikOH2l02lAFMrrrslZi1I8fqd8ifDGNAkhomHZQzQsP6ksvzrWBKntRe8b5L5L7Zsd+Gm02Q==}
+  /react-hook-form/7.37.0_react@18.2.0:
+    resolution: {integrity: sha512-6NFTxsnw+EXSpNNvLr5nFMjPdYKRryQcelTHg7zwBB6vAzfPIcZq4AExP4heVlwdzntepQgwiOQW4z7Mr99Lsg==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18
