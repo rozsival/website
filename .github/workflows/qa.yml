@@ -16,7 +16,7 @@ jobs:
         node-version:
           - 16.17.1
         pnpm-version:
-          - 7.13.1
+          - 7.13.2
     outputs:
       node-version: ${{ steps.set-node-version.outputs.node-version }}
       pnpm-version: ${{ steps.set-pnpm-version.outputs.pnpm-version }}
