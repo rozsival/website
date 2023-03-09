@@ -10,7 +10,7 @@ specifiers:
   '@emotion/react': 11.10.4
   '@emotion/server': 11.10.0
   '@emotion/styled': 11.10.4
-  '@hookform/resolvers': 2.9.8
+  '@hookform/resolvers': 2.9.11
   '@mui/icons-material': 5.10.6
   '@mui/lab': 5.0.0-alpha.102
   '@mui/material': 5.10.8
@@ -67,7 +67,7 @@ dependencies:
   '@emotion/react': 11.10.4_bjroym7kxlcs2vvwnej4p3gzwu
   '@emotion/server': 11.10.0
   '@emotion/styled': 11.10.4_ogudqqhlstsi7uge4lir7ff3ty
-  '@hookform/resolvers': 2.9.8_react-hook-form@7.37.0
+  '@hookform/resolvers': 2.9.11_react-hook-form@7.37.0
   '@mui/icons-material': 5.10.6_lrxyqjzvf7pkknwtk2aj65ruy4
   '@mui/lab': 5.0.0-alpha.102_ej5cswvk7ic6gea53ovjkapqie
   '@mui/material': 5.10.8_ikcgkdnp4bn3rgptamntbhbo7e
@@ -696,8 +696,8 @@ packages:
       - supports-color
     dev: true
 
-  /@hookform/resolvers/2.9.8_react-hook-form@7.37.0:
-    resolution: {integrity: sha512-iVVjH0USq+1TqDdGkWe2M1x7Wn5OFPgVRo7CbWFsXTqqXqCaZtZcnzJu+UhljCWbthFWxWGXKLGYUDPZ04oVvQ==}
+  /@hookform/resolvers/2.9.11_react-hook-form@7.37.0:
+    resolution: {integrity: sha512-bA3aZ79UgcHj7tFV7RlgThzwSSHZgvfbt2wprldRkYBcMopdMvHyO17Wwp/twcJasNFischFfS7oz8Katz8DdQ==}
     peerDependencies:
       react-hook-form: ^7.0.0
     dependencies:
