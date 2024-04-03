@@ -39,7 +39,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "7.37.0",
     "react-syntax-highlighter": "15.5.0",
-    "sharp": "0.31.1",
+    "sharp": "0.32.6",
     "yup": "0.32.11"
   },
   "devDependencies": {
