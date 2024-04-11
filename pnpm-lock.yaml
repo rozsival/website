@@ -18,7 +18,7 @@ specifiers:
   '@mui/utils': 5.10.6
   '@next/env': 12.3.1
   '@next/eslint-plugin-next': 12.3.1
-  '@types/mdx': 2.0.2
+  '@types/mdx': 2.0.13
   '@types/node': 16.11.64
   '@types/nprogress': 0.2.0
   '@types/react': 18.0.21
@@ -93,7 +93,7 @@ devDependencies:
   '@emotion/eslint-plugin': 11.10.0_eslint@8.25.0
   '@next/env': 12.3.1
   '@next/eslint-plugin-next': 12.3.1
-  '@types/mdx': 2.0.2
+  '@types/mdx': 2.0.13
   '@types/node': 16.11.64
   '@types/nprogress': 0.2.0
   '@types/react': 18.0.21
@@ -785,7 +785,7 @@ packages:
     resolution: {integrity: sha512-ahbb47HJIJ4xnifaL06tDJiSyLEy1EhFAStO7RZIm3GTa7yGW3NGhZaj+GUCveFgl5oI54pY4BgiLmYm97y+zg==}
     dependencies:
       '@types/estree-jsx': 1.0.0
-      '@types/mdx': 2.0.2
+      '@types/mdx': 2.0.13
       estree-util-build-jsx: 2.2.0
       estree-util-is-identifier-name: 2.0.1
       estree-util-to-js: 1.1.0
@@ -810,7 +810,7 @@ packages:
     peerDependencies:
       react: '>=16'
     dependencies:
-      '@types/mdx': 2.0.2
+      '@types/mdx': 2.0.13
       '@types/react': 18.0.21
       react: 18.2.0
     dev: false
@@ -1313,8 +1313,8 @@ packages:
     dependencies:
       '@types/unist': 2.0.6
 
-  /@types/mdx/2.0.2:
-    resolution: {integrity: sha512-mJGfgj4aWpiKb8C0nnJJchs1sHBHn0HugkVfqqyQi7Wn6mBRksLeQsPOFvih/Pu8L1vlDzfe/LidhVHBeUk3aQ==}
+  /@types/mdx/2.0.13:
+    resolution: {integrity: sha512-+OWZQfAYyio6YkJb3HLxDrvnx6SWWDbC0zVPfBRzUk0/nqoDyf6dNxQi3eArPe8rJ473nobTMQ/8Zk+LxJ+Yuw==}
 
   /@types/minimist/1.2.2:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
