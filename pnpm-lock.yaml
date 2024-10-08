@@ -19,7 +19,7 @@ specifiers:
   '@next/env': 12.3.1
   '@next/eslint-plugin-next': 12.3.1
   '@types/mdx': 2.0.2
-  '@types/node': 16.11.64
+  '@types/node': 16.18.113
   '@types/nprogress': 0.2.0
   '@types/react': 18.0.21
   '@types/react-syntax-highlighter': 15.5.5
@@ -94,7 +94,7 @@ devDependencies:
   '@next/env': 12.3.1
   '@next/eslint-plugin-next': 12.3.1
   '@types/mdx': 2.0.2
-  '@types/node': 16.11.64
+  '@types/node': 16.18.113
   '@types/nprogress': 0.2.0
   '@types/react': 18.0.21
   '@types/react-syntax-highlighter': 15.5.5
@@ -1301,7 +1301,7 @@ packages:
   /@types/keyv/3.1.4:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
-      '@types/node': 16.11.64
+      '@types/node': 16.18.113
     dev: true
 
   /@types/lodash/4.14.186:
@@ -1327,8 +1327,8 @@ packages:
     resolution: {integrity: sha512-vQAnaReSQkEDa8uwAyQby8bYGKu84R/deEc6mg5T8fX6gzCn8QW6rziSgsti1fNvsrswKUKPnVTi7uoB+u62Mw==}
     dev: true
 
-  /@types/node/16.11.64:
-    resolution: {integrity: sha512-z5hPTlVFzNwtJ2LNozTpJcD1Cu44c4LNuzaq1mwxmiHWQh2ULdR6Vjwo1UGldzRpzL0yUEdZddnfqGW2G70z6Q==}
+  /@types/node/16.18.113:
+    resolution: {integrity: sha512-4jHxcEzSXpF1cBNxogs5FVbVSFSKo50sFCn7Xg7vmjJTbWFWgeuHW3QnoINlfmfG++MFR/q97RZE5RQXKeT+jg==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -1373,7 +1373,7 @@ packages:
   /@types/responselike/1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
     dependencies:
-      '@types/node': 16.11.64
+      '@types/node': 16.18.113
     dev: true
 
   /@types/scheduler/0.16.2:
@@ -1382,7 +1382,7 @@ packages:
   /@types/sharp/0.31.0:
     resolution: {integrity: sha512-nwivOU101fYInCwdDcH/0/Ru6yIRXOpORx25ynEOc6/IakuCmjOAGpaO5VfUl4QkDtUC6hj+Z2eCQvgXOioknw==}
     dependencies:
-      '@types/node': 16.11.64
+      '@types/node': 16.18.113
     dev: true
 
   /@types/unist/2.0.6:
@@ -1558,7 +1558,7 @@ packages:
     resolution: {integrity: sha512-phlgW4qHGEt/yQ/nbGCd3vrFM0n48/MBbvmAKgTeVE/mjzdWxPnuSHNQlaipJkzfT3tv8kiiJu9ZoicuDoACTw==}
     dependencies:
       '@edge-runtime/vm': 1.1.0-beta.36
-      '@types/node': 16.11.64
+      '@types/node': 16.18.113
       '@vercel/build-utils': 5.5.4
       '@vercel/node-bridge': 3.0.0
       '@vercel/static-config': 2.0.3
