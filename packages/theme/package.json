@@ -18,8 +18,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc && cp src/styles.css dist/styles.css",
-    "dev": "tsc --watch",
+    "build": "tsc --project tsconfig.build.json && cp src/styles.css dist/styles.css",
+    "dev": "tsc --project tsconfig.build.json --watch",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist .turbo",
     "test": "vitest run",

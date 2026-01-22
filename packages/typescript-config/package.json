@@ -6,6 +6,7 @@
   "license": "MIT",
   "type": "module",
   "exports": {
+    ".": "./package.json",
     "./base.json": "./base.json",
     "./react.json": "./react.json",
     "./nextjs.json": "./nextjs.json"

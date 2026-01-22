@@ -19,10 +19,11 @@
     "forceConsistentCasingInFileNames": true,
 
     "skipLibCheck": true,
-    "declaration": true,
-    "declarationMap": true,
-    "composite": true,
-    "incremental": true,
+    "noEmit": true,
+    "declaration": false,
+    "declarationMap": false,
+    "composite": false,
+    "incremental": false,
     "sourceMap": true
   },
   "exclude": ["node_modules", "dist", "coverage"]

@@ -6,9 +6,6 @@
     "lib": ["ES2024", "DOM", "DOM.Iterable"],
     "jsx": "react-jsx",
     "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "noEmit": false,
-    "outDir": "./dist",
-    "rootDir": "./src"
+    "moduleResolution": "Bundler"
   }
 }
