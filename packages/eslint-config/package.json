@@ -1,0 +1,38 @@
+{
+  "name": "@rozsival/eslint-config",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shared ESLint configurations for the monorepo",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js",
+    "./base": "./src/base.js",
+    "./react": "./src/react.js",
+    "./next": "./src/next.js"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@next/eslint-plugin-next": "16.1.4",
+    "@typescript-eslint/eslint-plugin": "8.53.1",
+    "@typescript-eslint/parser": "8.53.1",
+    "eslint-plugin-formatjs": "6.1.1",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "5.2.0"
+  },
+  "peerDependencies": {
+    "eslint": "9.39.2",
+    "typescript": "5.9.3"
+  },
+  "devDependencies": {
+    "@rozsival/typescript-config": "workspace:*",
+    "eslint": "9.39.2",
+    "typescript": "5.9.3"
+  }
+}

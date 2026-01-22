@@ -1,0 +1,102 @@
+@import 'tailwindcss';
+@import '@rozsival/theme/styles.css';
+
+/* Explicitly scan shared packages for Tailwind classes */
+@source "../../../../packages/ui/src";
+@source "../../../../packages/mdx/src";
+@source "../../../../packages/theme/src";
+
+/* Custom CSS for the website */
+
+/* Typography Overrides (if needed beyond theme) */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Prose styles for blog content */
+@layer components {
+  .prose {
+    @apply max-w-none;
+  }
+  
+  .prose h1 {
+    @apply text-4xl font-bold tracking-tight mb-4;
+  }
+  
+  .prose h2 {
+    @apply text-3xl font-semibold tracking-tight mt-10 mb-4 border-b pb-2;
+  }
+  
+  .prose h3 {
+    @apply text-2xl font-semibold tracking-tight mt-8 mb-4;
+  }
+  
+  .prose p {
+    @apply leading-7 mb-4;
+  }
+  
+  .prose a {
+    @apply text-primary underline underline-offset-4 hover:no-underline;
+  }
+  
+  .prose ul {
+    @apply my-6 ml-6 list-disc;
+  }
+  
+  .prose ol {
+    @apply my-6 ml-6 list-decimal;
+  }
+  
+  .prose li {
+    @apply mt-2;
+  }
+  
+  .prose blockquote {
+    @apply border-l-2 border-primary pl-6 italic my-6;
+  }
+  
+  .prose code {
+    @apply relative rounded bg-muted px-1.5 py-0.5 font-mono text-sm;
+  }
+  
+  .prose pre {
+    @apply my-6 overflow-x-auto rounded-lg border bg-muted p-4;
+  }
+  
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+}
+
+/* Animation utilities */
+@layer utilities {
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

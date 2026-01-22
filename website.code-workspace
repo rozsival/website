@@ -1,0 +1,11 @@
+{
+  "folders": [
+    {
+      "path": ".",
+    },
+  ],
+  "settings": {
+    "eslint.runtime": "node",
+    "eslint.workingDirectories": [{ "mode": "auto" }],
+  },
+}

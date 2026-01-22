@@ -1,0 +1,46 @@
+{
+  "name": "@rozsival/mdx",
+  "version": "0.0.0",
+  "private": true,
+  "description": "MDX processing utilities for the static blog",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./components": {
+      "types": "./dist/components.d.ts",
+      "import": "./dist/components.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist .turbo",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "gray-matter": "4.0.3",
+    "reading-time": "1.5.0"
+  },
+  "peerDependencies": {
+    "react": "19.2.3"
+  },
+  "devDependencies": {
+    "@rozsival/typescript-config": "workspace:*",
+    "@types/node": "22.15.4",
+    "@types/react": "19.2.9",
+    "react": "19.2.3",
+    "typescript": "5.9.3",
+    "vitest": "4.0.18"
+  }
+}

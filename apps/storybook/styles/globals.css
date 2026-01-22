@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+@import '@rozsival/theme/styles.css';
+
+@source "../../../packages/ui/src";
+@source "../../../packages/mdx/src";
+
+body {
+  font-family: var(--font-sans);
+}

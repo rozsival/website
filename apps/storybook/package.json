@@ -1,0 +1,34 @@
+{
+  "name": "@rozsival/storybook",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Component showcase using Storybook",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build",
+    "clean": "rm -rf storybook-static .turbo"
+  },
+  "dependencies": {
+    "@rozsival/theme": "workspace:*",
+    "@rozsival/ui": "workspace:*",
+    "lucide-react": "0.562.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@rozsival/eslint-config": "workspace:*",
+    "@rozsival/typescript-config": "workspace:*",
+    "@storybook/react-vite": "10.2.0",
+    "@tailwindcss/vite": "4.1.18",
+    "@testing-library/dom": "10.4.1",
+    "@types/react": "19.2.9",
+    "@types/react-dom": "19.1.4",
+    "@vitejs/plugin-react": "4.5.2",
+    "storybook": "10.2.0",
+    "tailwindcss": "4.1.18",
+    "typescript": "5.9.3",
+    "vite": "6.0.11"
+  }
+}
