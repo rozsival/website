@@ -1,0 +1,158 @@
+{
+  "meta": {
+    "locale": "en",
+    "name": "English"
+  },
+  "common": {
+    "siteName": "Vít Rozsíval",
+    "siteDescription": "Full-stack developer with 15+ years of experience combining technical depth with creative background.",
+    "navigation": {
+      "home": "Home",
+      "story": "Story",
+      "cv": "CV",
+      "contact": "Contact",
+      "blog": "Blog"
+    },
+    "footer": {
+      "copyright": "© {year} Vít Rozsíval. All rights reserved.",
+      "builtWith": "Built with ❤️ using <link>Antigravity</link>"
+    }
+  },
+  "home": {
+    "hero": {
+      "greeting": "Hi, I'm Vít 👋",
+      "title": "Full-Stack Developer",
+      "subtitle": "15+ years building web, mobile & cloud solutions",
+      "tagline": "I combine strong technical depth with a long-standing creative background. I care about clean architecture, long-term maintainability, and building products that genuinely serve people — not hype.",
+      "cta": {
+        "primary": "View My Work",
+        "secondary": "Get In Touch"
+      }
+    },
+    "highlights": {
+      "title": "What I Bring",
+      "items": {
+        "architecture": {
+          "title": "Clean Architecture",
+          "description": "Systems designed for maintainability and growth, not just shipping fast."
+        },
+        "fullstack": {
+          "title": "Full-Stack Expertise",
+          "description": "From database to deployment, web to mobile, I own the entire stack."
+        },
+        "creative": {
+          "title": "Creative Background",
+          "description": "Technical solutions informed by design thinking and user empathy."
+        },
+        "pragmatic": {
+          "title": "Pragmatic Approach",
+          "description": "Real solutions for real problems. No overengineering, no buzzwords chasing."
+        }
+      }
+    },
+    "latestPosts": {
+      "title": "Latest Thoughts",
+      "viewAll": "View All Posts"
+    },
+    "finalCta": {
+      "title": "Ready to Work Together?",
+      "description": "I'm open to interesting projects and collaborations. Let's build something meaningful."
+    }
+  },
+  "story": {
+    "title": "My Story",
+    "intro": "A journey through code, creativity, and continuous learning.",
+    "sections": {
+      "beginning": {
+        "title": "The Beginning",
+        "content": "My journey into software development started over 15 years ago, fueled by a curiosity about how things work and a desire to create. What began as tinkering with websites quickly evolved into a deep passion for building digital products."
+      },
+      "evolution": {
+        "title": "Technical Evolution",
+        "content1": "Over the years, I've worked across the full stack—from crafting pixel-perfect user interfaces to designing robust backend systems and cloud architectures. I've seen technologies come and go, and I've learned that the fundamentals matter more than the latest trends.",
+        "content2": "My technical toolkit includes React, Next.js, TypeScript, Node.js, and various cloud platforms. But more importantly, I understand when to use each tool and when to keep things simple."
+      },
+      "roots": {
+        "title": "Creative Roots",
+        "content": "Before diving deep into code, I spent years in creative fields. This background informs how I approach problem-solving today—with empathy for users, attention to detail, and an appreciation for elegant solutions."
+      },
+      "philosophy": {
+        "title": "Philosophy",
+        "content": "I believe in building software that serves people, not the other way around. This means:",
+        "list": {
+          "item1": "Clean architecture that scales with your needs",
+          "item2": "Code that other developers can understand and maintain",
+          "item3": "Solutions that solve real problems, not imaginary ones",
+          "item4": "Honest assessment of trade-offs and complexity"
+        },
+        "conclusion": "I'm not interested in hype or overengineering. I'm interested in building things that work, that last, and that make people's lives a little bit better."
+      }
+    }
+  },
+  "cv": {
+    "title": "Curriculum Vitae",
+    "subtitle": "15+ years of full-stack development experience",
+    "downloadPdf": "Download PDF",
+    "experience": "Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "jobs": {
+      "senior": {
+        "title": "Senior Full-Stack Developer",
+        "company": "Various Clients",
+        "period": "2018 - Present",
+        "description": "Leading development of web and mobile applications, architecting cloud solutions, and mentoring teams."
+      },
+      "fullstack": {
+        "title": "Full-Stack Developer",
+        "company": "Technology Companies",
+        "period": "2012 - 2018",
+        "description": "Building scalable web applications, implementing CI/CD pipelines, and contributing to open source."
+      },
+      "web": {
+        "title": "Web Developer",
+        "company": "Digital Agencies",
+        "period": "2008 - 2012",
+        "description": "Creating websites and web applications for diverse clients across multiple industries."
+      }
+    },
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "cloud": "Cloud & DevOps",
+      "tools": "Tools"
+    }
+  },
+  "contact": {
+    "title": "Let's Talk",
+    "description": "Have a project in mind? I'd love to hear about it.",
+    "subTitle": "Contact Form",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "sending": "Sending..."
+    },
+      "socials": {
+        "title": "Or find me on",
+        "github": "GitHub",
+        "linkedin": "LinkedIn"
+      },
+    "success": "Message sent successfully!",
+    "error": "Failed to send message. Please try again."
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Thoughts on software development, architecture, and building products.",
+    "readMore": "Read More",
+    "publishedOn": "Published on {date}",
+    "readingTime": "{minutes} min read",
+    "back": "← Back to Blog",
+    "empty": "No posts yet. Check back soon!",
+    "placeholder": {
+      "title": "MDX content would be rendered here.",
+      "subtitle": "The raw content is available in the post object."
+    }
+  }
+}

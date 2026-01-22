@@ -1,0 +1,158 @@
+{
+  "meta": {
+    "locale": "cs",
+    "name": "Čeština"
+  },
+  "common": {
+    "siteName": "Vít Rozsíval",
+    "siteDescription": "Full-stack vývojář s 15+ lety zkušeností. Technická hloubka s kreativním přesahem.",
+    "navigation": {
+      "home": "Domů",
+      "story": "Story",
+      "cv": "CV",
+      "contact": "Kontakt",
+      "blog": "Blog"
+    },
+    "footer": {
+      "copyright": "© {year} Vít Rozsíval. Všechna práva vyhrazena.",
+      "builtWith": "Vytvořeno s ❤️ pomocí <link>Antigravity</link>"
+    }
+  },
+  "home": {
+    "hero": {
+      "greeting": "Ahoj, jsem Vít 👋",
+      "title": "Full-Stack Vývojář",
+      "subtitle": "Už přes 15 let stavím weby, mobilní appky a cloudová řešení",
+      "tagline": "Kód, který dává smysl. Spojuji technickou expertízu s citem pro produkt. Záleží mi na čisté architektuře a udržitelnosti — stavím věci, které fungují a slouží lidem, ne jen hypu.",
+      "cta": {
+        "primary": "Co dělám",
+        "secondary": "Napište mi"
+      }
+    },
+    "highlights": {
+      "title": "Co ode mě čekat",
+      "items": {
+        "architecture": {
+          "title": "Čistá architektura",
+          "description": "Systémy navržené tak, aby se daly udržovat a rozvíjet roky, ne jen týdny."
+        },
+        "fullstack": {
+          "title": "Full-Stack expertíza",
+          "description": "Od databáze po deployment, od backendu po pixel-perfect UI."
+        },
+        "creative": {
+          "title": "Kreativní přesah",
+          "description": "Technická řešení, která chápou design a potřeby uživatele."
+        },
+        "pragmatic": {
+          "title": "Pragmatický přístup",
+          "description": "Řeším reálné problémy. Žádný overengineering, žádné honění buzzwordů."
+        }
+      }
+    },
+    "latestPosts": {
+      "title": "Nejnovější myšlenky",
+      "viewAll": "Všechny články"
+    },
+    "finalCta": {
+      "title": "Chcete spolupracovat?",
+      "description": "Jsem otevřený zajímavým projektům. Pojďme vytvořit něco, co má smysl."
+    }
+  },
+  "story": {
+    "title": "Můj příběh",
+    "intro": "Cesta skrze kód, design a neustálé objevování nového.",
+    "sections": {
+      "beginning": {
+        "title": "Začátky",
+        "content": "Moje cesta k vývoji softwaru začala před více než 15 lety, poháněná zvědavostí, jak věci fungují, a touhou tvořit. Co začalo jako hraní si s webovými stránkami, se rychle změnilo ve vášeň pro budování digitálních produktů."
+      },
+      "evolution": {
+        "title": "Technická evoluce",
+        "content1": "V průběhu let jsem pracoval napříč celým stackem — od ladění pixel-perfect UI až po navrhování robustních backendových systémů a cloudových architektur. Viděl jsem technologie přicházet a odcházet a naučil jsem se, že základy jsou důležitější než nejnovější trendy.",
+        "content2": "Můj technický toolkit zahrnuje React, Next.js, TypeScript, Node.js a různé cloudové platformy. Ale co je důležitější, chápu, kdy který nástroj použít a kdy věci raději zjednodušit."
+      },
+      "roots": {
+        "title": "Kreativní kořeny",
+        "content": "Předtím, než jsem se ponořil hluboko do kódu, jsem strávil roky v kreativních oborech. Toto zázemí ovlivňuje, jak dnes přistupuji k řešení problémů — s empatií pro uživatele, smyslem pro detail a citem pro elegantní řešení."
+      },
+      "philosophy": {
+        "title": "Moje filozofie",
+        "content": "Věřím v budování softwaru, který slouží lidem, ne naopak. To znamená:",
+        "list": {
+          "item1": "Čistá architektura, která roste s vašimi potřebami",
+          "item2": "Kód, kterému rozumí a snadno ho udrží ostatní vývojáři",
+          "item3": "Řešení reálných problémů, ne těch vymyšlených",
+          "item4": "Upřímné zhodnocení kompromisů a složitosti"
+        },
+        "conclusion": "Nezajímá mě hype ani overengineering. Zajímá mě budování věcí, které fungují, vydrží a dělají lidem život o něco lepším."
+      }
+    }
+  },
+  "cv": {
+    "title": "Curriculum Vitae",
+    "subtitle": "Už přes 15 let zkušeností s vývojem full-stack aplikací",
+    "downloadPdf": "Stáhnout PDF",
+    "experience": "Zkušenosti",
+    "education": "Vzdělání",
+    "skills": "Skillset",
+    "jobs": {
+      "senior": {
+        "title": "Senior Full-Stack Vývojář",
+        "company": "Různí klienti",
+        "period": "2018 - Současnost",
+        "description": "Vedení vývoje webových a mobilních aplikací, architektura cloudových řešení a mentoring týmů."
+      },
+      "fullstack": {
+        "title": "Full-Stack Vývojář",
+        "company": "Technologické firmy",
+        "period": "2012 - 2018",
+        "description": "Budování škálovatelných webových aplikací, implementace CI/CD a příspěvky do open source."
+      },
+      "web": {
+        "title": "Web Developer",
+        "company": "Digitální agentury",
+        "period": "2008 - 2012",
+        "description": "Tvorba webů a aplikací pro různorodé klienty napříč mnoha odvětvími."
+      }
+    },
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "cloud": "Cloud & DevOps",
+      "tools": "Nástroje"
+    }
+  },
+  "contact": {
+    "title": "Napište mi",
+    "description": "Máte zajímavý projekt nebo nápad? Dejte mi vědět, rád to s vámi proberu.",
+    "subTitle": "Kontaktní formulář",
+    "form": {
+      "name": "Jméno",
+      "email": "Email",
+      "message": "Zpráva",
+      "submit": "Odeslat",
+      "sending": "Odesílám..."
+    },
+      "socials": {
+        "title": "Nebo mě najdete na",
+        "github": "GitHub",
+        "linkedin": "LinkedIn"
+      },
+    "success": "Díky! Zpráva letí ke mně.",
+    "error": "Něco se pokazilo. Zkuste to prosím znovu."
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Postřehy o vývoji, architektuře a tech světě.",
+    "readMore": "Číst dál",
+    "publishedOn": "{date}",
+    "readingTime": "{minutes} min čtení",
+    "back": "← Zpátky na blog",
+    "empty": "Zatím žádné články. Zkuste to brzy!",
+    "placeholder": {
+      "title": "Zde bude MDX obsah.",
+      "subtitle": "Surový obsah je dostupný v objektu příspěvku."
+    }
+  }
+}
