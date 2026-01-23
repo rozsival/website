@@ -25,6 +25,9 @@
     "ts": "turbo run ts ts:root --no-daemon",
     "ts:root": "tsc --project tsconfig.json"
   },
+  "dependencies": {
+    "@types/node": "^24.10.9"
+  },
   "devDependencies": {
     "@apitree.cz/cli": "0.5.2",
     "@apitree.cz/eslint-config": "0.7.8",

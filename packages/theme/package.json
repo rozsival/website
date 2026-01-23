@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "clsx": "2.1.1",
-    "tailwind-merge": "3.3.0"
+    "tailwind-merge": "3.4.0"
   },
   "devDependencies": {
     "@types/react": "19.2.9",
