@@ -4,14 +4,14 @@ Shadcn-inspired component library built on Radix UI primitives.
 
 ## Components
 
-| Component | Description |
-|-----------|-------------|
-| Button | Primary action element with variants |
-| Card | Content container with header/footer |
-| Input | Text input field |
-| Textarea | Multi-line text input |
-| Link | Styled anchor element |
-| Navigation | Responsive navigation system |
+| Component  | Description                          |
+| ---------- | ------------------------------------ |
+| Button     | Primary action element with variants |
+| Card       | Content container with header/footer |
+| Input      | Text input field                     |
+| Textarea   | Multi-line text input                |
+| Link       | Styled anchor element                |
+| Navigation | Responsive navigation system         |
 
 ## Usage
 
@@ -62,7 +62,7 @@ import {
 
 export function Header() {
   const { open, setOpen } = useNavigation();
-  
+
   return (
     <Navigation>
       <NavigationBrand>Logo</NavigationBrand>

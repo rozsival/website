@@ -1,10 +1,5 @@
 {
   "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "noEmit": false,
-    "composite": true,
-    "declaration": true,
-    "declarationMap": true,
-    "incremental": true
-  }
+  "compilerOptions": { "noEmit": false },
+  "references": [{ "path": "../theme/tsconfig.build.json" }]
 }

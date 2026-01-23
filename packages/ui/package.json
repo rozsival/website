@@ -41,12 +41,18 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc --project tsconfig.build.json",
-    "dev": "tsc --project tsconfig.build.json --watch",
-    "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist .turbo",
+    "prebuild": "del dist tsconfig.build.tsbuildinfo",
+    "build": "tsc --build tsconfig.build.json",
+    "cleanup": "del .eslintcache .turbo tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo dist node_modules",
+    "fix": "turbo run ts format:fix lint:fix --no-daemon",
+    "format": "prettier --ignore-path .prettierignore --check \"./**/*.{js,json,md,ts,tsx}\"",
+    "format:fix": "pnpm run format --write",
+    "lint": "eslint --cache .",
+    "lint:fix": "pnpm run lint --fix",
+    "qa": "turbo run ts format lint --no-daemon",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "ts": "tsc --build"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "1.1.15",
@@ -57,16 +63,15 @@
     "lucide-react": "0.562.0",
     "tailwind-merge": "3.3.0"
   },
-  "peerDependencies": {
-    "@rozsival/theme": "workspace:*",
-    "react": "19.2.3"
-  },
   "devDependencies": {
     "@rozsival/theme": "workspace:*",
-    "@rozsival/typescript-config": "workspace:*",
     "@types/react": "19.2.9",
     "react": "19.2.3",
     "typescript": "5.9.3",
     "vitest": "4.0.18"
+  },
+  "peerDependencies": {
+    "@rozsival/theme": "workspace:*",
+    "react": "19.2.3"
   }
 }
