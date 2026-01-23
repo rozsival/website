@@ -34,6 +34,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
 
+      - name: Workspace check
+        run: pnpm run check
+
       - name: Lint check
         run: pnpm turbo run lint --concurrency=5 --no-daemon
 
