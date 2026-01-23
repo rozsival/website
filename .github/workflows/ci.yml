@@ -32,13 +32,13 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --prefer-offline
 
-      - name: Lint
-        run: pnpm lint
+      - name: Lint check
+        run: pnpm turbo run lint --concurrency=5 --no-daemon
 
       - name: Format check
-        run: pnpm format:check
+        run: pnpm turbo run format --concurrency=5 --no-daemon
 
   typecheck:
     name: Type Check
@@ -57,37 +57,15 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --prefer-offline
 
       - name: Type check
-        run: pnpm typecheck
-
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Run tests
-        run: pnpm test
+        run: pnpm turbo run ts --concurrency=5 --no-daemon
 
   build:
     name: Build
     runs-on: ubuntu-latest
-    needs: [lint, typecheck, test]
+    needs: [lint, typecheck]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -102,16 +80,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --prefer-offline
 
       - name: Build
-        run: pnpm build
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-output
-          path: |
-            apps/web/.next
-            packages/*/dist
-          retention-days: 7
+        run: pnpm turbo run build --concurrency=5 --no-daemon

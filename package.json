@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "turbo run build --no-daemon",
+    "build:packages": "turbo run build --filter=\"./packages/*\" --no-daemon",
     "check": "manypkg check",
     "cleanup": "turbo run cleanup --no-daemon",
     "postcleanup": "del .eslintcache .turbo tsconfig.tsbuildinfo node_modules",
