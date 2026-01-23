@@ -1,16 +1,16 @@
-import type { Metadata } from 'next';
 import { getIntl, type Locale } from '@rozsival/i18n/server';
 import { Button, Card, CardContent, CardHeader, CardTitle } from '@rozsival/ui';
 import { FileText, Briefcase, Wrench } from 'lucide-react';
+import type { Metadata } from 'next';
 
-type PageProps = {
+interface PageProps {
   params: Promise<{ locale: string }>;
-};
+}
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   const intl = getIntl(locale as Locale);
-  
+
   return {
     title: intl.formatMessage({ id: 'cv.title' }),
   };
@@ -19,9 +19,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function CVPage({ params }: PageProps) {
   const { locale } = await params;
   const intl = getIntl(locale as Locale);
-  
+
   const t = (id: string) => intl.formatMessage({ id });
-  
+
   const experience = [
     {
       title: t('cv.jobs.senior.title'),
@@ -42,14 +42,14 @@ export default async function CVPage({ params }: PageProps) {
       description: t('cv.jobs.web.description'),
     },
   ];
-  
+
   const skills = {
     frontend: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'React Native'],
     backend: ['Node.js', 'Python', 'PostgreSQL', 'Redis', 'GraphQL'],
     cloud: ['AWS', 'Vercel', 'Docker', 'Kubernetes', 'Terraform'],
     tools: ['Git', 'GitHub Actions', 'Figma', 'Linear', 'Notion'],
   };
-  
+
   return (
     <div className="py-16 md:py-24">
       <div className="container mx-auto px-4">
@@ -60,15 +60,11 @@ export default async function CVPage({ params }: PageProps) {
                 <FileText className="mr-3 h-10 w-10 text-primary" />
                 {t('cv.title')}
               </h1>
-              <p className="mt-2 text-lg text-muted-foreground">
-                {t('cv.subtitle')}
-              </p>
+              <p className="mt-2 text-lg text-muted-foreground">{t('cv.subtitle')}</p>
             </div>
-            <Button size="lg">
-              {t('cv.downloadPdf')}
-            </Button>
+            <Button size="lg">{t('cv.downloadPdf')}</Button>
           </div>
-          
+
           {/* Experience Section */}
           <section className="mb-16">
             <h2 className="mb-6 flex items-center text-2xl font-semibold">
@@ -81,9 +77,7 @@ export default async function CVPage({ params }: PageProps) {
                   <CardHeader>
                     <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                       <CardTitle className="text-xl">{job.title}</CardTitle>
-                      <span className="text-sm text-muted-foreground">
-                        {job.period}
-                      </span>
+                      <span className="text-sm text-muted-foreground">{job.period}</span>
                     </div>
                     <p className="text-muted-foreground">{job.company}</p>
                   </CardHeader>
@@ -94,7 +88,7 @@ export default async function CVPage({ params }: PageProps) {
               ))}
             </div>
           </section>
-          
+
           {/* Skills Section */}
           <section>
             <h2 className="mb-6 flex items-center text-2xl font-semibold">
@@ -119,7 +113,7 @@ export default async function CVPage({ params }: PageProps) {
                   </div>
                 </CardContent>
               </Card>
-              
+
               <Card>
                 <CardHeader>
                   <CardTitle>{t('cv.categories.backend')}</CardTitle>
@@ -137,7 +131,7 @@ export default async function CVPage({ params }: PageProps) {
                   </div>
                 </CardContent>
               </Card>
-              
+
               <Card>
                 <CardHeader>
                   <CardTitle>{t('cv.categories.cloud')}</CardTitle>
@@ -155,7 +149,7 @@ export default async function CVPage({ params }: PageProps) {
                   </div>
                 </CardContent>
               </Card>
-              
+
               <Card>
                 <CardHeader>
                   <CardTitle>{t('cv.categories.tools')}</CardTitle>

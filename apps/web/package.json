@@ -6,12 +6,16 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "prebuild": "del .next tsconfig.tsbuildinfo",
     "build": "next build",
+    "cleanup": "del .eslintcache .next .turbo node_modules tsconfig.tsbuildinfo",
+    "dev": "next dev",
+    "format": "prettier --ignore-path .prettierignore --check \"./**/*.{js,json,md,mdx,ts,tsx}\"",
+    "format:fix": "pnpm run format --write",
+    "lint": "eslint --cache .",
+    "lint:fix": "pnpm run lint --fix",
     "start": "next start",
-    "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
-    "clean": "rm -rf .next .turbo"
+    "ts": "tsc --noEmit"
   },
   "dependencies": {
     "@mdx-js/loader": "3.1.0",
@@ -27,8 +31,6 @@
     "react-dom": "19.2.3"
   },
   "devDependencies": {
-    "@rozsival/eslint-config": "workspace:*",
-    "@rozsival/typescript-config": "workspace:*",
     "@tailwindcss/postcss": "4.1.18",
     "@types/mdx": "2.0.13",
     "@types/node": "22.15.4",

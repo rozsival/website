@@ -1,19 +1,20 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
 import path from 'node:path';
+
 import { getIntl, type Locale } from '@rozsival/i18n/server';
 import { getAllPosts } from '@rozsival/mdx';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@rozsival/ui';
 import { PenTool } from 'lucide-react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
 
-type PageProps = {
+interface PageProps {
   params: Promise<{ locale: string }>;
-};
+}
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   const intl = getIntl(locale as Locale);
-  
+
   return {
     title: intl.formatMessage({ id: 'blog.title' }),
     description: intl.formatMessage({ id: 'blog.description' }),
@@ -23,14 +24,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function BlogPage({ params }: PageProps) {
   const { locale } = await params;
   const intl = getIntl(locale as Locale);
-  
-  const t = (id: string, values?: Record<string, string | number>) =>
-    intl.formatMessage({ id }, values);
-  
+
+  const t = (id: string, values?: Record<string, number | string>) => intl.formatMessage({ id }, values);
+
   // Get all blog posts
   const postsDirectory = path.join(process.cwd(), 'content', 'blog');
   const posts = await getAllPosts(postsDirectory, locale);
-  
+
   return (
     <div className="py-16 md:py-24">
       <div className="container mx-auto px-4">
@@ -40,17 +40,13 @@ export default async function BlogPage({ params }: PageProps) {
               <PenTool className="mr-3 h-10 w-10 text-primary" />
               {t('blog.title')}
             </h1>
-            <p className="text-lg text-muted-foreground">
-              {t('blog.description')}
-            </p>
+            <p className="text-lg text-muted-foreground">{t('blog.description')}</p>
           </div>
-          
+
           {posts.length === 0 ? (
             <Card>
               <CardContent className="py-12 text-center">
-                <p className="text-muted-foreground">
-                  {t('blog.empty')}
-                </p>
+                <p className="text-muted-foreground">{t('blog.empty')}</p>
               </CardContent>
             </Card>
           ) : (
@@ -71,26 +67,19 @@ export default async function BlogPage({ params }: PageProps) {
                         <span>•</span>
                         <span>{t('blog.readingTime', { minutes: post.readingTime })}</span>
                       </div>
-                      <CardTitle className="text-2xl">
-                        {post.frontmatter.title}
-                      </CardTitle>
+                      <CardTitle className="text-2xl">{post.frontmatter.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <CardDescription className="text-base">
-                        {post.frontmatter.description}
-                      </CardDescription>
-                      {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
+                      <CardDescription className="text-base">{post.frontmatter.description}</CardDescription>
+                      {post.frontmatter.tags && post.frontmatter.tags.length > 0 ? (
                         <div className="mt-4 flex flex-wrap gap-2">
                           {post.frontmatter.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium"
-                            >
+                            <span key={tag} className="rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium">
                               {tag}
                             </span>
                           ))}
                         </div>
-                      )}
+                      ) : null}
                     </CardContent>
                   </Card>
                 </Link>
