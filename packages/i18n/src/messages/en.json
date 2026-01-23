@@ -134,11 +134,11 @@
       "submit": "Send Message",
       "sending": "Sending..."
     },
-      "socials": {
-        "title": "Or find me on",
-        "github": "GitHub",
-        "linkedin": "LinkedIn"
-      },
+    "socials": {
+      "title": "Or find me on",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    },
     "success": "Message sent successfully!",
     "error": "Failed to send message. Please try again."
   },

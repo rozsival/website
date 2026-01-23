@@ -17,10 +17,10 @@ import { getIntl, formatMessage, type Locale } from '@rozsival/i18n/server';
 export default async function Page({ params }: { params: { locale: Locale } }) {
   const intl = await getIntl(params.locale);
   const title = intl.formatMessage({ id: 'home.hero.title' });
-  
+
   // Or use the helper function
   const subtitle = await formatMessage(params.locale, 'home.hero.subtitle');
-  
+
   return <h1>{title}</h1>;
 }
 ```
@@ -34,10 +34,8 @@ import { useMessages } from '@rozsival/i18n/client';
 
 export function Hero() {
   const { t } = useMessages();
-  
-  return (
-    <h1>{t('home.hero.title')}</h1>
-  );
+
+  return <h1>{t('home.hero.title')}</h1>;
 }
 ```
 
@@ -56,7 +54,7 @@ export default async function LocaleLayout({
   params: { locale: Locale };
 }) {
   const intl = await getIntl(params.locale);
-  
+
   return (
     <I18nProvider locale={params.locale} messages={intl.messages}>
       {children}

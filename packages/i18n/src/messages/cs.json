@@ -134,11 +134,11 @@
       "submit": "Odeslat",
       "sending": "Odesílám..."
     },
-      "socials": {
-        "title": "Nebo mě najdete na",
-        "github": "GitHub",
-        "linkedin": "LinkedIn"
-      },
+    "socials": {
+      "title": "Nebo mě najdete na",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    },
     "success": "Díky! Zpráva letí ke mně.",
     "error": "Něco se pokazilo. Zkuste to prosím znovu."
   },
