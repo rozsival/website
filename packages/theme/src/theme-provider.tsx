@@ -1,23 +1,15 @@
 'use client';
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 
-type Theme = 'light' | 'dark' | 'system';
-type ResolvedTheme = 'light' | 'dark';
+export type Theme = 'dark' | 'light' | 'system';
+export type ResolvedTheme = 'dark' | 'light';
 
-type ThemeContextValue = {
+interface ThemeContextValue {
   theme: Theme;
   resolvedTheme: ResolvedTheme;
   setTheme: (theme: Theme) => void;
-};
+}
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
@@ -37,10 +29,10 @@ function getStoredTheme(): Theme {
   return 'system';
 }
 
-type ThemeProviderProps = {
+interface ThemeProviderProps {
   children: ReactNode;
   defaultTheme?: Theme;
-};
+}
 
 export function ThemeProvider({ children, defaultTheme = 'system' }: ThemeProviderProps) {
   const [theme, setThemeState] = useState<Theme>(defaultTheme);
@@ -67,10 +59,14 @@ export function ThemeProvider({ children, defaultTheme = 'system' }: ThemeProvid
     if (theme !== 'system') return;
 
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handler = () => setResolvedTheme(getSystemTheme());
+    const handler = () => {
+      setResolvedTheme(getSystemTheme());
+    };
 
     mediaQuery.addEventListener('change', handler);
-    return () => mediaQuery.removeEventListener('change', handler);
+    return () => {
+      mediaQuery.removeEventListener('change', handler);
+    };
   }, [theme]);
 
   const setTheme = useCallback((newTheme: Theme) => {
@@ -78,10 +74,7 @@ export function ThemeProvider({ children, defaultTheme = 'system' }: ThemeProvid
     localStorage.setItem(STORAGE_KEY, newTheme);
   }, []);
 
-  const value = useMemo(
-    () => ({ theme, resolvedTheme, setTheme }),
-    [theme, resolvedTheme, setTheme]
-  );
+  const value = useMemo(() => ({ theme, resolvedTheme, setTheme }), [theme, resolvedTheme, setTheme]);
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }

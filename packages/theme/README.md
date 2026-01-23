@@ -24,11 +24,7 @@ import '@rozsival/theme/styles.css';
 import { ThemeProvider } from '@rozsival/theme';
 
 export default function RootLayout({ children }) {
-  return (
-    <ThemeProvider defaultTheme="system">
-      {children}
-    </ThemeProvider>
-  );
+  return <ThemeProvider defaultTheme="system">{children}</ThemeProvider>;
 }
 ```
 
@@ -39,7 +35,7 @@ import { useTheme } from '@rozsival/theme';
 
 export function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme();
-  
+
   return (
     <button onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}>
       Toggle Theme (current: {resolvedTheme})
@@ -54,7 +50,7 @@ export function ThemeToggle() {
 import { cn } from '@rozsival/theme';
 
 // Merge class names with Tailwind conflict resolution
-<div className={cn('p-4 bg-primary', isActive && 'bg-accent')} />
+<div className={cn('p-4 bg-primary', isActive && 'bg-accent')} />;
 ```
 
 ## Design Tokens

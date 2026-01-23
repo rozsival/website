@@ -18,25 +18,31 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc --project tsconfig.build.json && cp src/styles.css dist/styles.css",
-    "dev": "tsc --project tsconfig.build.json --watch",
-    "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist .turbo",
+    "prebuild": "del dist tsconfig.build.tsbuildinfo",
+    "build": "tsc --build tsconfig.build.json",
+    "postbuild": "pnpx cpy-cli --flat src/styles.css dist",
+    "cleanup": "del .eslintcache .turbo tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo dist node_modules",
+    "fix": "turbo run ts format:fix lint:fix --no-daemon",
+    "format": "prettier --ignore-path .prettierignore --check \"./**/*.{js,json,md,ts,tsx}\"",
+    "format:fix": "pnpm run format --write",
+    "lint": "eslint --cache .",
+    "lint:fix": "pnpm run lint --fix",
+    "qa": "turbo run ts format lint --no-daemon",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "ts": "tsc --build"
   },
   "dependencies": {
     "clsx": "2.1.1",
     "tailwind-merge": "3.3.0"
   },
-  "peerDependencies": {
-    "react": "19.2.3"
-  },
   "devDependencies": {
-    "@rozsival/typescript-config": "workspace:*",
     "@types/react": "19.2.9",
     "react": "19.2.3",
     "typescript": "5.9.3",
     "vitest": "4.0.18"
+  },
+  "peerDependencies": {
+    "react": "19.2.3"
   }
 }
