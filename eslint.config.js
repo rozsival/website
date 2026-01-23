@@ -16,4 +16,11 @@ export default defineConfig(
       'react/jsx-props-no-spreading': 'off',
     },
   },
+  {
+    files: ['apps/web/next-env.d.ts'],
+    rules: {
+      'import/no-unresolved': 'off',
+      'import/extensions': 'off',
+    },
+  },
 );

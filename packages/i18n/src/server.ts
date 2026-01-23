@@ -21,8 +21,9 @@ const cache = createIntlCache();
 const intlCache = new Map<Locale, IntlShape>();
 
 // Flatten nested message object to dot-notation keys
-function flattenMessages(object: Record<string, unknown>, prefix = ''): Record<string, string> {
+function flattenMessages(object: Record<string, unknown> | null | undefined, prefix = ''): Record<string, string> {
   const result: Record<string, string> = {};
+  if (!object) return result;
 
   for (const [key, value] of Object.entries(object)) {
     const fullKey = prefix ? `${prefix}.${key}` : key;
@@ -45,12 +46,13 @@ function getMessages(locale: Locale): Record<string, string> {
 
 // Get or create an Intl instance for a locale
 export function getIntl(locale: Locale): IntlShape {
-  const cached = intlCache.get(locale);
+  const validatedLocale = isValidLocale(locale) ? locale : defaultLocale;
+  const cached = intlCache.get(validatedLocale);
   if (cached) return cached;
 
-  const messages = getMessages(locale);
-  const intl = createIntl({ locale, messages }, cache);
-  intlCache.set(locale, intl);
+  const messages = getMessages(validatedLocale);
+  const intl = createIntl({ locale: validatedLocale, messages }, cache);
+  intlCache.set(validatedLocale, intl);
 
   return intl;
 }
@@ -75,7 +77,8 @@ export function getPreferredLocale(acceptLanguage: string | null): Locale {
 
 // Format a message on the server
 export function formatMessage(locale: Locale, id: string, values?: Record<string, number | string>): string {
-  const intl = getIntl(locale);
+  const validatedLocale = isValidLocale(locale) ? locale : defaultLocale;
+  const intl = getIntl(validatedLocale);
 
   return intl.formatMessage({ id, defaultMessage: get(enMessages, id, '') }, values);
 }

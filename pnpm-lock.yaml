@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      '@types/node':
-        specifier: ^24.10.9
-        version: 24.10.9
     devDependencies:
       '@apitree.cz/cli':
         specifier: 0.5.2
@@ -33,6 +29,9 @@ importers:
       '@manypkg/cli':
         specifier: 0.25.1
         version: 0.25.1
+      '@types/node':
+        specifier: 24.10.9
+        version: 24.10.9
       '@typescript-eslint/eslint-plugin':
         specifier: 8.53.1
         version: 8.53.1(@typescript-eslint/parser@8.53.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)

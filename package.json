@@ -5,7 +5,6 @@
   "scripts": {
     "build": "turbo run build --no-daemon",
     "check": "manypkg check",
-    "clean": "turbo run clean --no-daemon",
     "cleanup": "turbo run cleanup --no-daemon",
     "postcleanup": "del .eslintcache .turbo tsconfig.tsbuildinfo node_modules",
     "dev": "turbo run dev",
@@ -25,9 +24,6 @@
     "ts": "turbo run ts ts:root --no-daemon",
     "ts:root": "tsc --project tsconfig.json"
   },
-  "dependencies": {
-    "@types/node": "^24.10.9"
-  },
   "devDependencies": {
     "@apitree.cz/cli": "0.5.2",
     "@apitree.cz/eslint-config": "0.7.8",
@@ -36,6 +32,7 @@
     "@commitlint/cli": "20.3.1",
     "@commitlint/config-conventional": "20.3.1",
     "@manypkg/cli": "0.25.1",
+    "@types/node": "24.10.9",
     "@typescript-eslint/eslint-plugin": "8.53.1",
     "@typescript-eslint/parser": "8.53.1",
     "del-cli": "7.0.0",

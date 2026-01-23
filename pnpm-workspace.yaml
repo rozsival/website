@@ -1,12 +1,16 @@
 packages:
-  - "apps/*"
-  - "packages/*"
+  - apps/*
+  - packages/*
+
+autoInstallPeers: false
+
+engineStrict: true
 
 onlyBuiltDependencies:
   - esbuild
   - sharp
+  - unrs-resolver
 
-engineStrict: true
-autoInstallPeers: false
-strictPeerDependencies: true
 saveExact: true
+
+strictPeerDependencies: true
