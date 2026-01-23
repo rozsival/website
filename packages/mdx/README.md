@@ -33,7 +33,7 @@ const post = await getPostBySlug('./content/blog', 'my-first-post');
 import { mdxComponents } from '@rozsival/mdx/components';
 
 // Use with your MDX renderer
-<MDXContent components={mdxComponents} />
+<MDXContent components={mdxComponents} />;
 ```
 
 ## Post Frontmatter

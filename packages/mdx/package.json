@@ -21,26 +21,31 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist .turbo",
+    "prebuild": "del dist tsconfig.build.tsbuildinfo",
+    "build": "tsc --build tsconfig.build.json",
+    "cleanup": "del .eslintcache .turbo tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo dist node_modules",
+    "fix": "turbo run ts format:fix lint:fix --no-daemon",
+    "format": "prettier --ignore-path .prettierignore --check \"./**/*.{js,json,md,ts,tsx}\"",
+    "format:fix": "pnpm run format --write",
+    "lint": "eslint --cache .",
+    "lint:fix": "pnpm run lint --fix",
+    "qa": "turbo run ts format lint --no-daemon",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "ts": "tsc --build"
   },
   "dependencies": {
     "gray-matter": "4.0.3",
     "reading-time": "1.5.0"
   },
-  "peerDependencies": {
-    "react": "19.2.3"
-  },
   "devDependencies": {
-    "@rozsival/typescript-config": "workspace:*",
     "@types/node": "22.15.4",
     "@types/react": "19.2.9",
     "react": "19.2.3",
     "typescript": "5.9.3",
     "vitest": "4.0.18"
+  },
+  "peerDependencies": {
+    "react": "19.2.3"
   }
 }

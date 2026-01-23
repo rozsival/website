@@ -12,7 +12,7 @@ type CodeProps = ComponentPropsWithoutRef<'code'>;
 // Heading components with anchor links
 function H1({ children, id, ...props }: HeadingProps) {
   return (
-    <h1 id={id} className="scroll-m-20 text-4xl font-bold tracking-tight" {...props}>
+    <h1 className="scroll-m-20 text-4xl font-bold tracking-tight" id={id} {...props}>
       {children}
     </h1>
   );
@@ -20,11 +20,7 @@ function H1({ children, id, ...props }: HeadingProps) {
 
 function H2({ children, id, ...props }: HeadingProps) {
   return (
-    <h2
-      id={id}
-      className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0"
-      {...props}
-    >
+    <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0" id={id} {...props}>
       {children}
     </h2>
   );
@@ -32,7 +28,7 @@ function H2({ children, id, ...props }: HeadingProps) {
 
 function H3({ children, id, ...props }: HeadingProps) {
   return (
-    <h3 id={id} className="scroll-m-20 text-2xl font-semibold tracking-tight" {...props}>
+    <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight" id={id} {...props}>
       {children}
     </h3>
   );
@@ -50,8 +46,8 @@ function A({ children, href, ...props }: AnchorProps) {
   const isExternal = typeof href === 'string' && href.startsWith('http');
   return (
     <a
-      href={href}
       className="font-medium text-primary underline underline-offset-4"
+      href={href}
       {...(isExternal && { target: '_blank', rel: 'noopener noreferrer' })}
       {...props}
     >
@@ -62,10 +58,7 @@ function A({ children, href, ...props }: AnchorProps) {
 
 function Pre({ children, ...props }: PreProps) {
   return (
-    <pre
-      className="mb-4 mt-6 overflow-x-auto rounded-lg border bg-muted p-4"
-      {...props}
-    >
+    <pre className="mb-4 mt-6 overflow-x-auto rounded-lg border bg-muted p-4" {...props}>
       {children}
     </pre>
   );
@@ -73,10 +66,7 @@ function Pre({ children, ...props }: PreProps) {
 
 function Code({ children, ...props }: CodeProps) {
   return (
-    <code
-      className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm"
-      {...props}
-    >
+    <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm" {...props}>
       {children}
     </code>
   );
