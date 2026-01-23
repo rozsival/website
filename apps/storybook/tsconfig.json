@@ -1,8 +1,9 @@
 {
-  "extends": "@rozsival/typescript-config/react.json",
-  "compilerOptions": {
-    "noEmit": true
-  },
-  "include": ["stories", ".storybook"],
-  "exclude": ["node_modules", "storybook-static"]
+  "extends": "@apitree.cz/ts-config/app",
+  "include": ["**/*.js", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "storybook-static"],
+  "references": [
+    { "path": "../../packages/theme/tsconfig.build.json" },
+    { "path": "../../packages/ui/tsconfig.build.json" }
+  ]
 }

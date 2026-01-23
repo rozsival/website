@@ -1,13 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  Button,
-} from '@rozsival/ui';
+import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent, Button } from '@rozsival/ui';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Card> = {
   title: 'Components/Card',

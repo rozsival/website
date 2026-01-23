@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import { Input } from '@rozsival/ui';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Input> = {
   title: 'Components/Input',
@@ -52,10 +52,10 @@ export const Disabled: Story = {
 export const WithLabel: Story = {
   render: () => (
     <div className="space-y-2">
-      <label htmlFor="email" className="text-sm font-medium">
+      <label className="text-sm font-medium" htmlFor="email">
         Email Address
       </label>
-      <Input id="email" type="email" placeholder="you@example.com" />
+      <Input id="email" placeholder="you@example.com" type="email" />
     </div>
   ),
 };
@@ -63,14 +63,14 @@ export const WithLabel: Story = {
 export const WithError: Story = {
   render: () => (
     <div className="space-y-2">
-      <label htmlFor="email" className="text-sm font-medium">
+      <label className="text-sm font-medium" htmlFor="email">
         Email Address
       </label>
       <Input
-        id="email"
-        type="email"
-        placeholder="you@example.com"
         className="border-red-500 focus-visible:ring-red-500"
+        id="email"
+        placeholder="you@example.com"
+        type="email"
       />
       <p className="text-sm text-red-600">Please enter a valid email address.</p>
     </div>

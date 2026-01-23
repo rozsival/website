@@ -1,5 +1,6 @@
-import type { Preview } from '@storybook/react-vite';
+import type { Theme } from '@rozsival/theme';
 import { ThemeProvider } from '@rozsival/theme';
+import type { Preview } from '@storybook/react-vite';
 import '@rozsival/theme/styles.css';
 import '../styles/globals.css';
 
@@ -32,7 +33,7 @@ const preview: Preview = {
   },
   decorators: [
     (Story, context) => {
-      const theme = context.globals.theme || 'light';
+      const theme = (context.globals.theme || 'light') as Theme;
 
       // Apply theme class to document
       if (typeof document !== 'undefined') {
