@@ -1,34 +1,48 @@
 {
   "name": "rozsival-website",
   "private": true,
-  "packageManager": "pnpm@10.28.1",
-  "engines": {
-    "node": ">=24.0.0",
-    "pnpm": ">=10.0.0"
-  },
+  "type": "module",
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "typecheck": "turbo run typecheck",
-    "test": "turbo run test",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "build": "turbo run build --no-daemon",
     "check": "manypkg check",
-    "clean": "turbo run clean && rm -rf node_modules .turbo",
-    "prepare": "echo 'Ready to develop!'"
+    "clean": "turbo run clean --no-daemon",
+    "cleanup": "turbo run cleanup --no-daemon",
+    "postcleanup": "del .eslintcache .turbo tsconfig.tsbuildinfo node_modules",
+    "dev": "turbo run dev",
+    "fix": "turbo run ts ts:root format:fix format:root:fix lint:fix lint:root:fix --no-daemon",
+    "format": "turbo run format format:root --no-daemon --parallel",
+    "format:fix": "turbo run format:fix format:root:fix --no-daemon --parallel",
+    "format:root": "prettier --ignore-path .prettierignore --check \"./*.{js,json,md,ts}\" \".github/**/*.{yml,yaml}\"",
+    "format:root:fix": "pnpm run format:root --write",
+    "postinstall": "pnpx is-ci || pnpx concurrently --kill-others-on-fail --max-processes 1 --prefix-colors auto \"pnpm manypkg check\" \"pnpm turbo run sync --no-daemon\"",
+    "lint": "turbo run lint lint:root --no-daemon",
+    "lint:fix": "turbo run lint:fix lint:root:fix --no-daemon",
+    "lint:root": "eslint --cache \"./*.{js,ts}\"",
+    "lint:root:fix": "pnpm run lint:root --fix",
+    "qa": "turbo run ts ts:root format format:root lint lint:root --no-daemon",
+    "sync": "apitree sync-project-references",
+    "test": "turbo run test --no-daemon",
+    "ts": "turbo run ts ts:root --no-daemon",
+    "ts:root": "tsc --project tsconfig.json"
   },
   "devDependencies": {
+    "@apitree.cz/cli": "0.5.2",
+    "@apitree.cz/eslint-config": "0.7.8",
+    "@apitree.cz/prettier-config": "0.3.13",
+    "@apitree.cz/ts-config": "0.4.12",
     "@commitlint/cli": "20.3.1",
     "@commitlint/config-conventional": "20.3.1",
     "@manypkg/cli": "0.25.1",
-    "@rozsival/eslint-config": "workspace:*",
     "@typescript-eslint/eslint-plugin": "8.53.1",
     "@typescript-eslint/parser": "8.53.1",
+    "del-cli": "7.0.0",
     "eslint": "9.39.2",
-    "eslint-plugin-formatjs": "6.1.1",
     "prettier": "3.8.1",
     "turbo": "2.7.5",
     "typescript": "5.9.3"
+  },
+  "packageManager": "pnpm@10.28.1",
+  "engines": {
+    "node": "24"
   }
 }

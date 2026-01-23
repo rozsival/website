@@ -37,3 +37,7 @@ __snapshots__/
 
 # Vercel
 .vercel/
+
+# Temporary files
+.eslintcache
+temp/

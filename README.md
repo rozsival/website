@@ -69,16 +69,16 @@ The website runs at http://localhost:3000 and Storybook at http://localhost:6006
 
 ## Packages
 
-| Package | Description |
-|---------|-------------|
-| [@rozsival/web](./apps/web) | Main Next.js website |
-| [@rozsival/storybook](./apps/storybook) | Component showcase |
-| [@rozsival/eslint-config](./packages/eslint-config) | Shared ESLint configuration |
-| [@rozsival/typescript-config](./packages/typescript-config) | Shared TypeScript configs |
-| [@rozsival/theme](./packages/theme) | Design tokens & theming |
-| [@rozsival/i18n](./packages/i18n) | Internationalization |
-| [@rozsival/ui](./packages/ui) | Component library |
-| [@rozsival/mdx](./packages/mdx) | MDX blog utilities |
+| Package                                                     | Description                 |
+| ----------------------------------------------------------- | --------------------------- |
+| [@rozsival/web](./apps/web)                                 | Main Next.js website        |
+| [@rozsival/storybook](./apps/storybook)                     | Component showcase          |
+| [@rozsival/eslint-config](./packages/eslint-config)         | Shared ESLint configuration |
+| [@rozsival/typescript-config](./packages/typescript-config) | Shared TypeScript configs   |
+| [@rozsival/theme](./packages/theme)                         | Design tokens & theming     |
+| [@rozsival/i18n](./packages/i18n)                           | Internationalization        |
+| [@rozsival/ui](./packages/ui)                               | Component library           |
+| [@rozsival/mdx](./packages/mdx)                             | MDX blog utilities          |
 
 ## Supported Locales
 

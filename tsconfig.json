@@ -1,27 +1,5 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "compilerOptions": {
-    "target": "ES2024",
-    "lib": ["ES2024"],
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
-    "verbatimModuleSyntax": true,
-
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "exactOptionalPropertyTypes": true,
-    "forceConsistentCasingInFileNames": true,
-
-    "skipLibCheck": true,
-    "declaration": true,
-    "declarationMap": true,
-    "composite": true,
-    "incremental": true
-  },
-  "exclude": ["node_modules", "dist", ".next", "coverage", ".turbo"]
+  "extends": "@apitree.cz/ts-config",
+  "include": ["./*.js", "./*.ts", "./packages/*/*.config.js"],
+  "exclude": ["node_modules"]
 }

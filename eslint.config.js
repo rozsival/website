@@ -1,19 +1,19 @@
-import { next } from '@rozsival/eslint-config';
-import formatjs from 'eslint-plugin-formatjs';
+import { base, nextjs, react, storybook } from '@apitree.cz/eslint-config';
+import { defineConfig } from 'eslint/config';
 
-export default [
-  { 
-    ignores: ["**/dist/**", "**/.next/**", "**/coverage/**", "**/node_modules/**", "**/storybook-static/**", "apps/storybook/**"] 
-  },
+export default defineConfig(
   {
-    plugins: {
-      formatjs
-    }
+    ignores: ['**/dist/**', '**/.next/**', '**/coverage/**', '**/node_modules/**', '**/storybook-static/**'],
   },
-  ...next,
+  base,
+  react,
+  nextjs(['apps/web']),
+  storybook,
   {
     rules: {
-      "@next/next/no-html-link-for-pages": "off",
-    }
-  }
-];
+      '@next/next/no-html-link-for-pages': 'off',
+      'formatjs/enforce-default-message': 'off',
+      'react/jsx-props-no-spreading': 'off',
+    },
+  },
+);

@@ -1,10 +1,20 @@
 {
-  "$schema": "https://turbo.build/schema.json",
+  "$schema": "https://turborepo.org/schema.json",
+  "ui": "tui",
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**", "storybook-static/**"],
-      "env": ["NODE_ENV"]
+      "outputs": [
+        "dist/**/*",
+        ".next/**",
+        "!.next/cache/**",
+        "storybook-static/**",
+        "tsconfig.tsbuildinfo",
+        "tsconfig.build.tsbuildinfo"
+      ]
+    },
+    "cleanup": {
+      "cache": false
     },
     "dev": {
       "cache": false,
@@ -12,21 +22,49 @@
     },
     "lint": {
       "dependsOn": ["^build"],
+      "outputs": [".eslintcache"]
+    },
+    "lint:fix": {
+      "dependsOn": ["^build"],
+      "outputs": [".eslintcache"]
+    },
+    "format": {
+      "inputs": ["$TURBO_DEFAULT$", "prettier.config.js"],
       "outputs": []
     },
-    "typecheck": {
-      "dependsOn": ["^build"],
+    "format:fix": {
+      "inputs": ["$TURBO_DEFAULT$", "prettier.config.js"],
       "outputs": []
     },
     "test": {
       "dependsOn": ["^build"],
       "outputs": ["coverage/**"]
     },
-    "format": {
+    "ts": {
+      "dependsOn": ["^build"],
+      "outputs": ["tsconfig.tsbuildinfo"]
+    },
+    "//#lint:root": {
+      "dependsOn": ["^build"],
+      "outputs": [".eslintcache"]
+    },
+    "//#lint:root:fix": {
+      "dependsOn": ["^build"],
+      "outputs": [".eslintcache"]
+    },
+    "//#format:root": {
       "outputs": []
     },
-    "format:check": {
+    "//#format:root:fix": {
       "outputs": []
+    },
+    "//#sync": {
+      "inputs": ["packages/*/package.json"],
+      "outputs": ["packages/*/tsconfig.json", "packages/*/tsconfig.build.json"]
+    },
+    "//#ts:root": {
+      "dependsOn": ["^build"],
+      "outputs": ["tsconfig.tsbuildinfo"]
     },
     "clean": {
       "cache": false
