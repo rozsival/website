@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-Personal website for Vít Rozsíval - Turborepo monorepo with Next.js 16, React 19, TypeScript 5.9.
+Personal website for Vít Rozsíval built with modern web technologies in a Turborepo monorepo.
 
 ## Tech Stack
 
@@ -12,7 +12,8 @@ Personal website for Vít Rozsíval - Turborepo monorepo with Next.js 16, React 
 - **Language**: TypeScript 5.9 (strict mode)
 - **Styling**: Tailwind CSS 4
 - **Monorepo**: Turborepo + pnpm workspaces
-- **i18n**: react-intl (formatjs) via `@rozsival/i18n`
+- **i18n**: Custom wrapper around react-intl (`@rozsival/i18n`)
+- **Content**: MDX for blog posts (`@rozsival/mdx`)
 - **Testing**: Vitest, Storybook
 - **Linting**: ESLint 9 (flat config), Prettier
 - **Git Hooks**: Husky + lint-staged + commitlint (conventional)
@@ -32,76 +33,95 @@ Personal website for Vít Rozsíval - Turborepo monorepo with Next.js 16, React 
 │   └── ui/               # Component library (@rozsival/ui)
 ├── .github/workflows/    # CI/CD pipelines
 ├── .husky/               # Git hooks
-├── turbo.json            # Turborepo config
+├── turbo.json            # Turborepo task configuration
 ├── pnpm-workspace.yaml   # Workspace definition
-└── package.json          # Root package
+└── package.json          # Root package with scripts
 ```
 
-## Package Manager
+## Package Manager & Node Version
 
-**pnpm 10.28.1** (required via `.nvmrc` + `packageManager` field)
+**Package Manager**: See `packageManager` field in root `package.json`  
+**Node Version**: See `.nvmrc` and `engines.node` in root `package.json`  
+**pnpm Settings**: See `pnpm-workspace.yaml` for workspace configuration
 
-**Settings** (from `pnpm-workspace.yaml`):
+## Turborepo Task Execution
 
-- `autoInstallPeers: false`
-- `engineStrict: true`
-- `saveExact: true`
-- `strictPeerDependencies: true`
+### ⚠️ CRITICAL: Always use Turborepo for running tasks
 
-## Turborepo
+### Why Turborepo?
 
-**Config**: `turbo.json`
+- **Parallel execution**: Runs tasks across packages simultaneously
+- **Smart caching**: Skips unchanged work based on inputs/outputs
+- **Dependency-aware**: Respects package dependency graph
+- **Remote caching**: Can share cache across team/CI (if configured)
 
-**Guidelines**:
+### Task Configuration
 
-- **Always prefer Turborepo** for workspace tasks: Use `pnpm turbo run <task>` instead of `pnpm run <task>`
-- **Consult turbo.json** to understand available tasks and their configuration
-- **Filter syntax**: Use `--filter=<package>` to run tasks for specific packages
-- **Caching**: Turborepo caches task outputs based on inputs (configured in `turbo.json`)
+**See `turbo.json`** for complete task definitions including:
 
-## Node Version
+- Task dependencies (`dependsOn`)
+- Cache outputs (`outputs`)
+- Cache behavior (`cache`)
+- Input specifications (`inputs`)
 
-**Node 24.x** (enforced via `.nvmrc` and `package.json` engines)
+### Command Patterns
 
-## Key Commands
+```bash
+# Run task across all packages
+pnpm turbo run <task>
+
+# Run task for specific package
+pnpm turbo run <task> --filter=@rozsival/web
+
+# Run task for app and its dependencies
+pnpm turbo run <task> --filter=@rozsival/web...
+
+# Run task for multiple packages
+pnpm turbo run <task> --filter=./packages/*
+```
+
+### Available Root Scripts
+
+**Consult `package.json` scripts section for the complete, up-to-date list.**
+
+Common patterns:
 
 ```bash
 # Development
-pnpm dev                    # Start all dev servers (web:3000, storybook:6006)
+pnpm dev                    # Start all dev servers
+pnpm dev:web                # Start only web app
+pnpm dev:storybook          # Start only storybook
+
+# Building
 pnpm build                  # Build all apps/packages
 pnpm build:packages         # Build packages only
 
-# Quality Assurance
-pnpm qa                     # Type check + lint + format (all packages)
-pnpm fix                    # Auto-fix all issues (format + lint + ts)
-pnpm test                   # Run tests (Vitest)
+# Quality Checks
+pnpm qa                     # Type + lint + format checks
+pnpm fix                    # Auto-fix all issues
+pnpm test                   # Run tests
 
-# Individual Checks
-pnpm ts                     # Type check (TS + root)
-pnpm lint                   # Lint check (ESLint)
-pnpm format                 # Format check (Prettier)
+# Individual Tasks
+pnpm ts                     # Type check
+pnpm lint                   # Lint check
+pnpm format                 # Format check
 
 # Maintenance
-pnpm check                  # manypkg workspace validation
-pnpm sync                   # Sync TS project references (@apitree.cz/cli)
+pnpm check                  # Workspace validation (manypkg)
+pnpm sync                   # Sync TS project references
 pnpm cleanup                # Clean build artifacts
 ```
 
 ## Shared Configurations
 
-Using **@apitree.cz** toolbox for consistency:
+Using **@apitree.cz** toolbox for consistency across projects:
 
-- **ESLint**: `@apitree.cz/eslint-config` (base, react, nextjs, storybook presets)
+- **ESLint**: `@apitree.cz/eslint-config`
 - **Prettier**: `@apitree.cz/prettier-config`
 - **TypeScript**: `@apitree.cz/ts-config`
 - **lint-staged**: `@apitree.cz/lint-staged-config`
 
-### Root config files extend from toolbox
-
-- `eslint.config.js` → uses `defineConfig()` with presets
-- `prettier.config.js` → extends `@apitree.cz/prettier-config`
-- `tsconfig.json` → extends `@apitree.cz/ts-config`
-- `commitlint.config.js` → uses `@commitlint/config-conventional`
+Root config files extend from toolbox configs.
 
 ## Critical Conventions
 
@@ -109,133 +129,226 @@ Using **@apitree.cz** toolbox for consistency:
 
 - **Strict mode** enabled
 - **Path aliases**: Allowed ONLY in `apps/`, NEVER in `packages/`
-- Project references synced via `pnpm sync` (apitree CLI tool)
-- All packages must build to `dist/` folder with TypeScript
+  - Use relative imports in packages for better portability
+- **Project references**: Auto-synced via `pnpm sync` (runs on postinstall)
+- All packages build to `dist/` with TypeScript
+- Build artifacts tracked via `tsconfig.tsbuildinfo`
 
-### ESLint Rules (Modified)
+### ESLint Custom Rules
 
-```js
-// Custom overrides from root eslint.config.js
-'@next/next/no-html-link-for-pages': 'off',
-'formatjs/enforce-default-message': 'off',
-'react/jsx-props-no-spreading': 'off',
-```
+See `eslint.config.js` for custom rule overrides. Currently disabled rules:
+
+- `formatjs/enforce-default-message`: off (we use custom i18n patterns)
+- `react/jsx-props-no-spreading`: off (needed for component composition)
 
 ### Commits
 
 - **Conventional Commits** enforced via commitlint
-- **Husky hooks**: pre-commit (lint-staged) + commit-msg (commitlint)
-- Git hooks run automatically on postinstall (unless CI detected)
+- **Husky hooks**:
+  - `pre-commit`: lint-staged (format + lint changed files)
+  - `commit-msg`: commitlint (validate commit message)
+- Git hooks auto-install on postinstall (unless CI detected)
 
 ### Internationalization (i18n)
 
-**Package**: `@rozsival/i18n` (encapsulates react-intl)
+**Package**: `@rozsival/i18n` (custom wrapper around react-intl)
 
 **Supported locales**: `en` (default), `cs`
 
-**Server Components**:
+**Type-safe message keys**: `MessageKey` type exported for autocomplete
+
+#### Server Components
 
 ```tsx
-import { getIntl, formatMessage } from '@rozsival/i18n/server';
-const intl = await getIntl(locale);
-const text = intl.formatMessage({ id: 'home.hero.title' });
+import { getMessages, parseLocale } from '@rozsival/i18n/server';
+
+const { t } = getMessages(parseLocale(locale));
+const title = t('home.hero.title');
+
+// For metadata (returns string, not ReactNode)
+const { formatString } = getMessages(parseLocale(locale));
+const metaTitle = formatString('home.hero.title');
 ```
 
-**Client Components**:
+#### Client Components
 
 ```tsx
 import { useMessages } from '@rozsival/i18n/client';
+
 const { t } = useMessages();
 return <h1>{t('home.hero.title')}</h1>;
 ```
 
-**Message structure**: Hierarchical JSON with dot notation (e.g., `common.navigation.home`)
+#### Message Structure
 
-**Tone (Czech)**: Friendly, informal, tech-savvy
+- Hierarchical JSON with dot notation: `common.navigation.home`
+- English messages in `packages/i18n/src/messages/en.json`
+- Czech messages in `packages/i18n/src/messages/cs.json`
 
-**Emojis**: Prefix for icons/categories, suffix for tone/actions
+#### Czech Tone
+
+- Friendly, informal ("ty" form)
+- Tech-savvy but accessible
+- Professional yet approachable
+
+#### Emoji Usage
+
+- Prefix for icons/categories
+- Suffix for tone/actions
+
+### Blog Content (MDX)
+
+**Package**: `@rozsival/mdx`
+
+**Multi-language Support**: Posts organized as `content/blog/[slug]/[locale].md`
+
+Example structure:
+
+```text
+content/blog/
+  └── welcome/
+      ├── en.md
+      └── cs.md
+```
+
+**API**:
+
+```tsx
+import { getAllPosts, getPostBySlug } from '@rozsival/mdx';
+
+// Get posts for specific locale
+const posts = await getAllPosts(postsDir, 'en');
+
+// Get specific post
+const post = await getPostBySlug(postsDir, 'welcome', 'en');
+```
+
+**Features**:
+
+- Automatic slug extraction from directory name
+- Locale inferred from filename (no frontmatter needed)
+- Reading time calculation
+- Backward compatible with flat file structure
+- Filters unpublished posts in production
 
 ### Code Style
 
-- **JSDoc**: All single-line comments should be JSDoc format (avoid redundant type info)
-- **Components**: Extract logical blocks from JSX into small, well-named sub-components (avoid inline comments)
-- **Formatting**: Sentence case for UI text (not title case)
+- **JSDoc**: Use for non-obvious logic (avoid redundant type info)
+- **Components**: Extract logical blocks into small sub-components
+- **Text casing**: Sentence case for UI text (not title case)
+- **Formatting**: Prettier handles all formatting automatically
+
+### Page Types
+
+**Reusable types for Next.js pages with locale support:**
+
+```tsx
+import type { LocalePageProps, LocaleLayoutProps } from '@/types/locale';
+
+// Page with locale param
+export default async function Page({ params }: LocalePageProps) {
+  const { locale } = await params;
+}
+
+// Page with additional params
+export default async function Post({ params }: LocalePageProps<{ slug: string }>) {
+  const { locale, slug } = await params;
+}
+
+// Layout with locale param
+export default async function Layout({ children, params }: LocaleLayoutProps) {
+  const { locale } = await params;
+}
+```
 
 ## Deployment
 
 **Platform**: Vercel
 
-**Config** (`vercel.json`):
+**Config**: See `vercel.json`
 
-- Build command: `pnpm turbo build --filter=@rozsival/web`
+- Build command uses Turborepo filtering
 - Install command: `pnpm install`
-- Output: `apps/web/.next`
+- Output directory: `apps/web/.next`
 
 ## CI Pipeline
 
 **File**: `.github/workflows/ci.yml`
 
-**Jobs**:
-
-1. `lint`: workspace check → ESLint → Prettier
-2. `typecheck`: TypeScript checks
-3. `build`: Full build (runs after lint + typecheck)
+**Jobs**: lint → typecheck → build (sequential with caching)
 
 **Settings**:
 
 - Triggers: push/PR to `main`
-- Concurrency: Cancel in-progress on new push
-- Uses Turborepo remote caching (if `TURBO_TOKEN` configured)
+- Concurrency: Cancels in-progress runs on new push
+- Remote caching: Enabled if `TURBO_TOKEN` configured
 
 ## Apps
 
 ### @rozsival/web
 
-- Next.js 16 website with App Router
-- MDX support for blog
-- Workspace dependencies: `@rozsival/{i18n,mdx,theme,ui}`
-- Runs on port 3000 in dev
+Next.js 16 website (App Router) with MDX blog support
+
+- **Port**: 3000 (dev)
+- **Dependencies**: All workspace packages
+- **Features**: i18n, MDX blog, dark mode, SSG
 
 ### @rozsival/storybook
 
-- Component showcase using Storybook
-- Runs on port 6006 in dev
+Component showcase and documentation
+
+- **Port**: 6006 (dev)
+- **Purpose**: Visual testing and documentation
 
 ## Packages
 
+**All packages build to `dist/` using TypeScript**
+
 ### @rozsival/i18n
 
-- Server + client i18n utilities
-- Exports: `./server`, `./client`, `./messages/*`
-- Built with TypeScript to `dist/`
-- Messages: `src/messages/{en,cs}.json`
+Server + client i18n utilities wrapping react-intl
 
-### @rozsival/theme
-
-- Design tokens and dark mode support
-- CSS variables and theme utilities
-
-### @rozsival/ui
-
-- Shared component library
-- Shadcn-inspired components
+- **Exports**: `./server`, `./client`
+- **Types**: `MessageKey`, `Locale`
+- **Functions**: `getMessages()`, `parseLocale()`, `useMessages()`
 
 ### @rozsival/mdx
 
-- MDX blog utilities and components
+Blog content utilities with multi-language support
+
+- **Structure**: Modular (`types.ts`, `parser.ts`, `posts.ts`, `utils.ts`)
+- **Features**: MDX parsing, post retrieval, locale filtering
+- **Supports**: Directory-based and flat file structures
+
+### @rozsival/theme
+
+Design tokens and dark mode support
+
+- CSS variables for theming
+- Theme provider and utilities
+
+### @rozsival/ui
+
+Shared component library
+
+- Shadcn-inspired components
+- Accessible, composable, customizable
 
 ## Development Workflow
 
-1. **Install**: `pnpm install` (triggers postinstall hooks)
-2. **Develop**: `pnpm dev` (starts web + storybook)
-3. **Before commit**: `pnpm qa` or `pnpm fix`
-4. **Commit**: Use conventional commits (enforced)
-5. **Push**: CI runs lint → typecheck → build
+1. **Install**: `pnpm install` (auto-runs hooks + validation)
+2. **Develop**: `pnpm dev` (starts all dev servers)
+3. **Make changes**: Edit code with type-safe autocomplete
+4. **Before commit**: `pnpm qa` or `pnpm fix`
+5. **Commit**: Conventional commits (auto-validated)
+6. **Push**: CI validates → builds → caches
 
 ## Important Notes
 
-- **No TypeScript path aliases in packages** (only allowed in apps)
-- **formatjs linting**: Plugin enabled to prevent untranslated strings
-- **Workspace validation**: `manypkg check` runs on postinstall
-- **Project references**: Auto-synced via `pnpm sync` on postinstall
-- **Build order**: Packages build first (dependency graph respected by Turborepo)
+- **Always use Turborepo**: Prefer `pnpm turbo run <task>` over individual commands
+- **Check turbo.json**: For task configuration and dependencies
+- **No path aliases in packages**: Maintain portability
+- **Workspace validation**: `manypkg check` ensures consistency
+- **Build order**: Turborepo respects dependency graph automatically
+- **TypeScript references**: Auto-synced, don't manually edit
+- **Consult repo files**: Package versions, settings in respective config files
