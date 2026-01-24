@@ -65,9 +65,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
 
-      - name: Login to Vercel
-        run: pnpx vercel login --token="${{ secrets.VERCEL_TOKEN }}"
-
       - name: Build for Vercel
         run: |
           cd ${{ github.workspace }}/apps/web
@@ -87,6 +84,3 @@ jobs:
           else
             pnpx vercel deploy --token="${{ secrets.VERCEL_TOKEN }}" --yes
           fi
-
-      - name: Logout from Vercel
-        run: pnpx vercel logout
