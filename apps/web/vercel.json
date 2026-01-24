@@ -2,7 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "github": { "enabled": false },
   "buildCommand": "turbo run build",
-  "installCommand": "pnpm install --frozen-lockfile --prefer-offline",
   "outputDirectory": ".next",
   "framework": "nextjs"
 }

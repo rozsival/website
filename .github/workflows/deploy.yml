@@ -69,9 +69,9 @@ jobs:
         working-directory: apps/web
         run: |
           if [ "${{ inputs.production }}" == "true" ]; then
-            pnpx vercel build --prod --token="${{ secrets.VERCEL_TOKEN }}"
+            pnpx vercel build --prod --token="${{ secrets.VERCEL_TOKEN }}" --yes
           else
-            pnpx vercel build --token="${{ secrets.VERCEL_TOKEN }}"
+            pnpx vercel build --token="${{ secrets.VERCEL_TOKEN }}" --yes
           fi
 
       - name: Deploy to Vercel
