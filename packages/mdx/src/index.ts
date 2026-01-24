@@ -1,4 +1,6 @@
-// MDX processing utilities
+/**
+ * MDX processing utilities
+ */
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -6,7 +8,9 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
 
-// Blog post frontmatter structure
+/**
+ * Blog post frontmatter structure
+ */
 export interface PostFrontmatter {
   title: string;
   description: string;
@@ -16,7 +20,9 @@ export interface PostFrontmatter {
   locale?: string;
 }
 
-// Parsed blog post
+/**
+ * Parsed blog post
+ */
 export interface Post {
   slug: string;
   frontmatter: PostFrontmatter;
@@ -24,7 +30,9 @@ export interface Post {
   readingTime: number;
 }
 
-// Parse a single MDX file
+/**
+ * Parse a single MDX file
+ */
 export async function parsePost(filePath: string): Promise<Post> {
   const fileContent = await fs.readFile(filePath, 'utf-8');
   const { data, content } = matter(fileContent);
@@ -40,7 +48,9 @@ export async function parsePost(filePath: string): Promise<Post> {
   };
 }
 
-// Get all posts from a directory
+/**
+ * Get all posts from a directory
+ */
 export async function getAllPosts(postsDirectory: string, locale?: string): Promise<Post[]> {
   const exists = await fs
     .access(postsDirectory)
@@ -53,23 +63,31 @@ export async function getAllPosts(postsDirectory: string, locale?: string): Prom
 
   const posts = await Promise.all(mdxFiles.map((file) => parsePost(path.join(postsDirectory, file))));
 
-  // Filter by locale if specified
+  /**
+   * Filter by locale if specified
+   */
   const filteredPosts =
     locale != null
       ? posts.filter((post) => post.frontmatter.locale == null || post.frontmatter.locale === locale)
       : posts;
 
-  // Filter out unpublished posts in production
+  /**
+   * Filter out unpublished posts in production
+   */
   const publishedPosts =
     process.env['NODE_ENV'] === 'production'
       ? filteredPosts.filter((post) => post.frontmatter.published !== false)
       : filteredPosts;
 
-  // Sort by date, newest first
+  /**
+   * Sort by date, newest first
+   */
   return publishedPosts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
 }
 
-// Get a single post by slug
+/**
+ * Get a single post by slug
+ */
 export async function getPostBySlug(postsDirectory: string, slug: string): Promise<Post | undefined> {
   const extensions = ['.mdx', '.md'];
 

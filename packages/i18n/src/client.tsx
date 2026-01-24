@@ -1,6 +1,8 @@
 'use client';
 
-// Client-side i18n provider and hooks for React components
+/**
+ * Client-side i18n provider and hooks for React components
+ */
 
 import { get } from 'lodash-es';
 import { createContext, useContext, useMemo, type ReactNode } from 'react';
@@ -33,15 +35,21 @@ export function I18nProvider({ locale, messages, children }: I18nProviderProps) 
   );
 }
 
-// Hook to get current locale
+/**
+ * Hook to get current locale
+ */
 export function useLocale(): Locale {
   return useContext(I18nContext).locale;
 }
 
-// Extract the values type from react-intl's formatMessage
+/**
+ * Extract the values type from react-intl's formatMessage
+ */
 type MessageValues = Parameters<IntlFormatters<ReactNode>['formatMessage']>[1];
 
-// Convenient hook for formatting messages with explicit return type
+/**
+ * Convenient hook for formatting messages with explicit return type
+ */
 export function useMessages(): {
   t: (id: MessageKey, values?: MessageValues) => ReactNode;
   formatDate: (value: Date | number | string) => string;

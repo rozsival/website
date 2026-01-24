@@ -1,5 +1,7 @@
-// Server-side i18n utilities for Next.js server components
-// Uses @formatjs/intl for server-side message formatting
+/**
+ * Server-side i18n utilities for Next.js server components
+ * Uses @formatjs/intl for server-side message formatting
+ */
 
 import { match } from '@formatjs/intl-localematcher';
 import { get } from 'lodash-es';
@@ -10,17 +12,23 @@ import { type Locale, locales, defaultLocale, isValidLocale, type MessageKey } f
 import csMessages from './messages/cs.json' with { type: 'json' };
 import enMessages from './messages/en.json' with { type: 'json' };
 
-// Message store by locale
+/**
+ * Message store by locale
+ */
 const messagesByLocale: Record<Locale, Record<string, unknown>> = {
   en: enMessages,
   cs: csMessages,
 };
 
-// Cache for Intl instances (one per locale)
+/**
+ * Cache for Intl instances (one per locale)
+ */
 const cache = createIntlCache();
 const intlCache = new Map<Locale, IntlShape>();
 
-// Flatten nested message object to dot-notation keys
+/**
+ * Flatten nested message object to dot-notation keys
+ */
 function flattenMessages(object: Record<string, unknown> | null | undefined, prefix = ''): Record<string, string> {
   const result: Record<string, string> = {};
   if (!object) return result;
@@ -38,13 +46,17 @@ function flattenMessages(object: Record<string, unknown> | null | undefined, pre
   return result;
 }
 
-// Get messages for a locale
+/**
+ * Get messages for a locale
+ */
 function getMessages(locale: Locale): Record<string, string> {
   const messages = messagesByLocale[locale];
   return flattenMessages(messages);
 }
 
-// Get or create an Intl instance for a locale
+/**
+ * Get or create an Intl instance for a locale
+ */
 export function getIntl(locale: Locale): IntlShape {
   const validatedLocale = isValidLocale(locale) ? locale : defaultLocale;
   const cached = intlCache.get(validatedLocale);
@@ -57,7 +69,9 @@ export function getIntl(locale: Locale): IntlShape {
   return intl;
 }
 
-// Detect preferred locale from Accept-Language header
+/**
+ * Detect preferred locale from Accept-Language header
+ */
 export function getPreferredLocale(acceptLanguage: string | null): Locale {
   if (acceptLanguage === null || acceptLanguage === '') return defaultLocale;
 
@@ -75,10 +89,14 @@ export function getPreferredLocale(acceptLanguage: string | null): Locale {
   }
 }
 
-// Extract the values type from react-intl's formatMessage (string version)
+/**
+ * Extract the values type from react-intl's formatMessage (string version)
+ */
 type MessageValues = Parameters<IntlFormatters<string>['formatMessage']>[1];
 
-// Format a message on the server
+/**
+ * Format a message on the server
+ */
 export function formatMessage(locale: Locale, id: MessageKey, values?: MessageValues): string {
   const validatedLocale = isValidLocale(locale) ? locale : defaultLocale;
   const intl = getIntl(validatedLocale);

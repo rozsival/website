@@ -38,13 +38,17 @@ export function ThemeProvider({ children, defaultTheme = 'system' }: ThemeProvid
   const [theme, setThemeState] = useState<Theme>(defaultTheme);
   const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>('light');
 
-  // Initialize theme from storage on mount
+  /**
+   * Initialize theme from storage on mount
+   */
   useEffect(() => {
     const stored = getStoredTheme();
     setThemeState(stored);
   }, []);
 
-  // Resolve the actual theme and apply to document
+  /**
+   * Resolve the actual theme and apply to document
+   */
   useEffect(() => {
     const resolved = theme === 'system' ? getSystemTheme() : theme;
     setResolvedTheme(resolved);
@@ -54,7 +58,9 @@ export function ThemeProvider({ children, defaultTheme = 'system' }: ThemeProvid
     root.classList.add(resolved);
   }, [theme]);
 
-  // Listen for system theme changes
+  /**
+   * Listen for system theme changes
+   */
   useEffect(() => {
     if (theme !== 'system') return;
 

@@ -1,5 +1,7 @@
-// Custom MDX components for rich blog content
-// These components override default HTML elements in MDX
+/**
+ * Custom MDX components for rich blog content
+ * These components override default HTML elements in MDX
+ */
 
 import type { ComponentPropsWithoutRef } from 'react';
 
@@ -9,7 +11,9 @@ type AnchorProps = ComponentPropsWithoutRef<'a'>;
 type PreProps = ComponentPropsWithoutRef<'pre'>;
 type CodeProps = ComponentPropsWithoutRef<'code'>;
 
-// Heading components with anchor links
+/**
+ * Heading components with anchor links
+ */
 function H1({ children, id, ...props }: HeadingProps) {
   return (
     <h1 className="scroll-m-20 text-4xl font-bold tracking-tight" id={id} {...props}>
@@ -96,7 +100,9 @@ function Ol({ children, ...props }: ComponentPropsWithoutRef<'ol'>) {
   );
 }
 
-// Export all MDX components as a single object for easy spreading
+/**
+ * Export all MDX components as a single object for easy spreading
+ */
 export const mdxComponents = {
   h1: H1,
   h2: H2,

@@ -36,7 +36,9 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
     ref?: React.Ref<HTMLButtonElement>;
   };
 
-// React 19: ref is a regular prop
+/**
+ * React 19: ref is a regular prop
+ */
 function Button({ className, variant, size, asChild = false, ref, ...props }: ButtonProps) {
   const Comp = asChild ? Slot : 'button';
   return <Comp ref={ref} className={cn(buttonVariants({ variant, size, className }))} {...props} />;
