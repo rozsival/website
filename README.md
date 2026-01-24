@@ -1,90 +1,157 @@
-# Vít Rozsíval - Personal Website
+# Vít Rozsíval – Personal Website
 
-A modular Turborepo monorepo containing my personal website built with Next.js 16, React 19, and TypeScript.
+Modern, type-safe personal website built with Next.js 16, React 19, and TypeScript in a Turborepo monorepo.
 
-## Tech Stack
+> **For AI Assistants**: See [AGENTS.md](./AGENTS.md) for comprehensive project documentation.
 
-- **Framework**: Next.js 16 with App Router
-- **UI**: React 19, Shadcn-inspired components, Tailwind CSS
-- **Language**: TypeScript 5.9 with strict mode
-- **Monorepo**: Turborepo with pnpm workspaces
-- **i18n**: react-intl (formatjs)
-- **Testing**: Vitest, Storybook
-- **Linting**: ESLint 9 (flat config)
-- **Formatting**: Prettier
-- **Deployment**: Vercel
-- **CI/CD**: GitHub Actions
-
-## Project Structure
-
-```
-├── apps/
-│   ├── web/           # Next.js website
-│   └── storybook/     # Component showcase
-├── packages/
-│   ├── eslint-config/     # Shared ESLint rules
-│   ├── typescript-config/ # Shared TS configs
-│   ├── theme/             # Design tokens & dark mode
-│   ├── i18n/              # Internationalization
-│   ├── ui/                # Component library
-│   └── mdx/               # Blog MDX utilities
-└── turbo.json
-```
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 24+
-- pnpm 10+
-
-### Installation
+## 🚀 Quick Start
 
 ```bash
 # Install dependencies
 pnpm install
 
-# Start development server
+# Start development servers (web + storybook)
 pnpm dev
 
 # Build all packages
 pnpm build
 
-# Run tests
-pnpm test
-
-# Type check
-pnpm typecheck
-
-# Lint
-pnpm lint
-
-# Format
-pnpm format
+# Run quality checks
+pnpm qa
 ```
 
-### Local Development
+## 📦 Tech Stack
 
-The website runs at http://localhost:3000 and Storybook at http://localhost:6006.
+- **Framework**: Next.js 16 (App Router), React 19
+- **Language**: TypeScript 5.9 (strict mode)
+- **Styling**: Tailwind CSS 4
+- **Monorepo**: Turborepo + pnpm workspaces
+- **i18n**: Custom react-intl wrapper
+- **Content**: MDX for blog posts
+- **Testing**: Vitest, Storybook
+- **Deployment**: Vercel
 
-## Packages
+## 🏗️ Project Structure
 
-| Package                                                     | Description                 |
-| ----------------------------------------------------------- | --------------------------- |
-| [@rozsival/web](./apps/web)                                 | Main Next.js website        |
-| [@rozsival/storybook](./apps/storybook)                     | Component showcase          |
-| [@rozsival/eslint-config](./packages/eslint-config)         | Shared ESLint configuration |
-| [@rozsival/typescript-config](./packages/typescript-config) | Shared TypeScript configs   |
-| [@rozsival/theme](./packages/theme)                         | Design tokens & theming     |
-| [@rozsival/i18n](./packages/i18n)                           | Internationalization        |
-| [@rozsival/ui](./packages/ui)                               | Component library           |
-| [@rozsival/mdx](./packages/mdx)                             | MDX blog utilities          |
+```text
+apps/
+├── web/          # Main Next.js website
+└── storybook/    # Component documentation
 
-## Supported Locales
+packages/
+├── i18n/         # Internationalization utilities
+├── mdx/          # Blog content processing
+├── theme/        # Design tokens & theming
+└── ui/           # Shared components
+```
 
-- English (en) - default
-- Czech (cs)
+## 🛠️ Development
 
-## License
+### Prerequisites
+
+- **Node.js**: Version specified in `.nvmrc` (24.x)
+- **Package Manager**: pnpm (version in `package.json`)
+
+### Available Commands
+
+```bash
+# Development
+pnpm dev                 # Start all dev servers
+pnpm dev:web             # Start web app only (port 3000)
+pnpm dev:storybook       # Start storybook only (port 6006)
+
+# Building
+pnpm build               # Build everything
+pnpm build:packages      # Build packages only
+
+# Quality Assurance
+pnpm qa                  # Type check + lint + format
+pnpm fix                 # Auto-fix all issues
+pnpm test                # Run tests
+
+# Maintenance
+pnpm cleanup             # Clean build artifacts
+pnpm check               # Validate workspace structure
+```
+
+### Key Features
+
+#### 🌍 Internationalization
+
+- **Supported languages**: English (default), Czech
+- **Type-safe** message keys with autocomplete
+- **Server & client** utilities for Next.js App Router
+- **Multi-language blog** posts
+
+#### 📝 Blog
+
+- **MDX-powered** content
+- **Multi-language** support (`[slug]/[locale].md` structure)
+- **Reading time** calculation
+- **SEO-optimized** metadata
+
+#### 🎨 Theming
+
+- **Dark mode** support
+- **Design tokens** via CSS variables
+- **Consistent** styling across components
+
+## 📖 Documentation
+
+- **[AGENTS.md](./AGENTS.md)**: Comprehensive guide for AI assistants and developers
+- **Storybook**: Component documentation (run `pnpm dev:storybook`)
+
+## 🔧 Tooling
+
+- **Turborepo**: Task orchestration with caching
+- **ESLint 9**: Flat config with custom rules
+- **Prettier**: Code formatting
+- **Husky**: Git hooks for quality checks
+- **Commitlint**: Conventional commit enforcement
+
+## 📁 Workspace Packages
+
+All packages are internal (`@rozsival/*`) and share TypeScript configurations.
+
+### @rozsival/i18n
+
+Server and client internationalization utilities wrapping react-intl.
+
+### @rozsival/mdx
+
+Blog content processing with multi-language support and reading time.
+
+### @rozsival/theme
+
+Design tokens, theme provider, and dark mode utilities.
+
+### @rozsival/ui
+
+Shared component library with Shadcn-inspired primitives.
+
+## 🚢 Deployment
+
+Deployed on **Vercel** with automatic deployments from the `main` branch.
+
+- Build command: `pnpm turbo build --filter=@rozsival/web`
+- Framework preset: Next.js
+- Node version: See `.nvmrc`
+
+## 🤝 Contributing
+
+This is a personal project, but feel free to explore the code and use it as reference.
+
+### Code Quality
+
+- **Conventional Commits**: Required for all commits
+- **Pre-commit hooks**: Automatically format and lint changed files
+- **Type checking**: Strict TypeScript across all packages
+- **No path aliases** in packages (only in apps)
+
+## 📄 License
 
 MIT © Vít Rozsíval
+
+---
+
+Built with ❤️ using modern web technologies.
