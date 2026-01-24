@@ -1,0 +1,13 @@
+.env*.local
+.eslintcache
+.next
+.prettierignore
+.turbo
+.vercel
+*.tsbuildinfo
+lint-staged.config.js
+node_modules
+postcss.config.js
+README.md
+tsconfig.json
+vercel.json

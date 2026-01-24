@@ -66,21 +66,19 @@ jobs:
         run: pnpm install --frozen-lockfile --prefer-offline
 
       - name: Build for Vercel
+        working-directory: apps/web
         run: |
-          cd ${{ github.workspace }}/apps/web
-
           if [ "${{ inputs.production }}" == "true" ]; then
-            pnpx vercel build --prod --token="${{ secrets.VERCEL_TOKEN }}" --yes
+            pnpx vercel build --prod --token="${{ secrets.VERCEL_TOKEN }}"
           else
-            pnpx vercel build --token="${{ secrets.VERCEL_TOKEN }}" --yes
+            pnpx vercel build --token="${{ secrets.VERCEL_TOKEN }}"
           fi
 
       - name: Deploy to Vercel
+        working-directory: apps/web
         run: |
-          cd ${{ github.workspace }}/apps/web
-
           if [ "${{ inputs.production }}" == "true" ]; then
-            pnpx vercel deploy --prod --token="${{ secrets.VERCEL_TOKEN }}" --yes
+            pnpx vercel deploy --prebuilt --prod --token="${{ secrets.VERCEL_TOKEN }}"
           else
-            pnpx vercel deploy --token="${{ secrets.VERCEL_TOKEN }}" --yes
+            pnpx vercel deploy --prebuilt --token="${{ secrets.VERCEL_TOKEN }}"
           fi

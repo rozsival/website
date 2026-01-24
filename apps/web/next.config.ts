@@ -2,9 +2,6 @@ import createMDX from '@next/mdx';
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  // Enable static exports for optimal performance
-  output: 'standalone',
-
   // Configure page extensions to include MDX
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
 
