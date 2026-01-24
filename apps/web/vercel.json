@@ -1,7 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "github": { "enabled": false },
-  "buildCommand": "turbo run build",
-  "outputDirectory": ".next",
+  "buildCommand": "pnpm turbo run build",
   "framework": "nextjs"
 }
