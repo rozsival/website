@@ -14,7 +14,7 @@
     "format:fix": "turbo run format:fix format:root:fix --no-daemon --parallel",
     "format:root": "prettier --ignore-path .prettierignore --check \"./*.{js,json,md,ts}\" \".github/**/*.{yml,yaml}\"",
     "format:root:fix": "pnpm run format:root --write",
-    "postinstall": "pnpx is-ci || (husky && pnpx concurrently --kill-others-on-fail --max-processes 1 --prefix-colors auto \"pnpm manypkg check\" \"pnpm turbo run sync --no-daemon\")",
+    "postinstall": "pnpx is-ci || pnpx concurrently --kill-others-on-fail --max-processes 1 --prefix-colors auto \"pnpm manypkg check\" \"pnpm husky\" \"pnpm turbo run sync --no-daemon\"",
     "lint": "turbo run lint lint:root --no-daemon",
     "lint:fix": "turbo run lint:fix lint:root:fix --no-daemon",
     "lint:root": "eslint --cache \"./*.{js,ts}\"",
@@ -43,7 +43,8 @@
     "lint-staged": "16.2.7",
     "prettier": "3.8.1",
     "turbo": "2.7.5",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vercel": "50.5.0"
   },
   "packageManager": "pnpm@10.28.1",
   "engines": {

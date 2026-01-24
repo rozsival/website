@@ -41,4 +41,6 @@ __snapshots__/
 
 # Temporary files
 .eslintcache
-temp/
+/temp/
+/apps/*/temp/
+/packages/*/temp/
