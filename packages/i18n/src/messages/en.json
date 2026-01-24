@@ -11,7 +11,8 @@
       "story": "Story",
       "cv": "CV",
       "contact": "Contact",
-      "blog": "Blog"
+      "blog": "Blog",
+      "toggleMenu": "Toggle menu"
     },
     "footer": {
       "copyright": "© {year} Vít Rozsíval. All rights reserved.",
