@@ -25,7 +25,7 @@
     "sync": "apitree sync-project-references",
     "test": "turbo run test --no-daemon",
     "ts": "turbo run ts ts:root --no-daemon",
-    "ts:root": "tsc --project tsconfig.json"
+    "ts:root": "tsc"
   },
   "devDependencies": {
     "@apitree.cz/cli": "0.5.2",
