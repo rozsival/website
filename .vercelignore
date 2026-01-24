@@ -1,12 +1,16 @@
 .env*.local
 .eslintcache
 .next
+.nvmrc
 .prettierignore
 .turbo
 .vercel
 *.tsbuildinfo
 lint-staged.config.js
+next.config.ts
 node_modules
+pnpm-lock.yaml
+pnpm-workspace.yaml
 postcss.config.js
 README.md
 tsconfig.json
