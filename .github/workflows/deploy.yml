@@ -1,0 +1,76 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+    inputs:
+      production:
+        description: 'Deploy to production'
+        required: true
+        default: false
+        type: boolean
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+env:
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+  TURBO_REMOTE_CACHE_SIGNATURE_KEY: ${{ secrets.TURBO_REMOTE_CACHE_SIGNATURE_KEY }}
+
+jobs:
+  wait-for-checks:
+    runs-on: ubuntu-latest
+    permissions:
+      checks: read
+    steps:
+      - name: Wait for CI checks
+        uses: poseidon/wait-for-status-checks@v0.6.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          match_pattern: '^(build|lint|typecheck)$'
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: wait-for-checks
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check production
+        run: |
+          if [ "${{ inputs.production }}" == "true" ]; then
+            # Production deployment must be on main branch
+            if [ "${{ github.ref_name }}" != "main" ]; then
+              echo -e "\033[0;31mMust be on main branch to deploy to production\033[0m"
+              exit 1
+            fi
+          fi
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --prefer-offline
+
+      - name: Build web
+        run: pnpm turbo run build --filter=@rozsival/web --no-daemon
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v41.1.4
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-args: ${{ (inputs.production || false) && '--prod' || '' }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ${{ github.workspace }}/apps/web
