@@ -9,6 +9,8 @@
     "cleanup": "turbo run cleanup --no-daemon",
     "postcleanup": "del .eslintcache .turbo tsconfig.tsbuildinfo node_modules",
     "dev": "turbo run dev --no-daemon",
+    "dev:storybook": "turbo run dev --filter=\"./apps/storybook\" --no-daemon",
+    "dev:web": "turbo run dev --filter=\"./apps/web\" --no-daemon",
     "fix": "turbo run ts ts:root format:fix format:root:fix lint:fix lint:root:fix --no-daemon",
     "format": "turbo run format format:root --no-daemon --parallel",
     "format:fix": "turbo run format:fix format:root:fix --no-daemon --parallel",

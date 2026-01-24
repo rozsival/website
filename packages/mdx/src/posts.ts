@@ -1,76 +1,13 @@
 /**
- * MDX processing utilities
+ * Blog post retrieval functions
  */
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-import matter from 'gray-matter';
-import readingTime from 'reading-time';
-
-/**
- * Blog post frontmatter structure
- */
-export interface PostFrontmatter {
-  title: string;
-  description: string;
-  date: string;
-  tags?: string[];
-  published?: boolean;
-  locale?: string;
-}
-
-/**
- * Parsed blog post
- */
-export interface Post {
-  slug: string;
-  frontmatter: PostFrontmatter;
-  content: string;
-  readingTime: number;
-  locale: string;
-}
-
-/**
- * Parse a single MDX file
- * @param filePath - Path to the MDX file
- * @param slug - Optional slug override (for directory-based structure)
- * @param locale - Optional locale override (for directory-based structure)
- */
-async function parsePost(filePath: string, slug?: string, locale?: string): Promise<Post> {
-  const fileContent = await fs.readFile(filePath, 'utf-8');
-  const { data, content } = matter(fileContent);
-
-  // For directory-based structure, slug comes from parent directory
-  // For flat files, slug comes from filename
-  const extractedSlug = slug ?? path.basename(filePath, path.extname(filePath));
-
-  // For directory-based structure, locale comes from filename
-  // For flat files, locale comes from frontmatter or defaults to 'en'
-  const extractedLocale = locale ?? path.basename(filePath, path.extname(filePath));
-
-  const stats = readingTime(content);
-
-  return {
-    slug: extractedSlug,
-    frontmatter: data as PostFrontmatter,
-    content,
-    readingTime: Math.ceil(stats.minutes),
-    locale: extractedLocale,
-  };
-}
-
-/**
- * Check if a path is a directory
- */
-async function isDirectory(directoryPath: string): Promise<boolean> {
-  try {
-    const stat = await fs.stat(directoryPath);
-    return stat.isDirectory();
-  } catch {
-    return false;
-  }
-}
+import { parsePost } from './parser.js';
+import type { Post } from './types.js';
+import { fileExists, isDirectory } from './utils.js';
 
 /**
  * Get all posts from a directory
@@ -148,11 +85,8 @@ export async function getPostBySlug(postsDirectory: string, slug: string, locale
     if (isDirectoryStructure) {
       for (const extension of extensions) {
         const filePath = path.join(slugDirectory, `${locale}${extension}`);
-        try {
-          await fs.access(filePath);
+        if (await fileExists(filePath)) {
           return await parsePost(filePath, slug, locale);
-        } catch {
-          // Continue to next extension
         }
       }
     }
@@ -161,8 +95,7 @@ export async function getPostBySlug(postsDirectory: string, slug: string, locale
   // Fall back to flat file structure
   for (const extension of extensions) {
     const filePath = path.join(postsDirectory, `${slug}${extension}`);
-    try {
-      await fs.access(filePath);
+    if (await fileExists(filePath)) {
       const post = await parsePost(filePath);
 
       // If locale is specified, check if it matches
@@ -171,8 +104,6 @@ export async function getPostBySlug(postsDirectory: string, slug: string, locale
       }
 
       return post;
-    } catch {
-      // Continue to next extension
     }
   }
 

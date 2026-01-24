@@ -1,35 +1,31 @@
 import path from 'node:path';
 
-import { getIntl, type Locale } from '@rozsival/i18n/server';
+import { getMessages, parseLocale } from '@rozsival/i18n/server';
 import { getAllPosts } from '@rozsival/mdx';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@rozsival/ui';
 import { PenTool } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-interface PageProps {
-  params: Promise<{ locale: string }>;
-}
+import type { LocalePageProps } from '@/types/locale';
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
   const { locale } = await params;
-  const intl = getIntl(locale as Locale);
+  const { formatString } = getMessages(parseLocale(locale));
 
   return {
-    title: intl.formatMessage({ id: 'blog.title' }),
-    description: intl.formatMessage({ id: 'blog.description' }),
+    title: formatString('blog.title'),
+    description: formatString('blog.description'),
   };
 }
 
-export default async function BlogPage({ params }: PageProps) {
+export default async function BlogPage({ params }: LocalePageProps) {
   const { locale } = await params;
-  const intl = getIntl(locale as Locale);
+  const { t } = getMessages(parseLocale(locale));
 
-  const t = (id: string, values?: Record<string, number | string>) => intl.formatMessage({ id }, values);
-
-  // Get all blog posts
+  // Get all blog posts for the current locale
   const postsDirectory = path.join(process.cwd(), 'content', 'blog');
-  const posts = await getAllPosts(postsDirectory, locale);
+  const posts = await getAllPosts(postsDirectory, parseLocale(locale));
 
   return (
     <div className="py-16 md:py-24">

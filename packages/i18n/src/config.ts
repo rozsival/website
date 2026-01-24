@@ -1,6 +1,8 @@
 /**
  * Configuration and types for the i18n system
  */
+import type { IntlShape as ReactIntlShape } from 'react-intl';
+
 import type enMessages from './messages/en.json';
 
 export const locales = ['en', 'cs'] as const;
@@ -48,3 +50,5 @@ type PathsToFields<T, P extends string = ''> = {
 }[string & keyof T];
 
 export type MessageKey = PathsToFields<typeof enMessages>;
+export type Messages = Record<MessageKey, string>;
+export type IntlShape = Omit<ReactIntlShape, 'messages'> & { messages: Messages };

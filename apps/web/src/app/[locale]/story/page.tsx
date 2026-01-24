@@ -1,25 +1,21 @@
-import { getIntl, type Locale } from '@rozsival/i18n/server';
+import { getMessages, parseLocale } from '@rozsival/i18n/server';
 import { BookOpen, Sprout, Laptop, Palette, Lightbulb } from 'lucide-react';
 import type { Metadata } from 'next';
 
-interface PageProps {
-  params: Promise<{ locale: string }>;
-}
+import type { LocalePageProps } from '@/types/locale';
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
   const { locale } = await params;
-  const intl = getIntl(locale as Locale);
+  const { formatString } = getMessages(parseLocale(locale));
 
   return {
-    title: intl.formatMessage({ id: 'story.title' }),
+    title: formatString('story.title'),
   };
 }
 
-export default async function StoryPage({ params }: PageProps) {
+export default async function StoryPage({ params }: LocalePageProps) {
   const { locale } = await params;
-  const intl = getIntl(locale as Locale);
-
-  const t = (id: string) => intl.formatMessage({ id });
+  const { t } = getMessages(parseLocale(locale));
 
   return (
     <div className="py-16 md:py-24">

@@ -23,8 +23,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist",
-    "src/messages"
+    "dist"
   ],
   "scripts": {
     "prebuild": "del dist tsconfig.build.tsbuildinfo",

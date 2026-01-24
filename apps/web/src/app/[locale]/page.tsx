@@ -1,29 +1,25 @@
-import { getIntl, type Locale } from '@rozsival/i18n/server';
+import type { MessageKey } from '@rozsival/i18n';
+import { getMessages, parseLocale } from '@rozsival/i18n/server';
 import { Button, Card, CardContent, CardHeader, CardTitle, CardDescription } from '@rozsival/ui';
 import { Layers, Zap, Palette, Target, Sparkles, Handshake } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-interface PageProps {
-  params: Promise<{ locale: string }>;
-}
+import type { LocalePageProps } from '@/types/locale';
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
   const { locale } = await params;
-  const intl = getIntl(locale as Locale);
+  const { formatString } = getMessages(parseLocale(locale));
 
   return {
-    title: intl.formatMessage({ id: 'home.hero.title' }),
-    description: intl.formatMessage({ id: 'common.siteDescription' }),
+    title: formatString('home.hero.title'),
+    description: formatString('common.siteDescription'),
   };
 }
 
-export default async function HomePage({ params }: PageProps) {
+export default async function HomePage({ params }: LocalePageProps) {
   const { locale } = await params;
-  const intl = getIntl(locale as Locale);
-
-  // Helper function for translations
-  const t = (id: string, values?: Record<string, number | string>) => intl.formatMessage({ id }, values);
+  const { t } = getMessages(parseLocale(locale));
 
   // Highlight items
   const highlights = [
@@ -88,11 +84,13 @@ export default async function HomePage({ params }: PageProps) {
               <Card key={item.key} className="transition-shadow hover:shadow-lg">
                 <CardHeader>
                   <div className="mb-2">{item.icon}</div>
-                  <CardTitle className="text-xl">{t(`home.highlights.items.${item.key}.title`)}</CardTitle>
+                  <CardTitle className="text-xl">
+                    {t(`home.highlights.items.${item.key}.title` as MessageKey)}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-base">
-                    {t(`home.highlights.items.${item.key}.description`)}
+                    {t(`home.highlights.items.${item.key}.description` as MessageKey)}
                   </CardDescription>
                 </CardContent>
               </Card>

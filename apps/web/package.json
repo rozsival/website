@@ -10,12 +10,14 @@
     "build": "next build",
     "cleanup": "del .eslintcache .next .turbo node_modules tsconfig.tsbuildinfo",
     "dev": "next dev",
+    "fix": "turbo run ts format:fix lint:fix",
     "format": "prettier --ignore-path .prettierignore --check \"./**/*.{js,json,md,mdx,ts,tsx}\"",
     "format:fix": "pnpm run format --write",
     "lint": "eslint --cache .",
     "lint:fix": "pnpm run lint --fix",
+    "qa": "turbo run ts lint format",
     "start": "next start",
-    "ts": "tsc --noEmit"
+    "ts": "tsc --build"
   },
   "dependencies": {
     "@mdx-js/loader": "3.1.1",

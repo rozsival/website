@@ -1,17 +1,15 @@
 import path from 'node:path';
 
-import { getIntl, type Locale } from '@rozsival/i18n/server';
+import { getMessages, parseLocale } from '@rozsival/i18n/server';
 import { getPostBySlug, getAllPosts } from '@rozsival/mdx';
 import { Button } from '@rozsival/ui';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-interface PageProps {
-  params: Promise<{ locale: string; slug: string }>;
-}
+import type { LocalePageProps } from '@/types/locale';
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: LocalePageProps<{ slug: string }>): Promise<Metadata> {
   const { slug } = await params;
   const postsDirectory = path.join(process.cwd(), 'content', 'blog');
   const post = await getPostBySlug(postsDirectory, slug);
@@ -37,16 +35,14 @@ export async function generateStaticParams() {
   ]);
 }
 
-export default async function BlogPostPage({ params }: PageProps) {
+export default async function BlogPostPage({ params }: LocalePageProps<{ slug: string }>) {
   const { locale, slug } = await params;
-  const intl = getIntl(locale as Locale);
-
-  const t = (id: string, values?: Record<string, number | string>) => intl.formatMessage({ id }, values);
+  const { t } = getMessages(parseLocale(locale));
 
   const postsDirectory = path.join(process.cwd(), 'content', 'blog');
-  const post = await getPostBySlug(postsDirectory, slug);
+  const post = await getPostBySlug(postsDirectory, slug, parseLocale(locale));
 
-  if (!post) {
+  if (post == null) {
     notFound();
   }
 

@@ -11,7 +11,6 @@ export default defineConfig(
   storybook,
   {
     rules: {
-      '@next/next/no-html-link-for-pages': 'off',
       'formatjs/enforce-default-message': 'off',
       'react/jsx-props-no-spreading': 'off',
     },

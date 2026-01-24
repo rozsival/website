@@ -1,2 +1,10 @@
 // Main i18n exports - re-exports from config
-export { type Locale, locales, defaultLocale, isValidLocale, getLocaleName, getLocaleFlag } from './config.js';
+export {
+  type Locale,
+  type MessageKey,
+  locales,
+  defaultLocale,
+  isValidLocale,
+  getLocaleName,
+  getLocaleFlag,
+} from './config.js';

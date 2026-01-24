@@ -6,9 +6,11 @@
 
 import { get } from 'lodash-es';
 import { createContext, useContext, useMemo, type ReactNode } from 'react';
-import { IntlProvider, useIntl as useReactIntl, type IntlFormatters } from 'react-intl';
+import type { IntlFormatters, PrimitiveType } from 'react-intl';
+import { IntlProvider, useIntl } from 'react-intl';
 
-import { type Locale, defaultLocale, type MessageKey } from './config.js';
+import type { Messages, Locale, MessageKey, IntlShape } from './config.js';
+import { defaultLocale } from './config.js';
 import enMessages from './messages/en.json' with { type: 'json' };
 
 interface I18nContextValue {
@@ -19,7 +21,7 @@ const I18nContext = createContext<I18nContextValue>({ locale: defaultLocale });
 
 interface I18nProviderProps {
   locale: Locale;
-  messages: Record<string, string>;
+  messages: Messages;
   children: ReactNode;
 }
 
@@ -48,18 +50,15 @@ export function useLocale(): Locale {
 type MessageValues = Parameters<IntlFormatters<ReactNode>['formatMessage']>[1];
 
 /**
- * Convenient hook for formatting messages with explicit return type
+ * Returns an object with methods for translating messages in various formats
  */
-export function useMessages(): {
-  t: (id: MessageKey, values?: MessageValues) => ReactNode;
-  formatDate: (value: Date | number | string) => string;
-  formatNumber: (value: number) => string;
-  formatTime: (value: Date | number | string) => string;
-} {
-  const intl = useReactIntl();
+export function useMessages() {
+  const intl = useIntl() as IntlShape;
 
   return {
     t: (id: MessageKey, values?: MessageValues) =>
+      intl.formatMessage({ id, defaultMessage: get(enMessages, id) }, values),
+    formatString: (id: MessageKey, values?: Record<string, PrimitiveType>) =>
       intl.formatMessage({ id, defaultMessage: get(enMessages, id) }, values),
     formatDate: (value: Date | number | string) => intl.formatDate(value),
     formatNumber: (value: number) => intl.formatNumber(value),

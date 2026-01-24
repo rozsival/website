@@ -1,43 +1,39 @@
-import { getIntl, type Locale } from '@rozsival/i18n/server';
+import { getMessages, parseLocale } from '@rozsival/i18n/server';
 import { Button, Card, CardContent, CardHeader, CardTitle } from '@rozsival/ui';
 import { FileText, Briefcase, Wrench } from 'lucide-react';
 import type { Metadata } from 'next';
 
-interface PageProps {
-  params: Promise<{ locale: string }>;
-}
+import type { LocalePageProps } from '@/types/locale';
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
   const { locale } = await params;
-  const intl = getIntl(locale as Locale);
+  const { formatString } = getMessages(parseLocale(locale));
 
   return {
-    title: intl.formatMessage({ id: 'cv.title' }),
+    title: formatString('cv.title'),
   };
 }
 
-export default async function CVPage({ params }: PageProps) {
+export default async function CVPage({ params }: LocalePageProps) {
   const { locale } = await params;
-  const intl = getIntl(locale as Locale);
-
-  const t = (id: string) => intl.formatMessage({ id });
+  const { t, formatString } = getMessages(parseLocale(locale));
 
   const experience = [
     {
-      title: t('cv.jobs.senior.title'),
-      company: t('cv.jobs.senior.company'),
+      title: formatString('cv.jobs.senior.title'),
+      company: formatString('cv.jobs.senior.company'),
       period: t('cv.jobs.senior.period'),
       description: t('cv.jobs.senior.description'),
     },
     {
-      title: t('cv.jobs.fullstack.title'),
-      company: t('cv.jobs.fullstack.company'),
+      title: formatString('cv.jobs.fullstack.title'),
+      company: formatString('cv.jobs.fullstack.company'),
       period: t('cv.jobs.fullstack.period'),
       description: t('cv.jobs.fullstack.description'),
     },
     {
-      title: t('cv.jobs.web.title'),
-      company: t('cv.jobs.web.company'),
+      title: formatString('cv.jobs.web.title'),
+      company: formatString('cv.jobs.web.company'),
       period: t('cv.jobs.web.period'),
       description: t('cv.jobs.web.description'),
     },
