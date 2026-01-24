@@ -63,10 +63,13 @@ jobs:
       - name: Workspace check
         run: pnpm run check
 
-      - name: Lint check
+      - name: Commitlint
+        run: pnpm commitlint --from="${{ github.sha }}"
+
+      - name: ESLint
         run: pnpm turbo run lint --concurrency=5 --no-daemon
 
-      - name: Format check
+      - name: Prettier
         run: pnpm turbo run format --concurrency=5 --no-daemon
 
   typecheck:
