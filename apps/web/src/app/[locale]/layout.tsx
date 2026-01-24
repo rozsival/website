@@ -1,7 +1,6 @@
 import { I18nProvider } from '@rozsival/i18n/client';
 import { getIntl, isValidLocale } from '@rozsival/i18n/server';
 import { ThemeProvider } from '@rozsival/theme';
-import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import { notFound } from 'next/navigation';
 
@@ -20,40 +19,6 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-mono',
   display: 'swap',
 });
-
-export const metadata: Metadata = {
-  title: {
-    default: 'Vít Rozsíval | Full-Stack Developer',
-    template: '%s | Vít Rozsíval',
-  },
-  description:
-    'Full-stack developer with 15+ years of experience combining technical depth with creative background. I care about clean architecture, long-term maintainability, and building products that genuinely serve people.',
-  keywords: [
-    'full-stack developer',
-    'software engineer',
-    'web development',
-    'mobile development',
-    'cloud architecture',
-    'React',
-    'Next.js',
-    'TypeScript',
-  ],
-  authors: [{ name: 'Vít Rozsíval' }],
-  creator: 'Vít Rozsíval',
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    alternateLocale: 'cs_CZ',
-    siteName: 'Vít Rozsíval',
-  },
-  twitter: {
-    card: 'summary_large_image',
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
 
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
   const { locale } = await params;
