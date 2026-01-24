@@ -11,13 +11,13 @@ Modern, type-safe personal website built with Next.js 16, React 19, and TypeScri
 pnpm install
 
 # Start development servers (web + storybook)
-pnpm dev
+pnpm run dev
 
 # Build all packages
-pnpm build
+pnpm run build
 
 # Run quality checks
-pnpm qa
+pnpm run qa
 ```
 
 ## 📦 Tech Stack
@@ -56,22 +56,22 @@ packages/
 
 ```bash
 # Development
-pnpm dev                 # Start all dev servers
-pnpm dev:web             # Start web app only (port 3000)
-pnpm dev:storybook       # Start storybook only (port 6006)
+pnpm run dev                 # Start all dev servers
+pnpm run dev:web             # Start web app only (port 3000)
+pnpm run dev:storybook       # Start storybook only (port 6006)
 
 # Building
-pnpm build               # Build everything
-pnpm build:packages      # Build packages only
+pnpm run build               # Build everything
+pnpm run build:packages      # Build packages only
 
 # Quality Assurance
-pnpm qa                  # Type check + lint + format
-pnpm fix                 # Auto-fix all issues
-pnpm test                # Run tests
+pnpm run qa                  # Type check + lint + format
+pnpm run fix                 # Auto-fix all issues
+pnpm run test                # Run tests
 
 # Maintenance
-pnpm cleanup             # Clean build artifacts
-pnpm check               # Validate workspace structure
+pnpm run cleanup             # Clean build artifacts
+pnpm run check               # Validate workspace structure
 ```
 
 ### Key Features
@@ -99,7 +99,7 @@ pnpm check               # Validate workspace structure
 ## 📖 Documentation
 
 - **[AGENTS.md](./AGENTS.md)**: Comprehensive guide for AI assistants and developers
-- **Storybook**: Component documentation (run `pnpm dev:storybook`)
+- **Storybook**: Component documentation (run `pnpm run dev:storybook`)
 
 ## 🔧 Tooling
 

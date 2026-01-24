@@ -88,28 +88,28 @@ Common patterns:
 
 ```bash
 # Development
-pnpm dev                    # Start all dev servers
-pnpm dev:web                # Start only web app
-pnpm dev:storybook          # Start only storybook
+pnpm run dev                 # Start all dev servers
+pnpm run dev:web             # Start only web app
+pnpm run dev:storybook       # Start only storybook
 
 # Building
-pnpm build                  # Build all apps/packages
-pnpm build:packages         # Build packages only
+pnpm run build               # Build all apps/packages
+pnpm run build:packages      # Build packages only
 
 # Quality Checks
-pnpm qa                     # Type + lint + format checks
-pnpm fix                    # Auto-fix all issues
-pnpm test                   # Run tests
+pnpm run qa                  # Type + lint + format checks
+pnpm run fix                 # Auto-fix all issues
+pnpm run test                # Run tests
 
 # Individual Tasks
-pnpm ts                     # Type check
-pnpm lint                   # Lint check
-pnpm format                 # Format check
+pnpm run ts                  # Type check
+pnpm run lint                # Lint check
+pnpm run format              # Format check
 
 # Maintenance
-pnpm check                  # Workspace validation (manypkg)
-pnpm sync                   # Sync TS project references
-pnpm cleanup                # Clean build artifacts
+pnpm run check               # Workspace validation (manypkg)
+pnpm run sync                # Sync TS project references
+pnpm run cleanup             # Clean build artifacts
 ```
 
 ## Shared Configurations
@@ -337,9 +337,9 @@ Shared component library
 ## Development Workflow
 
 1. **Install**: `pnpm install` (auto-runs hooks + validation)
-2. **Develop**: `pnpm dev` (starts all dev servers)
+2. **Develop**: `pnpm run dev` (starts all dev servers)
 3. **Make changes**: Edit code with type-safe autocomplete
-4. **Before commit**: `pnpm qa` or `pnpm fix`
+4. **Before commit**: `pnpm run qa` or `pnpm run fix`
 5. **Commit**: Conventional commits (auto-validated)
 6. **Push**: CI validates → builds → caches
 
