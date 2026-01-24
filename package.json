@@ -14,7 +14,7 @@
     "format:fix": "turbo run format:fix format:root:fix --no-daemon --parallel",
     "format:root": "prettier --ignore-path .prettierignore --check \"./*.{js,json,md,ts}\" \".github/**/*.{yml,yaml}\"",
     "format:root:fix": "pnpm run format:root --write",
-    "postinstall": "pnpx is-ci || pnpx concurrently --kill-others-on-fail --max-processes 1 --prefix-colors auto \"pnpm manypkg check\" \"pnpm turbo run sync --no-daemon\"",
+    "postinstall": "pnpx is-ci || (husky && pnpx concurrently --kill-others-on-fail --max-processes 1 --prefix-colors auto \"pnpm manypkg check\" \"pnpm turbo run sync --no-daemon\")",
     "lint": "turbo run lint lint:root --no-daemon",
     "lint:fix": "turbo run lint:fix lint:root:fix --no-daemon",
     "lint:root": "eslint --cache \"./*.{js,ts}\"",
@@ -28,6 +28,7 @@
   "devDependencies": {
     "@apitree.cz/cli": "0.5.2",
     "@apitree.cz/eslint-config": "0.7.8",
+    "@apitree.cz/lint-staged-config": "1.0.1",
     "@apitree.cz/prettier-config": "0.3.13",
     "@apitree.cz/ts-config": "0.4.12",
     "@commitlint/cli": "20.3.1",
@@ -38,6 +39,8 @@
     "@typescript-eslint/parser": "8.53.1",
     "del-cli": "7.0.0",
     "eslint": "9.39.2",
+    "husky": "9.1.7",
+    "lint-staged": "16.2.7",
     "prettier": "3.8.1",
     "turbo": "2.7.5",
     "typescript": "5.9.3"
