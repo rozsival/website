@@ -3,13 +3,11 @@
  * Uses @formatjs/intl for server-side message formatting
  */
 
-import { match } from '@formatjs/intl-localematcher';
 import { get } from 'lodash-es';
-import Negotiator from 'negotiator';
 import { createIntl, createIntlCache, type PrimitiveType, type IntlFormatters } from 'react-intl';
 
 import type { Messages, Locale, MessageKey, IntlShape } from './config.js';
-import { locales, defaultLocale, isValidLocale } from './config.js';
+import { defaultLocale, isValidLocale } from './config.js';
 import csMessages from './messages/cs.json' with { type: 'json' };
 import enMessages from './messages/en.json' with { type: 'json' };
 
@@ -76,26 +74,6 @@ export function getIntl(locale: Locale): IntlShape {
  */
 export function parseLocale(locale: string): Locale {
   return isValidLocale(locale) ? locale : defaultLocale;
-}
-
-/**
- * Detect preferred locale from Accept-Language header
- */
-export function getPreferredLocale(acceptLanguage: string | null): Locale {
-  if (acceptLanguage === null || acceptLanguage === '') return defaultLocale;
-
-  const negotiator = new Negotiator({
-    headers: { 'accept-language': acceptLanguage },
-  });
-
-  const languages = negotiator.languages();
-
-  try {
-    const matched = match(languages, locales.slice(), defaultLocale);
-    return isValidLocale(matched) ? matched : defaultLocale;
-  } catch {
-    return defaultLocale;
-  }
 }
 
 /**

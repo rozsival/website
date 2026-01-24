@@ -1,6 +1,6 @@
 'use client';
 
-import { type Locale, getLocaleName, getLocaleFlag, locales } from '@rozsival/i18n';
+import { type Locale, getLocaleName, getLocaleFlag, locales, defaultLocale } from '@rozsival/i18n';
 import { useMessages } from '@rozsival/i18n/client';
 import { useTheme } from '@rozsival/theme';
 import { Button, Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@rozsival/ui';
@@ -142,7 +142,7 @@ export function Header({ locale }: HeaderProps) {
   /**
    * Get alternate locale for language switcher
    */
-  const alternateLocale = locales.find((l) => l !== locale) ?? 'en';
+  const alternateLocale = locales.find((l) => l !== locale) ?? defaultLocale;
   const pathnameWithoutLocale = pathname.replace(`/${locale}`, '') || '/';
 
   return (
