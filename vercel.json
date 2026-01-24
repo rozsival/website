@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "github": { "enabled": false },
+  "installCommand": "pnpm install --frozen-lockfile --prefer-offline",
+  "buildCommand": "pnpm turbo run build --filter=@rozsival/web --no-daemon",
+  "outputDirectory": "./apps/web/.next",
+  "framework": "nextjs"
+}
