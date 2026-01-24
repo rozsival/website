@@ -11,6 +11,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
 
   return {
     title: formatString('cv.title'),
+    description: formatString('cv.subtitle'),
   };
 }
 

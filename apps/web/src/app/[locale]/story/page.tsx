@@ -10,6 +10,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
 
   return {
     title: formatString('story.title'),
+    description: formatString('story.intro'),
   };
 }
 
