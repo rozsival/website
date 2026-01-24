@@ -1,4 +1,5 @@
 // Configuration and types for the i18n system
+import type enMessages from './messages/en.json';
 
 export const locales = ['en', 'cs'] as const;
 export type Locale = (typeof locales)[number];
@@ -26,3 +27,14 @@ export function getLocaleFlag(locale: Locale): string {
   };
   return flags[locale];
 }
+
+// Generate typesafe message keys from en.json
+type PathsToFields<T, P extends string = ''> = {
+  [K in string & keyof T]: T[K] extends string
+    ? `${P}${K}`
+    : T[K] extends Record<string, unknown>
+      ? PathsToFields<T[K], `${P}${K}.`>
+      : never;
+}[string & keyof T];
+
+export type MessageKey = PathsToFields<typeof enMessages>;

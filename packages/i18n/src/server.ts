@@ -4,9 +4,9 @@
 import { match } from '@formatjs/intl-localematcher';
 import { get } from 'lodash-es';
 import Negotiator from 'negotiator';
-import { createIntl, createIntlCache, type IntlShape } from 'react-intl';
+import { createIntl, createIntlCache, type IntlShape, type IntlFormatters, type MessageDescriptor } from 'react-intl';
 
-import { type Locale, locales, defaultLocale, isValidLocale } from './config.js';
+import { type Locale, locales, defaultLocale, isValidLocale, type MessageKey } from './config.js';
 import csMessages from './messages/cs.json' with { type: 'json' };
 import enMessages from './messages/en.json' with { type: 'json' };
 
@@ -75,12 +75,18 @@ export function getPreferredLocale(acceptLanguage: string | null): Locale {
   }
 }
 
+// Extract the values type from react-intl's formatMessage (string version)
+type MessageValues = Parameters<IntlFormatters<string>['formatMessage']>[1];
+
 // Format a message on the server
-export function formatMessage(locale: Locale, id: string, values?: Record<string, number | string>): string {
+export function formatMessage(locale: Locale, id: MessageKey, values?: MessageValues): string {
   const validatedLocale = isValidLocale(locale) ? locale : defaultLocale;
   const intl = getIntl(validatedLocale);
 
-  return intl.formatMessage({ id, defaultMessage: get(enMessages, id, '') }, values);
+  return (intl.formatMessage as (descriptor: MessageDescriptor, values?: MessageValues) => string)(
+    { id, defaultMessage: get(enMessages, id) },
+    values,
+  );
 }
 
 export { type Locale, locales, defaultLocale, isValidLocale } from './config.js';
