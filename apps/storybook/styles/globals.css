@@ -1,8 +1,19 @@
+/* Import fonts from Google Fonts (matching Next.js setup) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
 @import 'tailwindcss';
 @import '@rozsival/theme/styles.css';
 
 @source "../../../packages/ui/src";
 @source "../../../packages/mdx/src";
+
+/* Define font variables to match Next.js layout */
+:root {
+  --font-sans:
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+}
 
 body {
   font-family: var(--font-sans);
