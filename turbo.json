@@ -69,9 +69,6 @@
     "//#ts:root": {
       "dependsOn": ["^build"],
       "outputs": ["tsconfig.tsbuildinfo"]
-    },
-    "clean": {
-      "cache": false
     }
   }
 }
