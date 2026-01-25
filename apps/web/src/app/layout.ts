@@ -18,21 +18,20 @@ export const metadata: Metadata = {
     'React',
     'Next.js',
     'TypeScript',
+    'Node.js',
   ],
   authors: [{ name: 'Vít Rozsíval' }],
   creator: 'Vít Rozsíval',
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    alternateLocale: 'cs_CZ',
     siteName: 'Vít Rozsíval',
   },
   twitter: {
     card: 'summary_large_image',
   },
   robots: {
-    index: true,
-    follow: true,
+    index: false,
+    follow: false,
   },
 };
 
