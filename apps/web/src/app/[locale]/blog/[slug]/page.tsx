@@ -1,6 +1,6 @@
 import path from 'node:path';
 
-import { getMessages, parseLocale } from '@rozsival/i18n/server';
+import { getMessages, locales } from '@rozsival/i18n/server';
 import { getPostBySlug, getAllPosts } from '@rozsival/mdx';
 import { Button } from '@rozsival/ui';
 import type { Metadata } from 'next';
@@ -10,9 +10,9 @@ import { notFound } from 'next/navigation';
 import type { LocalePageProps } from '@/types/locale';
 
 export async function generateMetadata({ params }: LocalePageProps<{ slug: string }>): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const postsDirectory = path.join(process.cwd(), 'content', 'blog');
-  const post = await getPostBySlug(postsDirectory, slug);
+  const post = await getPostBySlug(postsDirectory, slug, locale);
 
   if (!post) {
     return { title: 'Post Not Found' };
@@ -21,6 +21,16 @@ export async function generateMetadata({ params }: LocalePageProps<{ slug: strin
   return {
     title: post.frontmatter.title,
     description: post.frontmatter.description,
+    openGraph: {
+      title: post.frontmatter.title,
+      description: post.frontmatter.description,
+      type: 'article',
+      publishedTime: post.frontmatter.date,
+      authors: ['Vít Rozsíval'],
+      tags: post.frontmatter.tags,
+      locale,
+      alternateLocale: locales.filter((iso) => iso !== locale),
+    },
   };
 }
 
@@ -29,18 +39,15 @@ export async function generateStaticParams() {
   const posts = await getAllPosts(postsDirectory);
 
   // Generate params for all locales and posts
-  return posts.flatMap((post) => [
-    { locale: 'en', slug: post.slug },
-    { locale: 'cs', slug: post.slug },
-  ]);
+  return posts.flatMap((post) => locales.map((locale) => ({ locale, slug: post.slug })));
 }
 
 export default async function BlogPostPage({ params }: LocalePageProps<{ slug: string }>) {
   const { locale, slug } = await params;
-  const { t } = getMessages(parseLocale(locale));
+  const { formatDate, t } = getMessages(locale);
 
   const postsDirectory = path.join(process.cwd(), 'content', 'blog');
-  const post = await getPostBySlug(postsDirectory, slug, parseLocale(locale));
+  const post = await getPostBySlug(postsDirectory, slug, locale);
 
   if (post == null) {
     notFound();
@@ -58,15 +65,17 @@ export default async function BlogPostPage({ params }: LocalePageProps<{ slug: s
           {/* Header */}
           <header className="mb-12">
             <div className="mb-4 flex items-center gap-4 text-sm text-muted-foreground">
-              <time dateTime={post.frontmatter.date}>
-                {new Date(post.frontmatter.date).toLocaleDateString(locale, {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </time>
+              {post.frontmatter.date ? (
+                <time dateTime={post.frontmatter.date}>
+                  {formatDate(post.frontmatter.date, {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </time>
+              ) : null}
               {/* eslint-disable-next-line formatjs/no-literal-string-in-jsx */}
-              <span>•</span>
+              {post.frontmatter.date ? <span>•</span> : null}
               <span>{t('blog.readingTime', { minutes: post.readingTime })}</span>
             </div>
             <h1 className="mb-4 text-4xl font-bold tracking-tight md:text-5xl">{post.frontmatter.title}</h1>
