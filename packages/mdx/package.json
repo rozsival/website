@@ -24,6 +24,7 @@
     "prebuild": "del dist tsconfig.build.tsbuildinfo",
     "build": "tsc --build tsconfig.build.json",
     "cleanup": "del .eslintcache .turbo tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo dist node_modules",
+    "dev": "pnpm run build --watch",
     "fix": "turbo run ts format:fix lint:fix --no-daemon",
     "format": "prettier --ignore-path .prettierignore --check \"./**/*.{js,json,md,ts,tsx}\"",
     "format:fix": "pnpm run format --write",
