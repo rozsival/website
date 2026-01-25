@@ -32,19 +32,38 @@ function getStoredTheme(): Theme {
 interface ThemeProviderProps {
   children: ReactNode;
   defaultTheme?: Theme;
+  /**
+   * Controlled theme value (optional)
+   * When provided, the component will use this value instead of localStorage
+   */
+  theme?: Theme;
+  /**
+   * Callback for theme changes in controlled mode
+   */
+  onThemeChange?: (theme: Theme) => void;
 }
 
-export function ThemeProvider({ children, defaultTheme = 'system' }: ThemeProviderProps) {
-  const [theme, setThemeState] = useState<Theme>(defaultTheme);
+export function ThemeProvider({
+  children,
+  defaultTheme = 'system',
+  theme: controlledTheme,
+  onThemeChange,
+}: ThemeProviderProps) {
+  const isControlled = controlledTheme !== undefined;
+  const [internalTheme, setInternalTheme] = useState<Theme>(defaultTheme);
   const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>('light');
 
+  // Use controlled theme if provided, otherwise use internal state
+  const theme = isControlled ? controlledTheme : internalTheme;
+
   /**
-   * Initialize theme from storage on mount
+   * Initialize theme from storage on mount (only in uncontrolled mode)
    */
   useEffect(() => {
+    if (isControlled) return;
     const stored = getStoredTheme();
-    setThemeState(stored);
-  }, []);
+    setInternalTheme(stored);
+  }, [isControlled]);
 
   /**
    * Resolve the actual theme and apply to document
@@ -75,10 +94,19 @@ export function ThemeProvider({ children, defaultTheme = 'system' }: ThemeProvid
     };
   }, [theme]);
 
-  const setTheme = useCallback((newTheme: Theme) => {
-    setThemeState(newTheme);
-    localStorage.setItem(STORAGE_KEY, newTheme);
-  }, []);
+  const setTheme = useCallback(
+    (newTheme: Theme) => {
+      if (isControlled) {
+        // In controlled mode, notify parent
+        onThemeChange?.(newTheme);
+      } else {
+        // In uncontrolled mode, update internal state and localStorage
+        setInternalTheme(newTheme);
+        localStorage.setItem(STORAGE_KEY, newTheme);
+      }
+    },
+    [isControlled, onThemeChange],
+  );
 
   const value = useMemo(() => ({ theme, resolvedTheme, setTheme }), [theme, resolvedTheme, setTheme]);
 
