@@ -43,27 +43,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Check production
+      - name: Verify production deployment
+        if: ${{ inputs.production }}
         run: |
-          if [ "${{ inputs.production }}" == "true" ]; then
-            # Production deployment must be on main branch
-            if [ "${{ github.ref_name }}" != "main" ]; then
-              echo -e "\033[0;31mMust be on main branch to deploy to production\033[0m"
-              exit 1
-            fi
+          if [ "${{ github.ref_name }}" != "main" ]; then
+            echo -e "\033[0;31mMust be on main branch to deploy to production\033[0m"
+            exit 1
           fi
 
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile --prefer-offline
+      - name: Set up project
+        uses: ./.github/actions/setup
 
       - name: Build for Vercel
         run: |

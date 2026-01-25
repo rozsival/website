@@ -1,0 +1,14 @@
+name: 'Turbo'
+description: 'Runs a turbo task with standard flags'
+
+inputs:
+  task:
+    description: 'The turbo task to run'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Run Turbo task
+      run: pnpm turbo run ${{ inputs.task }} --concurrency=5 --no-daemon
+      shell: bash

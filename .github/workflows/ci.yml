@@ -25,20 +25,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile --prefer-offline
+      - name: Set up project
+        uses: ./.github/actions/setup
 
       - name: Build
-        run: pnpm turbo run build --concurrency=5 --no-daemon
+        uses: ./.github/actions/turbo
+        with:
+          task: build
 
   lint:
     runs-on: ubuntu-latest
@@ -48,17 +41,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile --prefer-offline
+      - name: Set up project
+        uses: ./.github/actions/setup
 
       - name: Workspace check
         run: pnpm run check
@@ -67,10 +51,14 @@ jobs:
         run: pnpm commitlint --from="${{ github.sha }}"
 
       - name: ESLint
-        run: pnpm turbo run lint --concurrency=5 --no-daemon
+        uses: ./.github/actions/turbo
+        with:
+          task: lint
 
       - name: Prettier
-        run: pnpm turbo run format --concurrency=5 --no-daemon
+        uses: ./.github/actions/turbo
+        with:
+          task: format
 
   typecheck:
     runs-on: ubuntu-latest
@@ -80,17 +68,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile --prefer-offline
+      - name: Set up project
+        uses: ./.github/actions/setup
 
       - name: Type check
-        run: pnpm turbo run ts --concurrency=5 --no-daemon
+        uses: ./.github/actions/turbo
+        with:
+          task: ts
