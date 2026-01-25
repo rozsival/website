@@ -54,10 +54,18 @@ function getMessagesForLocale(locale: Locale) {
 }
 
 /**
+ * Parse and validate a locale string, returning a valid Locale or defaultLocale
+ * Uses the isValidLocale typeguard to ensure type safety
+ */
+export function parseLocale(locale: string): Locale {
+  return isValidLocale(locale) ? locale : defaultLocale;
+}
+
+/**
  * Get or create an Intl instance for a locale
  */
-export function getIntl(locale: Locale): IntlShape {
-  const validatedLocale = isValidLocale(locale) ? locale : defaultLocale;
+export function getIntl(locale: string): IntlShape {
+  const validatedLocale = parseLocale(locale);
   const cached = intlCache.get(validatedLocale);
   if (cached) return cached;
 
@@ -66,14 +74,6 @@ export function getIntl(locale: Locale): IntlShape {
   intlCache.set(validatedLocale, intl);
 
   return intl;
-}
-
-/**
- * Parse and validate a locale string, returning a valid Locale or defaultLocale
- * Uses the isValidLocale typeguard to ensure type safety
- */
-export function parseLocale(locale: string): Locale {
-  return isValidLocale(locale) ? locale : defaultLocale;
 }
 
 /**
@@ -89,18 +89,20 @@ type MessageValues = Parameters<IntlFormatters<string>['formatMessage']>[1];
  * const { t } = getMessages(locale);
  * const title = t('home.hero.title');
  */
-export function getMessages(locale: Locale) {
-  const validatedLocale = parseLocale(locale);
-  const intl = getIntl(validatedLocale);
+export function getMessages(locale: string) {
+  const intl = getIntl(locale);
 
   return {
     t: (id: MessageKey, values?: MessageValues) =>
       intl.formatMessage({ id, defaultMessage: get(enMessages, id) }, values),
     formatString: (id: MessageKey, values?: Record<string, PrimitiveType>) =>
       intl.formatMessage({ id, defaultMessage: get(enMessages, id) }, values),
-    formatDate: (value: Date | number | string) => intl.formatDate(value),
-    formatNumber: (value: number) => intl.formatNumber(value),
-    formatTime: (value: Date | number | string) => intl.formatTime(value),
+    formatDate: (value: Date | number | string, options?: Parameters<IntlFormatters['formatDate']>[1]) =>
+      intl.formatDate(value, options),
+    formatNumber: (value: bigint | number, options?: Parameters<IntlFormatters['formatNumber']>[1]) =>
+      intl.formatNumber(value, options),
+    formatTime: (value: Date | number | string, options?: Parameters<IntlFormatters['formatTime']>[1]) =>
+      intl.formatTime(value, options),
   };
 }
 
