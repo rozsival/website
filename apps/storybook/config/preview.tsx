@@ -1,8 +1,27 @@
 import type { Theme } from '@rozsival/theme';
 import { ThemeProvider } from '@rozsival/theme';
 import type { Preview } from '@storybook/react-vite';
+import { useEffect } from 'react';
 import '@rozsival/theme/styles.css';
 import '../styles/globals.css';
+
+const STORYBOOK_THEME_KEY = 'storybook-theme';
+
+/**
+ * Get the initial theme from localStorage or system preference
+ */
+function getInitialTheme(): Theme {
+  if (typeof window === 'undefined') return 'light';
+
+  // Check Storybook's localStorage first
+  const stored = localStorage.getItem(STORYBOOK_THEME_KEY);
+  if (stored === 'light' || stored === 'dark') {
+    return stored;
+  }
+
+  // Fall back to system preference
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
 
 const preview: Preview = {
   parameters: {
@@ -19,7 +38,6 @@ const preview: Preview = {
   globalTypes: {
     theme: {
       description: 'Color theme',
-      defaultValue: 'light',
       toolbar: {
         title: 'Theme',
         icon: 'paintbrush',
@@ -31,25 +49,26 @@ const preview: Preview = {
       },
     },
   },
+  initialGlobals: {
+    theme: getInitialTheme(),
+  },
   decorators: [
-    (Story, context) => {
-      const theme = (context.globals.theme || 'light') as Theme;
+    function RootDecorator(Story, context) {
+      const theme = context.globals.theme as Theme;
 
-      // Apply theme class to document
-      if (typeof document !== 'undefined') {
-        document.documentElement.classList.remove('light', 'dark');
-        document.documentElement.classList.add(theme);
-      }
+      // Persist theme to localStorage whenever it changes
+      useEffect(() => {
+        localStorage.setItem(STORYBOOK_THEME_KEY, theme);
+      }, [theme]);
 
       return (
-        <ThemeProvider defaultTheme={theme}>
-          <div className="p-4">
-            <Story />
-          </div>
+        <ThemeProvider theme={theme}>
+          <Story />
         </ThemeProvider>
       );
     },
   ],
+  tags: ['autodocs'],
 };
 
 export default preview;
