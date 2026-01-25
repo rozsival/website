@@ -61,7 +61,11 @@ export async function getAllPosts(postsDirectory: string, locale?: string): Prom
   /**
    * Sort by date, newest first
    */
-  return publishedPosts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+  return publishedPosts.sort((a, b) => {
+    const dateA = a.frontmatter.date ? new Date(a.frontmatter.date).getTime() : 0;
+    const dateB = b.frontmatter.date ? new Date(b.frontmatter.date).getTime() : 0;
+    return dateB - dateA;
+  });
 }
 
 /**

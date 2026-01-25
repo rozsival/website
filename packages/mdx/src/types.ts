@@ -8,7 +8,7 @@
 export interface PostFrontmatter {
   title: string;
   description: string;
-  date: string;
+  date?: string;
   tags?: string[];
   published?: boolean;
   locale?: string;
