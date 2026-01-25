@@ -1,14 +1,9 @@
 ---
 title: Vítejte na mém blogu
 description: Toto je první příspěvek na mém blogu. Těším se, že s vámi budu sdílet své myšlenky a zkušenosti.
-date: '2026-01-24'
 tags:
   - uvítání
-  - úvod
-published: true
 ---
-
-# Vítejte na mém blogu
 
 Ahoj a vítejte! Toto je můj první blogový příspěvek a těším se, že s vámi budu sdílet své myšlenky, zkušenosti a poznatky.
 

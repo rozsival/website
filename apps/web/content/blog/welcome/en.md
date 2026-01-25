@@ -1,14 +1,9 @@
 ---
 title: Welcome to My Blog
 description: This is the first post on my blog. I'm excited to share my thoughts and experiences with you.
-date: '2026-01-24'
 tags:
   - welcome
-  - introduction
-published: true
 ---
-
-# Welcome to My Blog
 
 Hello and welcome! This is my first blog post, and I'm excited to start sharing my thoughts, experiences, and learnings with you.
 
