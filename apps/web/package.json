@@ -4,6 +4,7 @@
   "private": true,
   "description": "Personal website for Vít Rozsíval",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "prebuild": "del .next tsconfig.tsbuildinfo",
     "build": "next build",
