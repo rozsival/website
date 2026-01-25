@@ -1,4 +1,4 @@
-import { getMessages, parseLocale } from '@rozsival/i18n/server';
+import { getMessages } from '@rozsival/i18n/server';
 import { Button, Card, CardContent, CardHeader, CardTitle } from '@rozsival/ui';
 import { FileText, Briefcase, Wrench } from 'lucide-react';
 import type { Metadata } from 'next';
@@ -7,7 +7,7 @@ import type { LocalePageProps } from '@/types/locale';
 
 export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
   const { locale } = await params;
-  const { formatString } = getMessages(parseLocale(locale));
+  const { formatString } = getMessages(locale);
 
   return {
     title: formatString('cv.title'),
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
 
 export default async function CVPage({ params }: LocalePageProps) {
   const { locale } = await params;
-  const { t, formatString } = getMessages(parseLocale(locale));
+  const { t, formatString } = getMessages(locale);
 
   const experience = [
     {

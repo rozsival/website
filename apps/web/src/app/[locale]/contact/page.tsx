@@ -1,4 +1,4 @@
-import { getMessages, parseLocale } from '@rozsival/i18n/server';
+import { getMessages } from '@rozsival/i18n/server';
 import { Card, CardContent, CardHeader, CardTitle } from '@rozsival/ui';
 import { MessageCircle } from 'lucide-react';
 import type { Metadata } from 'next';
@@ -8,7 +8,7 @@ import type { LocalePageProps } from '@/types/locale';
 
 export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
   const { locale } = await params;
-  const { formatString } = getMessages(parseLocale(locale));
+  const { formatString } = getMessages(locale);
 
   return {
     title: formatString('contact.title'),
@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
 
 export default async function ContactPage({ params }: LocalePageProps) {
   const { locale } = await params;
-  const { t } = getMessages(parseLocale(locale));
+  const { t } = getMessages(locale);
 
   return (
     <div className="py-16 md:py-24">
