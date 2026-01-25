@@ -1,7 +1,8 @@
 import { defaultLocale, locales } from '@rozsival/i18n';
-import type { I18NConfig } from 'next/dist/server/config-shared';
+import type { Config } from 'next-i18n-router/dist/types';
 
 export const i18nConfig = {
   defaultLocale,
   locales,
-} satisfies I18NConfig;
+  prefixDefault: true,
+} satisfies Config;
