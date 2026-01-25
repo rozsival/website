@@ -1,5 +1,5 @@
 import { I18nProvider } from '@rozsival/i18n/client';
-import { getIntl, isValidLocale } from '@rozsival/i18n/server';
+import { getIntl, isValidLocale, locales } from '@rozsival/i18n/server';
 import { ThemeProvider } from '@rozsival/theme';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import { notFound } from 'next/navigation';
@@ -19,6 +19,10 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-mono',
   display: 'swap',
 });
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
   const { locale } = await params;
@@ -64,8 +68,4 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       </body>
     </html>
   );
-}
-
-export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'cs' }];
 }
