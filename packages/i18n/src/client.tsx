@@ -61,8 +61,11 @@ export function useMessages() {
       intl.formatMessage({ id, defaultMessage: get(enMessages, id) }, values),
     formatString: (id: MessageKey, values?: Record<string, PrimitiveType>) =>
       intl.formatMessage({ id, defaultMessage: get(enMessages, id) }, values),
-    formatDate: (value: Date | number | string) => intl.formatDate(value),
-    formatNumber: (value: number) => intl.formatNumber(value),
-    formatTime: (value: Date | number | string) => intl.formatTime(value),
+    formatDate: (value: Date | number | string, options?: Parameters<IntlFormatters['formatDate']>[1]) =>
+      intl.formatDate(value, options),
+    formatNumber: (value: bigint | number, options?: Parameters<IntlFormatters['formatNumber']>[1]) =>
+      intl.formatNumber(value, options),
+    formatTime: (value: Date | number | string, options?: Parameters<IntlFormatters['formatTime']>[1]) =>
+      intl.formatTime(value, options),
   };
 }
