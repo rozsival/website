@@ -7,7 +7,7 @@ import path from 'node:path';
 
 import { parsePost } from './parser.js';
 import type { Post } from './types.js';
-import { fileExists, isDirectory } from './utils.js';
+import { exists, isDirectory, isMdxFile, MDX_EXTENSIONS } from './utils.js';
 
 /**
  * Get all posts from a directory
@@ -16,11 +16,7 @@ import { fileExists, isDirectory } from './utils.js';
  * - Directory-based: content/blog/post-name/en.md
  */
 export async function getAllPosts(postsDirectory: string, locale?: string): Promise<Post[]> {
-  const exists = await fs
-    .access(postsDirectory)
-    .then(() => true)
-    .catch(() => false);
-  if (!exists) return [];
+  if (!(await exists(postsDirectory))) return [];
 
   const entries = await fs.readdir(postsDirectory);
   const posts: Post[] = [];
@@ -33,7 +29,7 @@ export async function getAllPosts(postsDirectory: string, locale?: string): Prom
       // Directory-based structure: [slug]/[locale].md(x)
       const slug = entry;
       const files = await fs.readdir(entryPath);
-      const mdxFiles = files.filter((file) => file.endsWith('.mdx') || file.endsWith('.md'));
+      const mdxFiles = files.filter(isMdxFile);
 
       for (const file of mdxFiles) {
         const fileLocale = path.basename(file, path.extname(file));
@@ -45,7 +41,7 @@ export async function getAllPosts(postsDirectory: string, locale?: string): Prom
           posts.push(post);
         }
       }
-    } else if (entry.endsWith('.mdx') || entry.endsWith('.md')) {
+    } else if (isMdxFile(entry)) {
       // Flat file structure (backward compatibility)
       const post = await parsePost(entryPath);
 
@@ -75,17 +71,15 @@ export async function getAllPosts(postsDirectory: string, locale?: string): Prom
  * - Flat file: content/blog/[slug].md(x) (backward compatibility)
  */
 export async function getPostBySlug(postsDirectory: string, slug: string, locale?: string): Promise<Post | undefined> {
-  const extensions = ['.mdx', '.md'];
-
   // Try directory-based structure first
   if (locale != null) {
     const slugDirectory = path.join(postsDirectory, slug);
     const isDirectoryStructure = await isDirectory(slugDirectory);
 
     if (isDirectoryStructure) {
-      for (const extension of extensions) {
+      for (const extension of MDX_EXTENSIONS) {
         const filePath = path.join(slugDirectory, `${locale}${extension}`);
-        if (await fileExists(filePath)) {
+        if (await exists(filePath)) {
           return await parsePost(filePath, slug, locale);
         }
       }
@@ -93,9 +87,9 @@ export async function getPostBySlug(postsDirectory: string, slug: string, locale
   }
 
   // Fall back to flat file structure
-  for (const extension of extensions) {
+  for (const extension of MDX_EXTENSIONS) {
     const filePath = path.join(postsDirectory, `${slug}${extension}`);
-    if (await fileExists(filePath)) {
+    if (await exists(filePath)) {
       const post = await parsePost(filePath);
 
       // If locale is specified, check if it matches

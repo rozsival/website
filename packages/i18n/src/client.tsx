@@ -41,7 +41,8 @@ export function I18nProvider({ locale, messages, children }: I18nProviderProps) 
  * Hook to get current locale
  */
 export function useLocale(): Locale {
-  return useContext(I18nContext).locale;
+  const { locale } = useContext(I18nContext);
+  return locale;
 }
 
 /**
