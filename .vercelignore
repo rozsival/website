@@ -4,8 +4,7 @@
 .nvmrc
 .prettierignore
 .turbo
-.vercel/*
-!.vercel/package.json
+.vercel
 *.tsbuildinfo
 lint-staged.config.js
 next.config.ts
