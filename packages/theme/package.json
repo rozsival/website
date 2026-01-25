@@ -20,7 +20,7 @@
   "scripts": {
     "prebuild": "del dist tsconfig.build.tsbuildinfo",
     "build": "tsc --build tsconfig.build.json",
-    "postbuild": "cpy-cli --flat src/styles.css dist",
+    "postbuild": "cpy --flat src/styles.css dist",
     "cleanup": "del .eslintcache .turbo tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo dist node_modules",
     "fix": "turbo run ts format:fix lint:fix --no-daemon",
     "format": "prettier --ignore-path .prettierignore --check \"./**/*.{js,json,md,ts,tsx}\"",
