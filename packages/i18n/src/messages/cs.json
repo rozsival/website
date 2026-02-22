@@ -98,23 +98,53 @@
     "education": "Vzdělání",
     "skills": "Skillset",
     "jobs": {
-      "senior": {
-        "title": "Senior Full-Stack Vývojář",
-        "company": "Různí klienti",
-        "period": "2018 - Současnost",
-        "description": "Vedení vývoje webových a mobilních aplikací, architektura cloudových řešení a mentoring týmů."
+      "apitree": {
+        "title": "Senior Software Engineer",
+        "company": "ApiTree",
+        "period": "Duben 2021 – současnost",
+        "description": "Tvorba škálovatelných, enterprise řešení s moderním tech stackem. Pomáhám týmům přetavit složité nápady v dobře navržené a spolehlivé produkty."
       },
-      "fullstack": {
-        "title": "Full-Stack Vývojář",
-        "company": "Technologické firmy",
-        "period": "2012 - 2018",
-        "description": "Budování škálovatelných webových aplikací, implementace CI/CD a příspěvky do open source."
+      "wavevision": {
+        "title": "Full Stack Developer",
+        "company": "Wavevision s.r.o.",
+        "period": "Květen 2016 – duben 2021",
+        "description": "Vývoj webových a mobilních aplikací v PHP (Nette, Doctrine) a TypeScriptu (React, React Native, Node.js, GraphQL, Relay, Redux). Spoluautor open-source knihoven na github.com/wavevision."
       },
-      "web": {
-        "title": "Web Developer",
-        "company": "Digitální agentury",
-        "period": "2008 - 2012",
-        "description": "Tvorba webů a aplikací pro různorodé klienty napříč mnoha odvětvími."
+      "sitefellows": {
+        "title": "Full Stack Developer",
+        "company": "Sitefellows.cz",
+        "period": "Leden 2012 – leden 2019",
+        "description": "Full-stack vývoj webů a mobilních aplikací, deployment a údržba včetně komunikace s klienty, vedení projektů a analýzy."
+      },
+      "lundegaard": {
+        "title": "Frontend Developer",
+        "company": "Lundegaard",
+        "period": "Srpen 2015 – duben 2016",
+        "description": "Frontend vývoj, webová integrace, klientský servis a údržba backendu."
+      },
+      "freelance": {
+        "title": "Freelance Web Developer",
+        "company": "Na volné noze",
+        "period": "Říjen 2010 – leden 2019",
+        "description": "HTML/CSS/JS, PHP, návrh a správa MySQL databází, projektová analýza, klientský servis, webová integrace a serverový deployment."
+      }
+    },
+    "schools": {
+      "oa": {
+        "school": "Obchodní akademie T.G.M. Kostelec nad Orlicí",
+        "field": "Informační technologie",
+        "period": "2006 – 2010"
+      },
+      "uhk": {
+        "school": "Univerzita Hradec Králové",
+        "field": "Informační technologie",
+        "period": "2010 – 2012",
+        "note": "Nedokončeno"
+      },
+      "upce": {
+        "school": "Univerzita Pardubice",
+        "period": "2012 – 2015",
+        "note": "Nedokončeno"
       }
     },
     "categories": {

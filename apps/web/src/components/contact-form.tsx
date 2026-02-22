@@ -3,13 +3,14 @@
 import { useMessages } from '@rozsival/i18n/client';
 import { Button, Input, Textarea } from '@rozsival/ui';
 import { CheckCircle } from 'lucide-react';
-import { useState, type FormEvent } from 'react';
+import type { SubmitEvent } from 'react';
+import { useState } from 'react';
 
 export function ContactForm() {
   const { t } = useMessages();
   const [status, setStatus] = useState<'error' | 'idle' | 'loading' | 'success'>('idle');
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus('loading');
 

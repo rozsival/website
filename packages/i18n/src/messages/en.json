@@ -98,23 +98,53 @@
     "education": "Education",
     "skills": "Skills",
     "jobs": {
-      "senior": {
-        "title": "Senior Full-Stack Developer",
-        "company": "Various Clients",
-        "period": "2018 - Present",
-        "description": "Leading development of web and mobile applications, architecting cloud solutions, and mentoring teams."
+      "apitree": {
+        "title": "Senior Software Engineer",
+        "company": "ApiTree",
+        "period": "April 2021 – Present",
+        "description": "Creating scalable, enterprise-ready solutions with a modern tech stack. Helping teams turn complex ideas into well-designed, reliable products."
       },
-      "fullstack": {
-        "title": "Full-Stack Developer",
-        "company": "Technology Companies",
-        "period": "2012 - 2018",
-        "description": "Building scalable web applications, implementing CI/CD pipelines, and contributing to open source."
+      "wavevision": {
+        "title": "Full Stack Developer",
+        "company": "Wavevision s.r.o.",
+        "period": "May 2016 – April 2021",
+        "description": "Contractor for web and mobile applications development using PHP (Nette, Doctrine) and TypeScript (React, React Native, Node.js, GraphQL, Relay, Redux). Co-author of open-source libraries at github.com/wavevision."
       },
-      "web": {
-        "title": "Web Developer",
-        "company": "Digital Agencies",
-        "period": "2008 - 2012",
-        "description": "Creating websites and web applications for diverse clients across multiple industries."
+      "sitefellows": {
+        "title": "Full Stack Developer",
+        "company": "Sitefellows.cz",
+        "period": "January 2012 – January 2019",
+        "description": "Websites, web and mobile apps full-stack development, deployment and maintenance including customer communication, project lead and analysis."
+      },
+      "lundegaard": {
+        "title": "Frontend Developer",
+        "company": "Lundegaard",
+        "period": "August 2015 – April 2016",
+        "description": "Front-end development, web integration, client service and back-end maintenance."
+      },
+      "freelance": {
+        "title": "Freelance Web Developer",
+        "company": "Self-employed",
+        "period": "October 2010 – January 2019",
+        "description": "HTML/CSS/JS, PHP, MySQL database design, project analysis, client service, web integration and server deployment."
+      }
+    },
+    "schools": {
+      "oa": {
+        "school": "Obchodní akademie T.G.M. Kostelec nad Orlicí",
+        "field": "Information Technology",
+        "period": "2006 – 2010"
+      },
+      "uhk": {
+        "school": "University of Hradec Králové",
+        "field": "Information Technology",
+        "period": "2010 – 2012",
+        "note": "Dropout"
+      },
+      "upce": {
+        "school": "University of Pardubice",
+        "period": "2012 – 2015",
+        "note": "Dropout"
       }
     },
     "categories": {
