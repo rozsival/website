@@ -60,18 +60,18 @@
     "@radix-ui/react-slot": "1.2.4",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
-    "lucide-react": "0.563.0",
-    "tailwind-merge": "3.4.0"
+    "lucide-react": "0.575.0",
+    "tailwind-merge": "3.5.0"
   },
   "devDependencies": {
     "@rozsival/theme": "workspace:*",
-    "@types/react": "19.2.9",
-    "react": "19.2.3",
+    "@types/react": "19.2.14",
+    "react": "19.2.4",
     "typescript": "5.9.3",
     "vitest": "4.0.18"
   },
   "peerDependencies": {
     "@rozsival/theme": "workspace:*",
-    "react": "19.2.3"
+    "react": "19.2.x"
   }
 }

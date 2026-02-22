@@ -66,6 +66,9 @@ pnpm run test             # Run tests
 ### Commits
 
 - Conventional Commits enforced (commitlint)
+- Always use lowercase for commit messages (e.g. `feat: add i18n`, not `feat: Add i18n`)
+- Use imperative verb in commit messages (e.g. `feat: add i18n`, not `feat: added i18n`)
+- Do not end commit messages with period (e.g. `feat: add i18n`, not `feat: add i18n.`)
 - Pre-commit: lint-staged | Commit-msg: commitlint
 
 ### Shared Configs

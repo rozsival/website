@@ -28,30 +28,30 @@
     "ts:root": "tsc"
   },
   "devDependencies": {
-    "@apitree.cz/cli": "0.5.2",
-    "@apitree.cz/eslint-config": "0.7.9",
+    "@apitree.cz/cli": "0.5.3",
+    "@apitree.cz/eslint-config": "0.7.10",
     "@apitree.cz/lint-staged-config": "1.0.1",
     "@apitree.cz/prettier-config": "0.3.13",
     "@apitree.cz/ts-config": "0.4.12",
-    "@commitlint/cli": "20.3.1",
-    "@commitlint/config-conventional": "20.3.1",
+    "@commitlint/cli": "20.4.2",
+    "@commitlint/config-conventional": "20.4.2",
     "@manypkg/cli": "0.25.1",
     "@types/node": "24.10.9",
-    "@typescript-eslint/eslint-plugin": "8.53.1",
-    "@typescript-eslint/parser": "8.53.1",
+    "@typescript-eslint/eslint-plugin": "8.56.0",
+    "@typescript-eslint/parser": "8.56.0",
     "concurrently": "9.2.1",
-    "cpy-cli": "6.0.0",
+    "cpy-cli": "7.0.0",
     "del-cli": "7.0.0",
     "eslint": "9.39.2",
     "husky": "9.1.7",
     "is-ci": "4.1.0",
     "lint-staged": "16.2.7",
     "prettier": "3.8.1",
-    "turbo": "2.7.6",
+    "turbo": "2.8.10",
     "typescript": "5.9.3",
-    "vercel": "50.5.0"
+    "vercel": "50.22.1"
   },
-  "packageManager": "pnpm@10.28.1",
+  "packageManager": "pnpm@10.30.1",
   "engines": {
     "node": "24.x"
   }
