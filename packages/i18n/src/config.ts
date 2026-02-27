@@ -1,6 +1,8 @@
 /**
  * Configuration and types for the i18n system
  */
+import type { FormatXMLElementFn, PrimitiveType } from 'intl-messageformat';
+import type { ReactNode } from 'react';
 import type { IntlShape as ReactIntlShape } from 'react-intl';
 
 import type enMessages from './messages/en.json';
@@ -52,3 +54,13 @@ type PathsToFields<T, P extends string = ''> = {
 export type MessageKey = PathsToFields<typeof enMessages>;
 export type Messages = Record<MessageKey, string>;
 export type IntlShape = Omit<ReactIntlShape, 'messages'> & { messages: Messages };
+
+/**
+ * Values formatted as ReactNode (JSX)
+ */
+export type MessageValues = Record<string, FormatXMLElementFn<string, ReactNode> | PrimitiveType | ReactNode>;
+
+/**
+ * Values formatted as strings only
+ */
+export type MessageStringValues = Record<string, FormatXMLElementFn<string, string> | PrimitiveType>;

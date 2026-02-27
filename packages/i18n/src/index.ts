@@ -2,6 +2,8 @@
 export {
   type Locale,
   type MessageKey,
+  type MessageValues,
+  type MessageStringValues,
   locales,
   defaultLocale,
   isValidLocale,

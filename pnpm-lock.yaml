@@ -208,9 +208,15 @@ importers:
 
   packages/i18n:
     dependencies:
+      '@formatjs/intl':
+        specifier: 4.1.2
+        version: 4.1.2(typescript@5.9.3)
       '@formatjs/intl-localematcher':
         specifier: 0.8.1
         version: 0.8.1
+      intl-messageformat:
+        specifier: 11.1.2
+        version: 11.1.2
       lodash-es:
         specifier: 4.17.23
         version: 4.17.23
@@ -3280,6 +3286,7 @@ packages:
   basic-ftp@5.1.0:
     resolution: {integrity: sha512-RkaJzeJKDbaDWTIPiJwubyljaEPwpVWkm9Rt5h9Nd6h7tEXTJ3VB4qxdZBioV7JO5yLUaOKwz7vDOzlncUsegw==}
     engines: {node: '>=10.0.0'}
+    deprecated: Security vulnerability fixed in 5.2.0, please upgrade
 
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}

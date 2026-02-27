@@ -14,7 +14,7 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">{t('common.footer.copyright', { year: String(year) })}</p>
           <div className="text-sm text-muted-foreground">
             {t('common.footer.builtWith', {
-              link: (chunks: React.ReactNode) => (
+              link: (chunks) => (
                 <a
                   className="font-medium text-primary hover:underline underline-offset-4 transition-colors"
                   href="https://antigravity.google"

@@ -3,10 +3,11 @@
  * Uses @formatjs/intl for server-side message formatting
  */
 
+import type { FormatDateOptions, FormatNumberOptions, FormatTimeOptions } from '@formatjs/intl';
 import { get } from 'lodash-es';
-import { createIntl, createIntlCache, type PrimitiveType, type IntlFormatters } from 'react-intl';
+import { createIntl, createIntlCache } from 'react-intl';
 
-import type { Messages, Locale, MessageKey, IntlShape } from './config.js';
+import type { Messages, Locale, MessageKey, IntlShape, MessageValues, MessageStringValues } from './config.js';
 import { defaultLocale, isValidLocale } from './config.js';
 import csMessages from './messages/cs.json' with { type: 'json' };
 import enMessages from './messages/en.json' with { type: 'json' };
@@ -77,11 +78,6 @@ export function getIntl(locale: string): IntlShape {
 }
 
 /**
- * Extract the values type from react-intl's formatMessage (string version)
- */
-type MessageValues = Parameters<IntlFormatters<string>['formatMessage']>[1];
-
-/**
  * Server-side equivalent of useMessages hook
  * Returns an object with methods for translating messages in various formats
  *
@@ -95,14 +91,11 @@ export function getMessages(locale: string) {
   return {
     t: (id: MessageKey, values?: MessageValues) =>
       intl.formatMessage({ id, defaultMessage: get(enMessages, id) }, values),
-    formatString: (id: MessageKey, values?: Record<string, PrimitiveType>) =>
+    formatString: (id: MessageKey, values?: MessageStringValues) =>
       intl.formatMessage({ id, defaultMessage: get(enMessages, id) }, values),
-    formatDate: (value: Date | number | string, options?: Parameters<IntlFormatters['formatDate']>[1]) =>
-      intl.formatDate(value, options),
-    formatNumber: (value: bigint | number, options?: Parameters<IntlFormatters['formatNumber']>[1]) =>
-      intl.formatNumber(value, options),
-    formatTime: (value: Date | number | string, options?: Parameters<IntlFormatters['formatTime']>[1]) =>
-      intl.formatTime(value, options),
+    formatDate: (value: Date | number | string, options?: FormatDateOptions) => intl.formatDate(value, options),
+    formatNumber: (value: bigint | number, options?: FormatNumberOptions) => intl.formatNumber(value, options),
+    formatTime: (value: Date | number | string, options?: FormatTimeOptions) => intl.formatTime(value, options),
   };
 }
 

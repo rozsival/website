@@ -40,7 +40,9 @@
     "ts": "tsc --build"
   },
   "dependencies": {
+    "@formatjs/intl": "4.1.2",
     "@formatjs/intl-localematcher": "0.8.1",
+    "intl-messageformat": "11.1.2",
     "lodash-es": "4.17.23",
     "negotiator": "1.0.0",
     "react-intl": "8.1.3"
