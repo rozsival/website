@@ -48,6 +48,13 @@ export function ContactForm() {
       </div>
 
       <div>
+        <label className="mb-2 block text-sm font-medium" htmlFor="phone">
+          {t('contact.form.phone')}
+        </label>
+        <Input disabled={status === 'loading'} id="phone" name="phone" type="tel" />
+      </div>
+
+      <div>
         <label className="mb-2 block text-sm font-medium" htmlFor="message">
           {t('contact.form.message')}
         </label>

@@ -161,6 +161,7 @@
     "form": {
       "name": "Your Name",
       "email": "Your Email",
+      "phone": "Phone Number (Optional)",
       "message": "Your Message",
       "submit": "Send Message",
       "sending": "Sending..."

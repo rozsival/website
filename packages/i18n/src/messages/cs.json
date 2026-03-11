@@ -161,6 +161,7 @@
     "form": {
       "name": "Jméno",
       "email": "Email",
+      "phone": "Telefon (nepovinné)",
       "message": "Zpráva",
       "submit": "Odeslat",
       "sending": "Odesílám..."
