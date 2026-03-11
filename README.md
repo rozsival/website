@@ -1,10 +1,8 @@
-# Vít Rozsíval – Personal Website
+# Vít Rozsíval – Personal Website 💻
 
-Modern, type-safe personal website built with Next.js 16, React 19, and TypeScript in a Turborepo monorepo.
+Modern, type-safe personal website built with Next.js 16, React 19, and TypeScript in a Turborepo monorepo. 🚀
 
-> **For AI Assistants**: See [AGENTS.md](./AGENTS.md) for comprehensive project documentation.
-
-## 🚀 Quick Start
+## Quick Start 🚀
 
 ```bash
 # Install dependencies
@@ -20,7 +18,7 @@ pnpm run build
 pnpm run qa
 ```
 
-## 📦 Tech Stack
+## Tech Stack 📦
 
 - **Framework**: Next.js 16 (App Router), React 19
 - **Language**: TypeScript 5.9 (strict mode)
@@ -31,7 +29,7 @@ pnpm run qa
 - **Testing**: Vitest, Storybook
 - **Deployment**: Vercel
 
-## 🏗️ Project Structure
+## Structure 🏗️
 
 ```text
 apps/
@@ -45,20 +43,20 @@ packages/
 └── ui/           # Shared components
 ```
 
-## 🛠️ Development
+## Development 🛠️
 
 ### Prerequisites
 
-- **Node.js**: Version specified in `.nvmrc` (24.x)
-- **Package Manager**: pnpm (version in `package.json`)
+- **Node.js**: Version 24.x (`.nvmrc`)
+- **Package Manager**: pnpm
 
-### Available Commands
+### Commands
 
 ```bash
 # Development
-pnpm run dev                 # Start all dev servers
-pnpm run dev:web             # Start web app only (port 3000)
-pnpm run dev:storybook       # Start storybook only (port 6006)
+pnpm run dev                 # All dev servers
+pnpm run dev:web             # Web app only (port 3000)
+pnpm run dev:storybook       # Storybook only (port 6006)
 
 # Building
 pnpm run build               # Build everything
@@ -74,84 +72,49 @@ pnpm run cleanup             # Clean build artifacts
 pnpm run check               # Validate workspace structure
 ```
 
-### Key Features
+## Key Features 🌟
 
-#### 🌍 Internationalization
+### 🌍 Internationalization
 
-- **Supported languages**: English (default), Czech
-- **Type-safe** message keys with autocomplete
-- **Server & client** utilities for Next.js App Router
-- **Multi-language blog** posts
+- Supported languages: English (default), Czech
+- Type-safe message keys with autocomplete
+- Server & client utilities for Next.js App Router
+- Multi-language blog posts
 
-#### 📝 Blog
+### 📝 Blog
 
-- **MDX-powered** content
-- **Multi-language** support (`[slug]/[locale].md` structure)
-- **Reading time** calculation
-- **SEO-optimized** metadata
+- MDX-powered content
+- Multi-language support (`[slug]/[locale].md`)
+- Reading time calculation
+- SEO-optimized metadata
 
-#### 🎨 Theming
+### 🎨 Theming
 
-- **Dark mode** support
-- **Design tokens** via CSS variables
-- **Consistent** styling across components
+- Dark mode support
+- Design tokens via CSS variables
+- Consistent styling across components
 
-## 📖 Documentation
+## Documentation 📖
 
-- **[AGENTS.md](./AGENTS.md)**: Comprehensive guide for AI assistants and developers
-- **Storybook**: Component documentation (run `pnpm run dev:storybook`)
+- [AGENTS.md](./AGENTS.md): Comprehensive guide for AI assistants and developers
+- **Storybook**: Component documentation (`pnpm run dev:storybook`)
 
-## 🔧 Tooling
+## Tooling 🔧
 
-- **Turborepo**: Task orchestration with caching
-- **ESLint 9**: Flat config with custom rules
-- **Prettier**: Code formatting
-- **Husky**: Git hooks for quality checks
-- **Commitlint**: Conventional commit enforcement
+- Turborepo: Task orchestration with caching
+- ESLint 9: Flat config with custom rules
+- Prettier: Code formatting
+- Husky: Git hooks for quality checks
+- Commitlint: Conventional commit enforcement
 
-## 📁 Workspace Packages
+## Deployment 🚢
 
-All packages are internal (`@rozsival/*`) and share TypeScript configurations.
-
-### @rozsival/i18n
-
-Server and client internationalization utilities wrapping react-intl.
-
-### @rozsival/mdx
-
-Blog content processing with multi-language support and reading time.
-
-### @rozsival/theme
-
-Design tokens, theme provider, and dark mode utilities.
-
-### @rozsival/ui
-
-Shared component library with Shadcn-inspired primitives.
-
-## 🚢 Deployment
-
-Deployed on **Vercel** with automatic deployments from the `main` branch.
+Deployed on **Vercel** with automatic deployments from `main` branch.
 
 - Build command: `pnpm turbo build --filter=@rozsival/web`
 - Framework preset: Next.js
 - Node version: See `.nvmrc`
 
-## 🤝 Contributing
+## License 📄
 
-This is a personal project, but feel free to explore the code and use it as reference.
-
-### Code Quality
-
-- **Conventional Commits**: Required for all commits
-- **Pre-commit hooks**: Automatically format and lint changed files
-- **Type checking**: Strict TypeScript across all packages
-- **No path aliases** in packages (only in apps)
-
-## 📄 License
-
-MIT © Vít Rozsíval
-
----
-
-Built with ❤️ using modern web technologies.
+MIT © Vít Rozsíval 💻
